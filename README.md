@@ -1,10 +1,10 @@
-# favicon-tool
+# favycon
 
 Favicon generator tool
 
-![Release](https://github.com/ruisaraiva19/favicon-tool/workflows/Release/badge.svg)
-![Lint](https://github.com/ruisaraiva19/favicon-tool/workflows/Lint/badge.svg)
-![Commitlint](https://github.com/ruisaraiva19/favicon-tool/workflows/Commitlint/badge.svg)
+![Release](https://github.com/ruisaraiva19/favycon/workflows/Release/badge.svg)
+![Lint](https://github.com/ruisaraiva19/favycon/workflows/Lint/badge.svg)
+![Commitlint](https://github.com/ruisaraiva19/favycon/workflows/Commitlint/badge.svg)
 
 ## Browser favicon formats supported
 

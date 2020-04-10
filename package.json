@@ -1,10 +1,10 @@
 {
-	"name": "favicon-tool",
+	"name": "favycon",
 	"version": "1.0.0",
 	"description": "Favicon generator tool",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ruisaraiva19/favicon-tool.git"
+		"url": "git+https://github.com/ruisaraiva19/favycon.git"
 	},
 	"keywords": [
 		"favicon",
@@ -18,9 +18,9 @@
 	},
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/ruisaraiva19/favicon-tool/issues"
+		"url": "https://github.com/ruisaraiva19/favycon/issues"
 	},
-	"homepage": "https://github.com/ruisaraiva19/favicon-tool#readme",
+	"homepage": "https://github.com/ruisaraiva19/favycon#readme",
 	"engines": {
 		"node": ">= 12.x",
 		"yarn": "^1.16.0"

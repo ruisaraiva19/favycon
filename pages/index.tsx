@@ -5,12 +5,12 @@ import Head from 'next/head'
 const Home: NextPage = () => (
 	<div className="container">
 		<Head>
-			<title>Favicon tool</title>
+			<title>Favycon</title>
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 
 		<main>
-			<h1 className="title">Welcome to Favicon tool!</h1>
+			<h1 className="title">Welcome to Favycon!</h1>
 
 			<p className="description">
 				Get started by editing <code>pages/index.tsx</code>
