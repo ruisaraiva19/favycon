@@ -1,6 +1,10 @@
-# favicon-tool
+# favycon
 
 Favicon generator tool
+
+![Release](https://github.com/ruisaraiva19/favycon/workflows/Release/badge.svg)
+![Lint](https://github.com/ruisaraiva19/favycon/workflows/Lint/badge.svg)
+![Commitlint](https://github.com/ruisaraiva19/favycon/workflows/Commitlint/badge.svg)
 
 ## Browser favicon formats supported
 
@@ -54,3 +58,17 @@ Favicon generator tool
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 ```
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

@@ -1,0 +1,33 @@
+{
+	"parser": "@typescript-eslint/parser",
+	"extends": [
+		"react-app",
+		"prettier",
+		"prettier/react",
+		"prettier/@typescript-eslint",
+		"plugin:react/recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking"
+	],
+	"plugins": ["@typescript-eslint", "react", "react-hooks", "prettier"],
+	"parserOptions": {
+		"project": "./tsconfig.json"
+	},
+	"rules": {
+		"prettier/prettier": "error",
+		"react/prop-types": "off",
+		"no-param-reassign": "off",
+		"react/jsx-filename-extension": [1, { "extensions": [".js", ".ts", "tsx"] }],
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/explicit-member-accessibility": "off",
+		"@typescript-eslint/member-delimiter-style": "off"
+	},
+	"overrides": [
+		{
+			"files": ["**/*.config.js"],
+			"rules": {
+				"@typescript-eslint/no-var-requires": "off"
+			}
+		}
+	]
+}
