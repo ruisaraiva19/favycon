@@ -2,6 +2,10 @@
 
 Favicon generator tool
 
+![Release](https://github.com/ruisaraiva19/favicon-tool/workflows/Release/badge.svg)
+![Lint](https://github.com/ruisaraiva19/favicon-tool/workflows/Lint/badge.svg)
+![Commitlint](https://github.com/ruisaraiva19/favicon-tool/workflows/Commitlint/badge.svg)
+
 ## Browser favicon formats supported
 
 |     | IE  | Edge | Firefox | Chrome | Safari | iOS Safari | Chrome Android |
