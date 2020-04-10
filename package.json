@@ -21,6 +21,10 @@
 		"url": "https://github.com/ruisaraiva19/favicon-tool/issues"
 	},
 	"homepage": "https://github.com/ruisaraiva19/favicon-tool#readme",
+	"engines": {
+		"node": ">= 12.x",
+		"yarn": "^1.16.0"
+	},
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
@@ -65,6 +69,7 @@
 		"npm-run-all": "4.1.5",
 		"prettier": "2.0.4",
 		"sass": "1.26.3",
+		"semantic-release": "17.0.4",
 		"stylelint": "13.3.1",
 		"stylelint-config-prettier": "8.0.1",
 		"stylelint-config-recess-order": "2.0.4",
