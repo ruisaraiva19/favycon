@@ -5,6 +5,7 @@ Favicon generator tool
 ![Release](https://github.com/ruisaraiva19/favycon/workflows/Release/badge.svg)
 ![Lint](https://github.com/ruisaraiva19/favycon/workflows/Lint/badge.svg)
 ![Commitlint](https://github.com/ruisaraiva19/favycon/workflows/Commitlint/badge.svg)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d2e6694d-1f2c-4b50-ad21-ff5c3fcbc3c4/deploy-status)](https://app.netlify.com/sites/favycon/deploys)
 
 ## Browser favicon formats supported
 
