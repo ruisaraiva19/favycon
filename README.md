@@ -3,7 +3,7 @@
 Favicon generator tool
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ![Release](https://github.com/ruisaraiva19/favycon/workflows/Release/badge.svg)
 ![Lint](https://github.com/ruisaraiva19/favycon/workflows/Lint/badge.svg)
@@ -89,6 +89,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://ruisaraiva.com"><img src="https://avatars2.githubusercontent.com/u/7356098?v=4" width="100px;" alt=""/><br /><sub><b>Rui Saraiva</b></sub></a><br /><a href="#infra-ruisaraiva19" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/ruisaraiva19/favycon/commits?author=ruisaraiva19" title="Code">💻</a> <a href="https://github.com/ruisaraiva19/favycon/commits?author=ruisaraiva19" title="Documentation">📖</a> <a href="#question-ruisaraiva19" title="Answering Questions">💬</a> <a href="#maintenance-ruisaraiva19" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://github.com/eduardoPinto12"><img src="https://avatars1.githubusercontent.com/u/45365656?v=4" width="100px;" alt=""/><br /><sub><b>Eduardo Pinto</b></sub></a><br /><a href="https://github.com/ruisaraiva19/favycon/commits?author=eduardoPinto12" title="Code">💻</a> <a href="https://github.com/ruisaraiva19/favycon/pulls?q=is%3Apr+reviewed-by%3AeduardoPinto12" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/otsugua"><img src="https://avatars2.githubusercontent.com/u/9093629?v=4" width="100px;" alt=""/><br /><sub><b>Augusto Lopes</b></sub></a><br /><a href="#design-otsugua" title="Design">🎨</a></td>
+    <td align="center"><a href="https://rgllm.com"><img src="https://avatars3.githubusercontent.com/u/9056941?v=4" width="100px;" alt=""/><br /><sub><b>Rogério Moreira</b></sub></a><br /><a href="https://github.com/ruisaraiva19/favycon/commits?author=rgllm" title="Code">💻</a> <a href="https://github.com/ruisaraiva19/favycon/pulls?q=is%3Apr+reviewed-by%3Argllm" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 

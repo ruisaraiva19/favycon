@@ -41,6 +41,16 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "rgllm",
+      "name": "Rogério Moreira",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9056941?v=4",
+      "profile": "https://rgllm.com",
+      "contributions": [
+        "code",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7
