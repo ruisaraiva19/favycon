@@ -20,25 +20,25 @@ Favicon generator tool
 
 ## Favicon recommended sizes
 
-|         | apple-touch-icon | icon | msapplication |
-| ------- | ---------------- | ---- | ------------- |
-| 57x57   | ✅                |      |               |
-| 60x60   | ✅                |      |               |
-| 72x72   | ✅                |      |               |
-| 76x76   | ✅                |      |               |
-| 114x114 | ✅                |      |               |
-| 120x120 | ✅                |      |               |
-| 144x144 | ✅                |      | ✅             |
-| 152x152 | ✅                |      |               |
-| 180x180 | ✅                |      |               |
-| 16x16   |                  | ✅    |               |
-| 32x32   |                  | ✅    |               |
-| 96x96   |                  | ✅    |               |
-| 192x192 |                  | ✅    |               |
-| 70x70   |                  |      | ✅             |
-| 150x150 |                  |      | ✅             |
-| 310x150 |                  |      | ✅             |
-| 310x310 |                  |      | ✅             |
+|         | apple-icon | favicon | ms-icon |
+| ------- | ---------- | ------- | ------- |
+| 57x57   | ✅          |         |         |
+| 60x60   | ✅          |         |         |
+| 72x72   | ✅          |         |         |
+| 76x76   | ✅          |         |         |
+| 114x114 | ✅          |         |         |
+| 120x120 | ✅          |         |         |
+| 144x144 | ✅          |         | ✅       |
+| 152x152 | ✅          |         |         |
+| 180x180 | ✅          |         |         |
+| 16x16   |            | ✅       |         |
+| 32x32   |            | ✅       |         |
+| 96x96   |            | ✅       |         |
+| 192x192 |            | ✅       |         |
+| 70x70   |            |         | ✅       |
+| 150x150 |            |         | ✅       |
+| 310x150 |            |         | ✅       |
+| 310x310 |            |         | ✅       |
 
 ## HTML tags to add for all favicon sizes
 
@@ -58,7 +58,7 @@ Favicon generator tool
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
 <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
-<meta name="msapplication-config" content="browserconfig.xml" />
+<meta name="msapplication-config" content="browserconfig.xml">
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 ```
@@ -67,15 +67,27 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, install the project dependencies:
 
 ```bash
-npm run dev
-# or
+yarn install
+```
+
+Then, run the development server:
+
+```bash
 yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+Also, you can run the Storybook server:
+
+```bash
+yarn storybook
+```
+
+Open [http://localhost:6006](http://localhost:6006) with your browser to see all stories.
 
 ## Contributors ✨
 

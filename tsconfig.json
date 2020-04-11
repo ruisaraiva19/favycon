@@ -16,7 +16,15 @@
 		"alwaysStrict": true,
 		"noFallthroughCasesInSwitch": true,
 		"noUnusedLocals": true,
-		"noUnusedParameters": true
+		"noUnusedParameters": true,
+		"baseUrl": ".",
+		"paths": {
+			"components/*": ["components/*"],
+			"pages/*": ["pages/*"],
+			"theme/*": ["styles/*"],
+			"utils/*": ["utils/*"],
+			"hooks/*": ["hooks/*"]
+		}
 	},
 	"exclude": ["node_modules"],
 	"include": ["**/*.ts", "**/*.tsx", "./*.js", "./public/*.js"]

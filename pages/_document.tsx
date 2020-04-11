@@ -7,7 +7,7 @@ class MyDocument extends Document {
 			<Html>
 				<Head />
 				<body>
-					<script src="noflash.js" />
+					<script src="/noflash.js" />
 					<Main />
 					<NextScript />
 				</body>
