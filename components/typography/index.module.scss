@@ -1,0 +1,64 @@
+@import '../../styles/variables.scss';
+
+.h1 {
+	font-size: $font-size-h1;
+	line-height: $line-height-h1;
+}
+
+.smallBody {
+	font-size: $font-size-small-body;
+	line-height: $line-height-small-body;
+}
+
+.regularBody {
+	font-size: $font-size-regular-body;
+	line-height: $line-height-regular-body;
+}
+
+.mediumBody {
+	font-size: $font-size-medium-body;
+	line-height: $line-height-medium-body;
+}
+
+.largeBody {
+	font-size: $font-size-large-body;
+	line-height: $line-height-large-body;
+}
+
+.footer {
+	font-size: $font-size-footer;
+	line-height: $line-height-footer;
+}
+
+.superscript {
+	font-size: $font-size-superscript;
+	line-height: $line-height-superscript;
+}
+
+.regular {
+	font-weight: 400;
+}
+
+.medium {
+	font-weight: 500;
+}
+
+.semiBold {
+	font-weight: 600;
+}
+
+.bold {
+	font-weight: 700;
+}
+
+.black {
+	color: $black;
+}
+
+.gray {
+	color: $gray;
+}
+
+.white {
+	color: $white;
+}
