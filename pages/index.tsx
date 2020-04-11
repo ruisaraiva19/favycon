@@ -7,9 +7,9 @@ const Home: NextPage = () => (
 	<div className="container">
 		<Head>
 			<title>Favycon</title>
-			<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-			<link rel="icon" type="image/png" href="/favicon.png" />
-			<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+			<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1" />
+			<link rel="icon" type="image/png" href="/favicon.png?v=1" />
+			<link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
 		</Head>
 
 		<main>
