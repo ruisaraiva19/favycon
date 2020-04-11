@@ -1,0 +1,26 @@
+@import '../../styles/variables.scss';
+
+.root {
+	padding: 2px;
+}
+
+.label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	cursor: pointer;
+	user-select: none;
+}
+
+.checkbox {
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	visibility: hidden;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-webkit-tap-highlight-color: transparent;
+}
