@@ -27,6 +27,9 @@ module.exports = {
 		}
 
 		config.resolve.alias['components'] = path.join(__dirname, 'components')
+		config.resolve.alias['pages'] = path.join(__dirname, 'pages')
+		config.resolve.alias['styles'] = path.join(__dirname, 'styles')
+		config.resolve.alias['utils'] = path.join(__dirname, 'utils')
 		config.resolve.alias['hooks'] = path.join(__dirname, 'hooks')
 		config.resolve.alias['react'] = 'preact/compat'
 		config.resolve.alias['react-dom'] = 'preact/compat'

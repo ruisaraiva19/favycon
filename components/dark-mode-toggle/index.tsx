@@ -1,5 +1,7 @@
 import React from 'react'
 import useDarkMode from 'use-dark-mode'
+import { SvgSun } from 'components/svgs/svg-sun'
+import { SvgMoon } from 'components/svgs/svg-moon'
 
 import styles from './index.module.scss'
 
@@ -9,7 +11,7 @@ const DarkModeToggle = () => {
 	return (
 		<div className={styles.root}>
 			<label htmlFor="darkMode" className={styles.label}>
-				{darkMode.value ? '☀' : '☾'}
+				{darkMode.value ? <SvgSun /> : <SvgMoon />}
 			</label>
 			<input
 				className={styles.checkbox}
