@@ -3,10 +3,19 @@
 .primary {
 	padding: 6px 12px;
 	font-size: $font-size-medium-body;
-	font-weight: bold;
 	line-height: $line-height-medium-body;
 	color: $black;
 	background-color: $off-white;
+	border: 1px solid $light-gray-one;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+}
+
+.transparent {
+	padding: 6px 12px;
+	font-size: $font-size-medium-body;
+	line-height: $line-height-medium-body;
+	color: $black;
 	border: 1px solid $light-gray-one;
 	border-radius: 4px;
 }
@@ -14,4 +23,20 @@
 .dark {
 	color: $white;
 	background-color: $dark-purple;
+}
+
+.regular {
+	font-weight: 400;
+}
+
+.medium {
+	font-weight: 500;
+}
+
+.semiBold {
+	font-weight: 600;
+}
+
+.bold {
+	font-weight: 700;
 }

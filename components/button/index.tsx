@@ -7,18 +7,20 @@ import styles from './index.module.scss'
 
 type ButtonProps = {
 	children: PropTypes.ReactNodeLike
-	variant: 'primary'
+	variant: 'primary' | 'transparent'
+	weight: 'regular' | 'medium' | 'semiBold' | 'bold'
 }
 
-const Button = ({ children, variant }: ButtonProps) => {
+const Button = ({ children, variant, weight }: ButtonProps) => {
 	const { value: isDark } = useDarkMode()
-	const className = classNames(styles[variant], { [styles.dark]: isDark })
+	const className = classNames(styles[variant], { [styles.dark]: isDark }, styles[weight])
 
 	return <button className={className}>{children}</button>
 }
 
 Button.defaultProps = {
 	variant: 'primary',
+	weight: 'bold',
 }
 
 export { Button }
