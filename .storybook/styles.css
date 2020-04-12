@@ -1,4 +1,12 @@
 .sb-show-main {
 	margin: 0;
 	background: inherit;
+	transition: background 0.2s ease;
+}
+
+.sb-show-main.light-mode {
+	background: #fff;
+}
+.sb-show-main.dark-mode {
+	background: #191a1f;
 }

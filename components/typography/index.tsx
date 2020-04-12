@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import useDarkMode from 'use-dark-mode'
 
 import styles from './index.module.scss'
 
@@ -10,13 +11,20 @@ type TypographyProps = {
 	weight: 'regular' | 'medium' | 'semiBold' | 'bold'
 	color: 'black' | 'gray' | 'white'
 	tag?: string
-}
+} & React.DetailedHTMLProps<React.HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>
 
-const Typography = ({ children, variant, weight, color, tag }: TypographyProps) => {
-	const className = classNames(styles[variant], styles[color], styles[weight])
+const Typography = ({ children, variant, weight, color, tag, ...props }: TypographyProps) => {
+	const { value: isDark } = useDarkMode(false)
+	const className = classNames(
+		styles[variant],
+		styles[color],
+		styles[weight],
+		{ [styles.dark]: isDark },
+		props.className
+	)
 	const componentType = ['h1'].includes(variant) ? variant : 'p'
 
-	return React.createElement(tag || componentType, { className }, children)
+	return React.createElement(tag || componentType, { ...props, className }, children)
 }
 
 Typography.defaultProps = {

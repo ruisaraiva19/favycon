@@ -28,6 +28,16 @@
 .footer {
 	font-size: $font-size-footer;
 	line-height: $line-height-footer;
+
+	a {
+		color: inherit;
+
+		&:focus,
+		&:active,
+		&:hover {
+			color: inherit;
+		}
+	}
 }
 
 .superscript {
@@ -53,12 +63,22 @@
 
 .black {
 	color: $black;
+	transition: color 0.2s ease;
+
+	&.dark {
+		color: $white;
+	}
 }
 
 .gray {
-	color: $gray;
+	color: $grey;
 }
 
 .white {
 	color: $white;
+	transition: color 0.2s ease;
+
+	&.dark {
+		color: $black;
+	}
 }

@@ -1,0 +1,54 @@
+import React, { useRef, useEffect } from 'react'
+import { LazyImageFull, ImageState } from 'react-lazy-images'
+import objectFitImages from 'object-fit-images'
+
+import styles from './index.module.scss'
+
+type LazyImageProps = {
+	src: string
+	srcRetina: string
+	srcPlaceholder: string
+	alt: string
+	aspectRatio: string
+}
+
+const LazyImage = ({ src, srcRetina, srcPlaceholder, alt, aspectRatio }: LazyImageProps) => {
+	const [widthString, heightString] = aspectRatio.split('/')
+	const width = parseInt(widthString)
+	const height = parseInt(heightString)
+
+	const imgRef = useRef<HTMLImageElement>(null)
+
+	useEffect(() => {
+		if (imgRef.current) {
+			objectFitImages(imgRef.current)
+		}
+	}, [imgRef])
+
+	return (
+		<LazyImageFull src={src} srcSet={`${src} 1x, ${srcRetina} 2x`} alt={alt}>
+			{({ imageProps, imageState, ref }) => {
+				const loaded = imageState === ImageState.LoadSuccess
+				return (
+					<div className={styles.root} ref={ref} style={{ paddingBottom: `${(height / width) * 100 + '%'}` }}>
+						<img
+							className={styles.placeholder}
+							src={srcPlaceholder}
+							alt={imageProps.alt}
+							style={{ opacity: loaded ? 0 : 1 }}
+						/>
+						<img
+							ref={imgRef}
+							className={styles.normal}
+							{...imageProps}
+							alt={imageProps.alt}
+							style={{ opacity: loaded ? 1 : 0 }}
+						/>
+					</div>
+				)
+			}}
+		</LazyImageFull>
+	)
+}
+
+export { LazyImage }

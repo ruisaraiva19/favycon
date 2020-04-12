@@ -1,0 +1,61 @@
+@import '../../styles/variables.scss';
+
+.base {
+	padding: 6px 12px;
+	font-size: $font-size-medium-body;
+	line-height: $line-height-medium-body;
+	color: $black;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+.primary {
+	composes: base;
+	background-color: $off-white;
+	border: 1px solid $light-grey;
+	box-shadow: 0 2px 4px 0 rgba($black, 0.12);
+	transition: all 0.2s ease;
+
+	&:focus {
+		outline: none;
+	}
+
+	&:disabled {
+		color: $grey;
+	}
+}
+
+.noClick {
+	cursor: default;
+}
+
+.transparent {
+	composes: base;
+	border: 1px solid transparent;
+}
+
+.dark {
+	color: $white;
+	background-color: $darker-grey;
+	border: 1px solid $darker-grey;
+
+	&:disabled {
+		color: $grey;
+	}
+}
+
+.regular {
+	font-weight: 400;
+}
+
+.medium {
+	font-weight: 500;
+}
+
+.semiBold {
+	font-weight: 600;
+}
+
+.bold {
+	font-weight: 700;
+}

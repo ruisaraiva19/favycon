@@ -1,65 +1,79 @@
 import React from 'react'
 import { NextPage } from 'next'
-import Head from 'next/head'
-import { Typography } from '../components/typography'
+import useDarkMode from 'use-dark-mode'
+import { LazyImage } from 'components/lazy-image'
+import { BaseLayout } from 'components/base-layout'
+import { Typography } from 'components/typography'
+import { SEO } from 'components/seo'
+import { ToolTitle } from 'components/tool-title'
+import { DragAndDrop } from 'components/drag-and-drop'
 
-const Home: NextPage = () => (
-	<div className="container">
-		<Head>
-			<title>Favycon</title>
-			<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1" />
-			<link rel="icon" type="image/png" href="/favicon.png?v=1" />
-			<link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
-		</Head>
+import styles from './index.module.scss'
 
-		<main>
-			<div className="title">
-				<Typography variant="h1" weight="bold">
-					Favycon
-				</Typography>
-				<Typography variant="superscript" tag="span" weight="bold" color="gray">
-					TOOL
-				</Typography>
-			</div>
-			<Typography variant="largeBody" weight="medium">
-				A small online tool to help you generate your favicon in all the sizes and formats you need. <br />
-				<br />
-				Just drag &amp; drop an image and you will then get a downloadable file alongside some documentation on how to
-				add the favicons.
-			</Typography>
-			<hr />
-			<Typography variant="footer" weight="semiBold" color="gray">
-				Created by <u>4 people</u> on their 2020’s worldwide quarantine. Background image from <u>Unsplash</u>.
-			</Typography>
-		</main>
+const getRandomNumber = (min = 1, max = 3) => Math.floor(Math.random() * max) + min
 
-		<style jsx>
-			{`
-				.container {
-					min-height: 100vh;
-					padding: 0 0.5rem;
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					align-items: center;
-				}
+const unsplashImagesUrls = [
+	'https://unsplash.com/photos/F573ZRbKOEw',
+	'https://unsplash.com/photos/k0JNJRbrJAs',
+	'https://unsplash.com/photos/f9oQZOk9vnk',
+]
 
-				.title {
-					display: flex;
-					align-items: flex-start;
-				}
+const Home: NextPage = () => {
+	const { value: isDark } = useDarkMode(false)
+	const backgroundId = getRandomNumber()
+	const onDrop = (acceptedFiles: File[]) => {
+		console.log('acceptedFiles[0]', acceptedFiles[0])
+	}
 
-				main {
-					padding: 5rem 0;
-					flex: 1;
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					max-width: 350px;
-				}
-			`}
-		</style>
-	</div>
-)
+	return (
+		<BaseLayout>
+			<SEO
+				title="Favycon"
+				description="A small online tool to help you generate your favicon in all the sizes and formats you need."
+			/>
+			<main className={styles.container}>
+				<div className={styles.info}>
+					<ToolTitle>Favycon</ToolTitle>
+					<Typography variant="largeBody" weight="medium" className={styles.firstParagraph}>
+						A small online tool to help you generate your favicon in all the sizes and formats you need.
+					</Typography>
+					<Typography variant="largeBody" weight="medium" className={styles.secondParagraph}>
+						Just drag &amp; drop an image and you will then get a downloadable file alongside some documentation on how
+						to add the favicons.
+					</Typography>
+					<hr className={styles.lastParagraph} />
+					<Typography variant="footer" weight="semiBold" color="gray">
+						Created by <a href="/#">4 people</a> on their 2020’s worldwide quarantine. Background image from{' '}
+						<a href={unsplashImagesUrls[backgroundId - 1]} target="_blank" rel="noopener noreferrer">
+							Unsplash
+						</a>
+						.
+					</Typography>
+				</div>
+				<div className={styles.dragAndDrop}>
+					<div className={styles.background}>
+						<LazyImage
+							src={`/images/unsplash-${backgroundId}@1x.jpg`}
+							srcRetina={`/images/unsplash-${backgroundId}@2x.jpg`}
+							srcPlaceholder={`/images/unsplash-${backgroundId}@placeholder.jpg`}
+							alt="Unsplash"
+							aspectRatio="540/354"
+						/>
+					</div>
+					<DragAndDrop onDrop={onDrop} />
+					<div className={styles.image}>
+						<LazyImage
+							src={`/images/dnd-${isDark ? 'dark' : 'light'}@1x.png`}
+							srcRetina={`/images/dnd-${isDark ? 'dark' : 'light'}@2x.png`}
+							srcPlaceholder={`/images/dnd-${isDark ? 'dark' : 'light'}@1x.png`}
+							alt="Drag and drop here!"
+							aspectRatio="184/108"
+						/>
+					</div>
+				</div>
+			</main>
+		</BaseLayout>
+	)
+}
 
 export default Home
