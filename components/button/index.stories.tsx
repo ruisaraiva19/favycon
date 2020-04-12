@@ -1,5 +1,5 @@
 import React from 'react'
-import { withKnobs, text, select } from '@storybook/addon-knobs'
+import { withKnobs, text, select, boolean } from '@storybook/addon-knobs'
 import { Button } from '.'
 import useDarkMode from 'use-dark-mode'
 
@@ -13,9 +13,10 @@ export const ButtonDesktop = () => {
 	const variant = select('variant', ['primary', 'transparent'], 'primary')
 	const weight = select('weight', ['regular', 'medium', 'semiBold', 'bold'], 'bold')
 	const body = text('body', 'Mac app coming soon')
+	const disabled = boolean('disabled', false)
 	return (
 		<div style={{ padding: 20 }}>
-			<Button variant={variant} weight={weight}>
+			<Button variant={variant} weight={weight} disabled={disabled}>
 				{body}
 			</Button>
 			<br />
