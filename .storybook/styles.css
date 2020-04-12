@@ -5,8 +5,9 @@
 }
 
 .sb-show-main.light-mode {
-	background: #fff;
+	background: #fafafa;
 }
+
 .sb-show-main.dark-mode {
 	background: #191a1f;
 }

@@ -2,10 +2,11 @@
 
 .container {
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	justify-content: space-between;
 	width: 100%;
 	max-width: 960px;
+	min-height: 100vh;
 	padding: 52px 20px;
 	margin: 0 auto;
 }
@@ -31,7 +32,7 @@
 	justify-content: center;
 	width: 100%;
 	max-width: 540px;
-	padding: 41px 0 38px;
+	padding: 41px 0 0;
 }
 
 .background {
