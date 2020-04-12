@@ -1,0 +1,56 @@
+@import '../styles/variables.scss';
+
+.container {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 960px;
+	padding: 52px 20px;
+	margin: 0 auto;
+}
+
+.info {
+	width: 100%;
+	max-width: 350px;
+}
+
+.firstParagraph {
+	margin-top: 8px;
+}
+
+.secondParagraph {
+	margin-top: 16px;
+	margin-bottom: 60px;
+}
+
+.dragAndDrop {
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	width: 100%;
+	max-width: 540px;
+	padding: 41px 0 38px;
+}
+
+.background {
+	position: absolute;
+	top: 10px;
+	right: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	overflow: hidden;
+	border-radius: 8px;
+	transform: rotate(2deg);
+}
+
+.image {
+	position: absolute;
+	top: 57px;
+	right: 15px;
+	width: 184px;
+	height: 108px;
+	transform: translate(100%, -100%);
+}
