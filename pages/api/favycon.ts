@@ -4,8 +4,8 @@ import { convert } from '@fiahfy/ico-convert'
 import multer from 'multer'
 import AdmZip from 'adm-zip'
 
-import { runMiddleware } from '../../utils/api'
-import { faviconSizesPrefixes, browserConfigTemplate, tutorialTemplate } from '../../utils/favicon'
+import { runMiddleware } from 'utils/api'
+import { faviconSizesPrefixes, browserConfigTemplate, tutorialTemplate } from 'utils/favicon'
 
 const storage = multer.memoryStorage()
 const upload = multer({ storage })

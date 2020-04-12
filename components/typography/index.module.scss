@@ -53,6 +53,11 @@
 
 .black {
 	color: $black;
+	transition: color 0.2s ease;
+
+	&.dark {
+		color: $white;
+	}
 }
 
 .gray {

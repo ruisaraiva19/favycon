@@ -15,6 +15,15 @@ body {
 	text-rendering: optimizeLegibility;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
+	transition: background 0.2s ease;
+
+	&.light-mode {
+		background: $white;
+	}
+
+	&.dark-mode {
+		background: $off-black;
+	}
 }
 
 * {
