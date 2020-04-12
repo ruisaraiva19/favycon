@@ -1,20 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Header } from 'components/header'
 
 import styles from './index.module.scss'
 
-type BaseLayoutProps = {
+type StickyProps = {
 	children: PropTypes.ReactNodeLike
 }
 
-const BaseLayout = ({ children }: BaseLayoutProps) => {
+const Sticky = ({ children }: StickyProps) => {
 	return (
 		<div className={styles.root}>
-			<Header />
-			{children}
+			<div className={styles.sticky}>{children}</div>
 		</div>
 	)
 }
 
-export { BaseLayout }
+export { Sticky }
