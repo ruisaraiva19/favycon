@@ -1,0 +1,30 @@
+@import '../../styles/variables.scss';
+
+.root {
+	padding: 0;
+}
+
+.container {
+	max-width: 1440px;
+	height: 64px;
+	padding: 0 20px;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.item {
+	background: $off-white;
+	border-radius: 16px;
+	box-shadow: 0 0 10px rgba($off-white, 0.5);
+	transition: all 0.2s ease;
+}
+
+.dark {
+	background: $dark-black;
+	box-shadow: 0 0 10px rgba($dark-black, 0.5);
+}

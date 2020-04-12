@@ -18,7 +18,7 @@ body {
 	transition: background 0.2s ease;
 
 	&.light-mode {
-		background: $white;
+		background: $off-white;
 	}
 
 	&.dark-mode {
@@ -33,6 +33,13 @@ body {
 hr {
 	height: 1px;
 	margin: 16px 0;
-	background-color: $light-grey;
+	background: $light-grey;
 	border: none;
+	transition: background 0.2s ease;
+}
+
+.dark-mode {
+	hr {
+		background: $darker-grey;
+	}
 }

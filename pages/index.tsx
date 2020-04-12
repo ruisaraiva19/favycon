@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { NextPage } from 'next'
 import useDarkMode from 'use-dark-mode'
 import { LazyImage } from 'components/lazy-image'
@@ -13,14 +13,14 @@ import styles from './index.module.scss'
 const getRandomNumber = (min = 1, max = 3) => Math.floor(Math.random() * max) + min
 
 const unsplashImagesUrls = [
-	'https://unsplash.com/photos/F573ZRbKOEw',
-	'https://unsplash.com/photos/k0JNJRbrJAs',
-	'https://unsplash.com/photos/f9oQZOk9vnk',
+	'https://unsplash.com/photos/zKnQnyARggY',
+	'https://unsplash.com/photos/UQAQm_EpWR8',
+	'https://unsplash.com/photos/IXUM4cJynP0',
 ]
 
 const Home: NextPage = () => {
 	const { value: isDark } = useDarkMode(false)
-	const backgroundId = getRandomNumber()
+	const backgroundId = useMemo(() => getRandomNumber(), [])
 	const onDrop = (acceptedFiles: File[]) => {
 		console.log('acceptedFiles[0]', acceptedFiles[0])
 	}
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
 						Just drag &amp; drop an image and you will then get a downloadable file alongside some documentation on how
 						to add the favicons.
 					</Typography>
-					<hr className={styles.lastParagraph} />
+					<hr />
 					<Typography variant="footer" weight="semiBold" color="gray">
 						Created by <a href="/#">4 people</a> on their 2020’s worldwide quarantine. Background image from{' '}
 						<a href={unsplashImagesUrls[backgroundId - 1]} target="_blank" rel="noopener noreferrer">
