@@ -49,6 +49,7 @@
 		"prop-types": "15.7.2",
 		"react": "16.13.1",
 		"react-dom": "16.13.1",
+		"react-dropzone": "10.2.2",
 		"sharp": "0.25.2",
 		"use-dark-mode": "2.3.1"
 	},

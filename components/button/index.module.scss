@@ -1,19 +1,27 @@
 @import '../../styles/variables.scss';
 
-.primary {
+.base {
 	padding: 6px 12px;
 	font-size: $font-size-medium-body;
 	line-height: $line-height-medium-body;
 	color: $black;
 	cursor: pointer;
-	background-color: $off-white;
-	border: 1px solid $light-gray-one;
 	border-radius: 4px;
-	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+}
+
+.primary {
+	composes: base;
+	background-color: $off-white;
+	border: 1px solid $light-grey;
+	box-shadow: 0 2px 4px 0 rgba($black, 0.12);
 	transition: all 0.2s ease;
 
 	&:focus {
 		outline: none;
+	}
+
+	&:disabled {
+		color: $grey;
 	}
 }
 
@@ -22,18 +30,18 @@
 }
 
 .transparent {
-	padding: 6px 12px;
-	font-size: $font-size-medium-body;
-	line-height: $line-height-medium-body;
-	color: $black;
-	border: 1px solid $light-gray-one;
-	border-radius: 4px;
+	composes: base;
+	border: 1px solid transparent;
 }
 
 .dark {
 	color: $white;
-	background-color: $dark-purple;
-	border: 1px solid $dark-purple;
+	background-color: $darker-grey;
+	border: 1px solid $darker-grey;
+
+	&:disabled {
+		color: $grey;
+	}
 }
 
 .regular {

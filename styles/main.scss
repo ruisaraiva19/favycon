@@ -10,7 +10,7 @@ body {
 
 	/* https://gist.github.com/hsleonis/55712b0eafc9b25f1944 */
 	font-size: 100%;
-	text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+	text-shadow: rgba($black, 0.01) 0 0 1px;
 	font-variant-ligatures: none;
 	text-rendering: optimizeLegibility;
 	-moz-osx-font-smoothing: grayscale;
@@ -22,7 +22,7 @@ body {
 	}
 
 	&.dark-mode {
-		background: $off-black;
+		background: $dark-black;
 	}
 }
 
@@ -33,6 +33,6 @@ body {
 hr {
 	height: 1px;
 	margin: 16px 0;
-	background-color: $light-gray-two;
+	background-color: $light-grey;
 	border: none;
 }
