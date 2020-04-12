@@ -1,0 +1,16 @@
+@import '../../styles/variables.scss';
+
+.root {
+	padding: 0;
+}
+
+.container {
+	max-width: 1440px;
+	padding: 20px;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}

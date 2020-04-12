@@ -1,6 +1,7 @@
 import React from 'react'
 import { DarkModeToggle } from '.'
 import useDarkMode from 'use-dark-mode'
+import { Typography } from 'components/typography'
 
 export default {
 	title: 'Dark Mode Toggle',
@@ -10,9 +11,10 @@ export const ToggleDesktop = () => {
 	const darkMode = useDarkMode(false)
 
 	return (
-		<div>
+		<div style={{ padding: 20 }}>
 			<DarkModeToggle />
-			<div>dark mode: {darkMode.value ? 'enabled' : 'disabled'}</div>
+			<br />
+			<Typography>dark mode: {darkMode.value ? 'enabled' : 'disabled'}</Typography>
 		</div>
 	)
 }

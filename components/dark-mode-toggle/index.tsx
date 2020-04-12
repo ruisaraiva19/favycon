@@ -10,9 +10,6 @@ const DarkModeToggle = () => {
 
 	return (
 		<div className={styles.root}>
-			<label htmlFor="darkMode" className={styles.label}>
-				{darkMode.value ? <SvgSun /> : <SvgMoon />}
-			</label>
 			<input
 				className={styles.checkbox}
 				type="checkbox"
@@ -20,6 +17,9 @@ const DarkModeToggle = () => {
 				checked={darkMode.value}
 				onChange={darkMode.toggle}
 			/>
+			<label htmlFor="darkMode" className={styles.label}>
+				{darkMode.value ? <SvgSun /> : <SvgMoon />}
+			</label>
 		</div>
 	)
 }

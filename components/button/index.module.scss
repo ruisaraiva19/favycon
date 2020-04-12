@@ -5,10 +5,20 @@
 	font-size: $font-size-medium-body;
 	line-height: $line-height-medium-body;
 	color: $black;
+	cursor: pointer;
 	background-color: $off-white;
 	border: 1px solid $light-gray-one;
 	border-radius: 4px;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+	transition: all 0.2s ease;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.noClick {
+	cursor: default;
 }
 
 .transparent {
@@ -23,6 +33,7 @@
 .dark {
 	color: $white;
 	background-color: $dark-purple;
+	border: 1px solid $dark-purple;
 }
 
 .regular {

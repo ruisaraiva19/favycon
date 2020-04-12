@@ -11,11 +11,23 @@ type ButtonProps = {
 	weight: 'regular' | 'medium' | 'semiBold' | 'bold'
 }
 
-const Button = ({ children, variant, weight }: ButtonProps) => {
-	const { value: isDark } = useDarkMode()
-	const className = classNames(styles[variant], { [styles.dark]: isDark }, styles[weight])
+const Button = ({
+	children,
+	variant,
+	weight,
+	...props
+}: ButtonProps & React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>) => {
+	const { value: isDark } = useDarkMode(false)
+	const className = classNames(styles[variant], styles[weight], {
+		[styles.dark]: isDark,
+		[styles.noClick]: !props.onClick,
+	})
 
-	return <button className={className}>{children}</button>
+	return (
+		<button className={className} {...props}>
+			{children}
+		</button>
+	)
 }
 
 Button.defaultProps = {
