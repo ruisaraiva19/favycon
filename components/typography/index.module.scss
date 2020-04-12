@@ -28,6 +28,16 @@
 .footer {
 	font-size: $font-size-footer;
 	line-height: $line-height-footer;
+
+	a {
+		color: inherit;
+
+		&:focus,
+		&:active,
+		&:hover {
+			color: inherit;
+		}
+	}
 }
 
 .superscript {
