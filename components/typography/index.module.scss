@@ -66,4 +66,9 @@
 
 .white {
 	color: $white;
+	transition: color 0.2s ease;
+
+	&.dark {
+		color: $black;
+	}
 }

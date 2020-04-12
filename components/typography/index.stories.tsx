@@ -1,5 +1,7 @@
 import React from 'react'
 import { withKnobs, text, select } from '@storybook/addon-knobs'
+import useDarkMode from 'use-dark-mode'
+import { Button } from 'components/button'
 import { Typography } from '.'
 
 export default {
@@ -7,7 +9,8 @@ export default {
 	decorators: [withKnobs],
 }
 
-export const typographyDesktop = () => {
+export const TypographyDesktop = () => {
+	const { toggle } = useDarkMode(false)
 	const variant = select(
 		'variant',
 		['h1', 'smallBody', 'regularBody', 'mediumBody', 'largeBody', 'footer', 'superscript'],
@@ -17,12 +20,16 @@ export const typographyDesktop = () => {
 	const color = select('color', ['black', 'gray', 'white'], 'black')
 	const body = text('body', 'Some text')
 	return (
-		<Typography variant={variant} weight={weight} color={color}>
-			{body}
-		</Typography>
+		<div style={{ padding: 20 }}>
+			<Typography variant={variant} weight={weight} color={color}>
+				{body}
+			</Typography>
+			<br />
+			<Button onClick={toggle}>Toggle Dark Mode</Button>
+		</div>
 	)
 }
 
-typographyDesktop.story = {
+TypographyDesktop.story = {
 	name: 'Desktop',
 }
