@@ -1,8 +1,10 @@
 @import '../../styles/variables.scss';
 
 .root {
+	position: relative;
 	width: 100%;
 	max-width: 476px;
+	min-height: 360px;
 	padding: 24px 24px 20px;
 	background: $white;
 	border-radius: 8px;
@@ -11,6 +13,24 @@
 
 	&.dark {
 		background: $darker-grey;
+	}
+
+	&::before {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 3;
+		pointer-events: none;
+		content: '';
+		background: rgba($white, 0);
+		border-radius: 8px;
+	}
+
+	&.loading::before {
+		pointer-events: all;
+		background: rgba($white, 0.8);
 	}
 }
 
@@ -38,13 +58,19 @@
 	border-radius: 6px;
 
 	rect {
-		transition: stroke 0.2s ease;
+		transition: all 0.2s ease;
 		animation: dash 0.75s linear infinite forwards;
 		animation-play-state: paused;
 	}
 
 	&.dragActive rect {
+		stroke: $link;
+		stroke-width: 4px;
 		animation-play-state: running;
+	}
+
+	&.dragActive.dark rect {
+		stroke: $link-dark;
 	}
 }
 
@@ -98,4 +124,113 @@
 		flex: 0 0 20px;
 		margin-right: 8px;
 	}
+
+	strong {
+		padding: 0 4px;
+		font-weight: 700;
+	}
+}
+
+.imagePreviewWrapper {
+	display: flex;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.imagePreview {
+	position: relative;
+	display: flex;
+	flex: 0 0 48px;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	margin-right: 16px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba($black, 0.12);
+
+	&.notSquare {
+		background: rgba($red, 0.2);
+		border: 1px solid rgba($black, 0.08);
+	}
+
+	img {
+		width: 48px;
+		height: 48px;
+		border-radius: 4px;
+		object-fit: contain;
+	}
+}
+
+.imagePreviewInfo {
+	width: calc(100% - 64px);
+}
+
+.filenameWrapper {
+	display: flex;
+}
+
+.filename {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.fileSize {
+	flex-shrink: 0;
+	margin-left: 2px;
+}
+
+.imageInfo {
+	display: flex;
+	padding: 16px 0;
+	border-top: 1px solid $light-grey;
+}
+
+.imageOptionsWrapper {
+	padding: 8px 0 16px;
+	border-top: 1px solid $light-grey;
+}
+
+.imageOptions {
+	display: flex;
+	padding: 8px 0 16px;
+}
+
+.imageInfoItem {
+	display: flex;
+	align-items: center;
+	margin-right: 24px;
+
+	span {
+		margin-right: 8px;
+	}
+}
+
+.pwaCheck {
+	width: 12px;
+	height: 12px;
+	margin-right: 8px;
+	transition: opacity 0.2s ease-in-out;
+
+	&.hide {
+		opacity: 0;
+	}
+}
+
+.imageFooter {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	width: 100%;
+	padding: 24px;
+	border-top: 1px solid $light-grey;
+}
+
+.imageGenerate {
+	margin-left: 24px;
 }

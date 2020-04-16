@@ -7,36 +7,99 @@ const SvgFavycon: React.FC<JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElemen
 		<svg width={64} height={64} aria-labelledby={`${idPrefix}-title`} {...props}>
 			<title id={`${idPrefix}-title`}>Favycon logo</title>
 			<defs>
-				<linearGradient x1="50%" y1="0%" x2="50%" y2="99.731%" id={`${idPrefix}-c`}>
-					<stop stopColor="#432EF5" offset="0%" />
-					<stop stopColor="#14BE8D" offset="100%" />
-				</linearGradient>
-				<filter x="-6.3%" y="-4.5%" width="112.5%" height="112.5%" filterUnits="objectBoundingBox" id={`${idPrefix}-a`}>
-					<feOffset dy={1} in="SourceAlpha" result="shadowOffsetOuter1" />
-					<feGaussianBlur stdDeviation={1} in="shadowOffsetOuter1" result="shadowBlurOuter1" />
-					<feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0" in="shadowBlurOuter1" />
+				<filter
+					id={`${idPrefix}-filter0_d`}
+					x={1}
+					y={35}
+					width={30}
+					height={30}
+					filterUnits="userSpaceOnUse"
+					colorInterpolationFilters="sRGB">
+					<feFlood floodOpacity={0} result="BackgroundImageFix" />
+					<feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+					<feOffset dy={1} />
+					<feGaussianBlur stdDeviation={1} />
+					<feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0" />
+					<feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+					<feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
 				</filter>
-				<path
-					d="M29.669 4h4.662c6.766 0 10.83 1.021 14.414 2.938a19.99 19.99 0 018.317 8.317C58.979 18.84 60 22.903 60 29.669v4.662c0 6.766-1.021 10.83-2.938 14.414a19.99 19.99 0 01-8.317 8.317C45.16 58.979 41.097 60 34.331 60H29.67c-6.766 0-10.83-1.021-14.414-2.938a19.99 19.99 0 01-8.317-8.317C5.021 45.16 4 41.097 4 34.331V29.67c0-6.766 1.021-10.83 2.938-14.414a19.99 19.99 0 018.317-8.317C18.84 5.021 22.903 4 29.669 4z"
-					id={`${idPrefix}-b`}
-				/>
+				<linearGradient
+					id={`${idPrefix}-paint0_linear`}
+					x1={58.1669}
+					y1={12.0354}
+					x2={7.83311}
+					y2={49.9646}
+					gradientUnits="userSpaceOnUse">
+					<stop stopColor="#4B4D5A" />
+					<stop offset={1} stopColor="#191A1F" />
+				</linearGradient>
+				<linearGradient
+					id={`${idPrefix}-paint1_linear`}
+					x1={29.0465}
+					y1={16.1751}
+					x2={27.08}
+					y2={30.168}
+					gradientUnits="userSpaceOnUse">
+					<stop stopColor="#74EFB7" />
+					<stop offset={1} stopColor="#40DB81" />
+				</linearGradient>
+				<linearGradient
+					id={`${idPrefix}-paint2_linear`}
+					x1={39.2227}
+					y1={29.6793}
+					x2={37.2561}
+					y2={43.6722}
+					gradientUnits="userSpaceOnUse">
+					<stop stopColor="#88DDE4" />
+					<stop offset={1} stopColor="#50B8C5" />
+				</linearGradient>
+				<linearGradient id={`${idPrefix}-paint3_linear`} x1={16} y1={36} x2={16} y2={62} gradientUnits="userSpaceOnUse">
+					<stop stopColor="#9C93F1" />
+					<stop offset={1} stopColor="#1A20FF" />
+				</linearGradient>
+				<clipPath id={`${idPrefix}-clip0`}>
+					<path fill="#fff" d="M0 0H64V64H0z" />
+				</clipPath>
 			</defs>
-			<g fill="none" fillRule="evenodd">
-				<g transform="rotate(-8 32 32)">
-					<use fill="#000" filter={`url(${idPrefix}-a)`} xlinkHref={`${idPrefix}-b`} />
-					<use fill={`url(${idPrefix}-b)`} xlinkHref={`${idPrefix}-b`} />
+			<g clipPath={`url(#${idPrefix}-clip0)`}>
+				<path d="M11.815 2.764l49.421 6.87-7.051 49.602-49.421-6.87 7.051-49.602z" fill="#EEE" />
+				<path
+					d="M58.167 12.035L14.035 5.833 7.833 49.965l44.132 6.202 6.202-44.132z"
+					fill={`url(#${idPrefix}-paint0_linear)`}
+					stroke="#000"
+					strokeWidth={1.08696}
+				/>
+				<g opacity={0.24} fill="#fff">
+					<path
+						opacity={0.24}
+						d="M24.185 7.806l-1.062-.149-6.065 43.057 1.063.15 6.064-43.058zM36.564 9.546l-1.063-.15-6.065 43.058 1.063.15 6.065-43.058zM48.942 11.286l-1.063-.15-6.064 43.058 1.063.149 6.064-43.058z"
+					/>
+					<path
+						opacity={0.24}
+						d="M56.494 20.019l-43.053-6.037-.153 1.09 43.053 6.037.153-1.09zM54.755 32.397L11.702 26.36l-.154 1.09 43.053 6.037.154-1.09zM53.015 44.776L9.962 38.738l-.154 1.09 43.053 6.038.154-1.09z"
+					/>
 				</g>
 				<path
-					d="M25.795 4.597l4.617-.649c6.7-.942 10.865-.496 14.682.904a19.99 19.99 0 019.393 7.078c2.398 3.283 3.974 7.165 4.916 13.865l.649 4.617c.942 6.7.496 10.865-.904 14.682a19.99 19.99 0 01-7.078 9.393c-3.283 2.398-7.165 3.974-13.865 4.916l-4.617.649c-6.7.942-10.865.496-14.682-.904a19.99 19.99 0 01-9.393-7.078c-2.398-3.283-3.974-7.165-4.916-13.865l-.649-4.617c-.942-6.7-.496-10.865.904-14.682a19.99 19.99 0 017.078-9.393c3.283-2.398 7.165-3.974 13.865-4.916zm5.313 4.302l-4.618.65c-5.587.785-8.831 1.972-11.612 4.002a14.992 14.992 0 00-5.332 7.076C8.398 23.758 8.13 27.09 8.83 32.375l.07.517.65 4.618c.785 5.587 1.972 8.831 4.002 11.612a14.992 14.992 0 007.076 5.332c3.131 1.148 6.463 1.416 11.748.717l.517-.07 4.618-.65c5.587-.785 8.831-1.972 11.612-4.002a14.992 14.992 0 005.332-7.076c1.148-3.131 1.416-6.463.717-11.748l-.07-.517-.65-4.618c-.785-5.587-1.972-8.831-4.002-11.612a14.992 14.992 0 00-7.076-5.332C40.242 8.398 36.91 8.13 31.625 8.83l-.517.07z"
-					fillOpacity={0.48}
-					fill="#FFF"
-					fillRule="nonzero"
+					d="M26.19 15.774l5.713.803c1.44.202 1.94.425 2.427.78.487.356.842.827 1.05 1.393.207.566.283 1.108.081 2.548l-.803 5.714c-.202 1.44-.425 1.94-.78 2.427a2.963 2.963 0 01-1.393 1.049c-.566.207-1.109.284-2.548.082l-5.714-.803c-1.44-.203-1.94-.426-2.427-.781a2.962 2.962 0 01-1.049-1.393c-.207-.565-.284-1.108-.082-2.548l.803-5.714c.203-1.44.426-1.94.781-2.427a2.962 2.962 0 011.392-1.049c.566-.207 1.11-.284 2.549-.081z"
+					fill={`url(#${idPrefix}-paint1_linear)`}
 				/>
 				<path
-					d="M24.396 41.02l-1.058-7.53 6.099-.857-.493-3.507-6.1.857-.565-4.023 7.6-1.068-.493-3.507-11 1.546 2.61 18.567 3.4-.477zm15.593 4.12l4.797-21.186-3.4.478-2.194 9.96-4.88-8.966-3.524.496 7.392 13.056-1.34 6.605 3.149-.442z"
-					fill="#FFF"
-					fillRule="nonzero"
+					d="M39.223 29.68a7.065 7.065 0 11-1.967 13.992 7.065 7.065 0 011.967-13.993z"
+					fill={`url(#${idPrefix}-paint2_linear)`}
 				/>
+				<g filter={`url(#${idPrefix}-filter0_d)`}>
+					<path d="M29 49c0-7.18-5.82-13-13-13S3 41.82 3 49s5.82 13 13 13 13-5.82 13-13z" fill="#000" />
+				</g>
+				<path
+					d="M29 49c0-7.18-5.82-13-13-13S3 41.82 3 49s5.82 13 13 13 13-5.82 13-13z"
+					fill={`url(#${idPrefix}-paint3_linear)`}
+				/>
+				<path
+					d="M16 36c7.18 0 13 5.82 13 13s-5.82 13-13 13S3 56.18 3 49s5.82-13 13-13zm0 2C9.925 38 5 42.925 5 49s4.925 11 11 11 11-4.925 11-11-4.925-11-11-11z"
+					fill="#fff"
+					fillOpacity={0.32}
+				/>
+				<path fillRule="evenodd" clipRule="evenodd" d="M20 44v2h-5v2h4v2h-4v4h-2V44h7z" fill="#fff" />
 			</g>
 		</svg>
 	)

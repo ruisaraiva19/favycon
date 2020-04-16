@@ -45,6 +45,11 @@
 	line-height: $line-height-superscript;
 }
 
+.title {
+	font-size: $font-size-title;
+	line-height: $line-height-title;
+}
+
 .regular {
 	font-weight: 400;
 }
@@ -80,5 +85,15 @@
 
 	&.dark {
 		color: $black;
+	}
+}
+
+// TODO: check this disabled state
+.muted {
+	color: $grey;
+	transition: color 0.2s ease;
+
+	&.dark {
+		color: $grey;
 	}
 }

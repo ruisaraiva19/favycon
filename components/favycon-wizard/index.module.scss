@@ -1,0 +1,77 @@
+@import '../../styles/variables.scss';
+
+.root {
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	width: 100%;
+	max-width: 540px;
+	padding: 41px 0 0;
+}
+
+.error {
+	position: absolute;
+	top: -5px;
+	left: 6px;
+	display: flex;
+	align-items: center;
+	padding: 6px 8px 6px 16px;
+	background: $red;
+	border-radius: 18px;
+	box-shadow: 0 2px 4px rgba($black, 0.12);
+	opacity: 1;
+	transition: opacity 0.2s ease-in-out;
+	transform: translateY(-100%) rotate(2deg);
+
+	&.hide {
+		pointer-events: none;
+		opacity: 0;
+	}
+}
+
+.errorIcon {
+	margin-left: 24px;
+	cursor: pointer;
+}
+
+.background {
+	position: absolute;
+	top: 10px;
+	right: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	overflow: hidden;
+	border-radius: 8px;
+	transform: rotate(2deg);
+
+	&::after {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 0;
+		content: '';
+		background: rgba($black, 0.16);
+		border-radius: 8px;
+	}
+}
+
+.image {
+	position: absolute;
+	top: 57px;
+	right: 15px;
+	z-index: -1;
+	width: 184px;
+	height: 108px;
+	opacity: 1;
+	transition: opacity 0.2s ease-in-out;
+	transform: translate(100%, -100%);
+
+	&.hide {
+		pointer-events: none;
+		opacity: 0;
+	}
+}
