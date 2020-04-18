@@ -7,6 +7,7 @@
 	color: $black;
 	cursor: pointer;
 	border-radius: 4px;
+	transition: all 0.2s ease;
 
 	&:hover,
 	&:focus,
@@ -25,6 +26,16 @@
 	&:disabled {
 		color: $grey;
 	}
+
+	&.dark {
+		color: $white;
+		background-color: $dark-black;
+		border: 1px solid $dark-black;
+
+		&:disabled {
+			color: $grey;
+		}
+	}
 }
 
 .noClick {
@@ -34,6 +45,7 @@
 .transparent {
 	composes: base;
 	padding: 5px 0;
+	background: transparent;
 	border: 1px solid transparent;
 
 	&:hover,
@@ -50,16 +62,6 @@
 	line-height: $line-height-regular-body;
 	text-decoration: underline;
 	border: 0;
-}
-
-.dark {
-	color: $white;
-	background-color: $dark-black;
-	border: 1px solid $dark-black;
-
-	&:disabled {
-		color: $grey;
-	}
 }
 
 .regular {
@@ -97,9 +99,19 @@
 .bgLink {
 	background: $link;
 	border-color: $link;
+
+	&.dark {
+		background: $link;
+		border-color: $link;
+	}
 }
 
 .bgGreen {
 	background: $green;
 	border-color: $green;
+
+	&.dark {
+		background: $green;
+		border-color: $green;
+	}
 }

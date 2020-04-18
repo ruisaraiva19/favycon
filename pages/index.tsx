@@ -9,6 +9,8 @@ import { SEO } from 'components/seo'
 
 import styles from './index.module.scss'
 
+NProgress.configure({ minimum: 0.15, speed: 300, trickleSpeed: 150, showSpinner: false })
+
 const getRandomNumber = (min = 1, max = 3) => Math.floor(Math.random() * max) + min
 
 const Home: NextPage = () => {

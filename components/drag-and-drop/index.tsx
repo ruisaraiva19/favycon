@@ -190,191 +190,198 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	}
 
 	return (
-		<div className={classnames(styles.root, { [styles.dark]: isDark, [styles.loading]: isLoading })}>
-			{!image && !zipData && (
-				<>
-					<div className={classnames(styles.dropZoneWrapper, { [styles.dark]: isDark })}>
-						<SvgDropZone
-							className={classnames(styles.dashed, { [styles.dragActive]: isDragActive, [styles.dark]: isDark })}
-						/>
-						<div {...getRootProps()} className={styles.dropZone}>
-							<input {...getInputProps()} />
-							<div className={styles.imageUpload}>
-								<SvgImageUpload />
+		<div className={classnames(styles.root, { [styles.dark]: isDark })}>
+			<div className={classnames(styles.container, { [styles.loading]: isLoading })}>
+				{!image && !zipData && (
+					<>
+						<div className={classnames(styles.dropZoneWrapper, { [styles.dark]: isDark })}>
+							<SvgDropZone
+								className={classnames(styles.dashed, { [styles.dragActive]: isDragActive, [styles.dark]: isDark })}
+							/>
+							<div {...getRootProps()} className={styles.dropZone}>
+								<input {...getInputProps()} />
+								<div className={styles.imageUpload}>
+									<SvgImageUpload />
+								</div>
+								<Typography
+									variant="regularBody"
+									weight="medium"
+									className={classnames(styles.imageUploadText, { [styles.dark]: isDark })}>
+									Drag &amp; drop a .png file or
+									<br />
+									<u>click here to upload it</u>.
+								</Typography>
 							</div>
-							<Typography
-								variant="regularBody"
-								weight="medium"
-								className={classnames(styles.imageUploadText, { [styles.dark]: isDark })}>
-								Drag &amp; drop a .png file or
-								<br />
-								<u>click here to upload it</u>.
-							</Typography>
 						</div>
-					</div>
-					<Typography variant="regularBody" weight="medium" className={styles.info}>
-						<SvgInfo /> We recommend a square <strong>PNG</strong> or <strong>SVG</strong> with at least 310px
-					</Typography>
-					<Typography variant="regularBody" weight="medium" className={styles.info}>
-						<SvgInfo /> No data or images are stored
-					</Typography>
-				</>
-			)}
-			{image && !zipData && (
-				<>
-					<div className={styles.imagePreviewWrapper}>
-						<div className={classnames(styles.imagePreview, { [styles.notSquare]: !isSquare })}>
-							<img src={imageBgBase64} alt="Favicon preview" />
-							<img src={imageBase64} alt="Favicon preview" />
-						</div>
-						<div className={styles.imagePreviewInfo}>
-							<Typography variant="title" weight="bold" className={styles.filename}>
-								{title}
-							</Typography>
-							<Typography variant="footer" weight="semiBold" color="gray" tag="div" className={styles.filenameWrapper}>
-								<span className={styles.filename}>{image.name}</span>
-								<span className={styles.fileSize}>
-									({imageSizes.width}x{imageSizes.height})
-								</span>
-							</Typography>
-						</div>
-					</div>
-					<div className={classnames(styles.imageInfo, { [styles.dark]: isDark })}>
-						<div className={styles.imageInfoItem}>
-							<span>{isSquare ? <SvgCheck /> : <SvgError />}</span>
-							<Typography variant="regularBody" weight="medium">
-								Square image
-							</Typography>
-						</div>
-						<div className={styles.imageInfoItem}>
-							<span>{isPngOrSvg ? <SvgCheck /> : <SvgError />}</span>
-							<Typography variant="regularBody" weight="medium">
-								PNG or SVG
-							</Typography>
-						</div>
-						<div className={styles.imageInfoItem}>
-							<span>{is310px ? <SvgCheck disabled={isSvg} /> : <SvgError />}</span>
-							<Typography variant="regularBody" weight="medium">
-								310px or higher
-							</Typography>
-						</div>
-					</div>
-					<div className={classnames(styles.imageOptionsWrapper, { [styles.dark]: isDark })}>
-						<Typography variant="footer" weight="semiBold" color="gray">
-							Advanced
+						<Typography variant="regularBody" weight="medium" className={styles.info}>
+							<SvgInfo /> We recommend a square <strong>PNG</strong> or <strong>SVG</strong> with at least 310px
 						</Typography>
-						<div className={styles.imageOptions}>
+						<Typography variant="regularBody" weight="medium" className={styles.info}>
+							<SvgInfo /> No data or images are stored
+						</Typography>
+					</>
+				)}
+				{image && !zipData && (
+					<>
+						<div className={styles.imagePreviewWrapper}>
+							<div className={classnames(styles.imagePreview, { [styles.notSquare]: !isSquare })}>
+								<img src={imageBgBase64} alt="Favicon preview background" />
+								<img src={imageBase64} alt="Favicon preview" />
+							</div>
+							<div className={styles.imagePreviewInfo}>
+								<Typography variant="title" weight="bold" className={styles.filename}>
+									{title}
+								</Typography>
+								<Typography
+									variant="footer"
+									weight="semiBold"
+									color="gray"
+									tag="div"
+									className={styles.filenameWrapper}>
+									<span className={styles.filename}>{image.name}</span>
+									<span className={styles.fileSize}>
+										({imageSizes.width}x{imageSizes.height})
+									</span>
+								</Typography>
+							</div>
+						</div>
+						<div className={classnames(styles.imageInfo, { [styles.dark]: isDark })}>
 							<div className={styles.imageInfoItem}>
-								<Checkbox name="pwa" id="pwa" disabled={PWADisabled} onChange={() => setPwa(!pwa)}>
-									<Typography variant="regularBody" weight="medium" muted={PWADisabled}>
-										PWA compatible
-									</Typography>
-									<Typography variant="regularBody" weight="medium" muted={PWADisabled}>
-										1024px or higher{' '}
-										<SvgCheck className={classnames(styles.pwaCheck, { [styles.hide]: PWADisabled })} />
-									</Typography>
-								</Checkbox>
+								<span>{isSquare ? <SvgCheck /> : <SvgError />}</span>
+								<Typography variant="regularBody" weight="medium">
+									Square image
+								</Typography>
 							</div>
 							<div className={styles.imageInfoItem}>
-								<Checkbox name="pwa" id="pwa" disabled>
-									<Typography variant="regularBody" weight="medium" muted>
-										Dark Mode version
-									</Typography>
-									<Typography variant="regularBody" weight="medium" muted>
-										Available soon
-									</Typography>
-								</Checkbox>
+								<span>{isPngOrSvg ? <SvgCheck /> : <SvgError />}</span>
+								<Typography variant="regularBody" weight="medium">
+									PNG or SVG
+								</Typography>
+							</div>
+							<div className={styles.imageInfoItem}>
+								<span>{is310px ? <SvgCheck disabled={isSvg} /> : <SvgError />}</span>
+								<Typography variant="regularBody" weight="medium">
+									310px or higher
+								</Typography>
 							</div>
 						</div>
-					</div>
-					<div className={classnames(styles.imageFooter, { [styles.dark]: isDark })}>
-						<Button variant="transparent" color="gray" onClick={resetImage}>
-							Re-upload
-						</Button>
-						<Button
-							color="white"
-							background="bgLink"
-							className={styles.imageGenerate}
-							onClick={() => generateFavicon(image)}>
-							Generate Favicon
-						</Button>
-					</div>
-				</>
-			)}
-			{zipData && (
-				<>
-					<div>
-						<div className={styles.imagePreviewDownload}>
-							<div className={classnames(styles.preview, styles.circle)}>
-								<img src={imageBase64} alt="Favicon preview circle" />
-							</div>
-							<div className={classnames(styles.preview, styles.square)}>
-								<img src={imageBase64} alt="Favicon preview square" />
-							</div>
-							<div className={classnames(styles.preview, styles.rounded)}>
-								<img src={imageBase64} alt="Favicon preview rounded" />
-							</div>
-						</div>
-						<Typography variant="title" weight="bold" className={styles.imagePreviewTitle}>
-							Your new favicon is ready!
-						</Typography>
-						<Typography variant="footer" weight="semiBold" color="gray" className={styles.imagePreviewSubtitle}>
-							We’ve prepared a zip file with all the sizes and a README with the code plus other resources.
-						</Typography>
-					</div>
-					<div className={classnames(styles.imageInfo, { [styles.dark]: isDark })}>
-						<div className={styles.imageInfoItem}>
-							<SvgInfo className={styles.imageInfoItemSvg} />
-							<Typography variant="regularBody" weight="medium">
-								7 different sizes
+						<div className={classnames(styles.imageOptionsWrapper, { [styles.dark]: isDark })}>
+							<Typography variant="footer" weight="semiBold" color="gray">
+								Advanced
 							</Typography>
+							<div className={styles.imageOptions}>
+								<div className={styles.imageInfoItem}>
+									<Checkbox name="pwa" id="pwa" disabled={PWADisabled} onChange={() => setPwa(!pwa)}>
+										<Typography variant="regularBody" weight="medium" muted={PWADisabled}>
+											PWA compatible
+										</Typography>
+										<Typography variant="regularBody" weight="medium" muted={PWADisabled}>
+											1024px or higher{' '}
+											<SvgCheck className={classnames(styles.pwaCheck, { [styles.hide]: PWADisabled })} />
+										</Typography>
+									</Checkbox>
+								</div>
+								<div className={styles.imageInfoItem}>
+									<Checkbox name="pwa" id="pwa" disabled>
+										<Typography variant="regularBody" weight="medium" muted>
+											Dark Mode version
+										</Typography>
+										<Typography variant="regularBody" weight="medium" muted>
+											Available soon
+										</Typography>
+									</Checkbox>
+								</div>
+							</div>
 						</div>
-						<div className={styles.imageInfoItem}>
-							<SvgInfo className={styles.imageInfoItemSvg} />
-							<Typography variant="regularBody" weight="medium">
-								Code generated
-							</Typography>
+						<div className={classnames(styles.imageFooter, { [styles.dark]: isDark })}>
+							<Button variant="transparent" color="gray" onClick={resetImage}>
+								Re-upload
+							</Button>
 							<Button
-								className={styles.showCode}
-								variant="regularTransparent"
-								weight="bold"
-								color="link"
-								onClick={() => setIsModalOpen(true)}>
-								Show
+								color="white"
+								background="bgLink"
+								className={styles.imageGenerate}
+								onClick={() => generateFavicon(image)}>
+								Generate Favicon
 							</Button>
 						</div>
-					</div>
-					<div className={classnames(styles.imageFooter, styles.spaceBetween, { [styles.dark]: isDark })}>
-						<Button variant="transparent" color="link" onClick={resetImage}>
-							← Make a new one
-						</Button>
-						<Button
-							color="white"
-							background="bgGreen"
-							className={styles.imageGenerate}
-							onClick={() => onDownload(zipData)}>
-							Download Favicon ↓
-						</Button>
-					</div>
-					<Modal style={customStyles} isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Code generated">
-						<div className={styles.modalContainer}>
-							<div className={styles.modalHeader}>
-								<Typography variant="title" weight="bold">
-									Insert the following code in the &lt;head&gt; section of your pages:
+					</>
+				)}
+				{zipData && (
+					<>
+						<div>
+							<div className={styles.imagePreviewDownload}>
+								<div className={classnames(styles.preview, styles.circle)}>
+									<img src={imageBase64} alt="Favicon preview circle" />
+								</div>
+								<div className={classnames(styles.preview, styles.square)}>
+									<img src={imageBase64} alt="Favicon preview square" />
+								</div>
+								<div className={classnames(styles.preview, styles.rounded)}>
+									<img src={imageBase64} alt="Favicon preview rounded" />
+								</div>
+							</div>
+							<Typography variant="title" weight="bold" className={styles.imagePreviewTitle}>
+								Your new favicon is ready!
+							</Typography>
+							<Typography variant="footer" weight="semiBold" color="gray" className={styles.imagePreviewSubtitle}>
+								We’ve prepared a zip file with all the sizes and a README with the code plus other resources.
+							</Typography>
+						</div>
+						<div className={classnames(styles.imageInfo, { [styles.dark]: isDark })}>
+							<div className={styles.imageInfoItem}>
+								<SvgInfo className={styles.imageInfoItemSvg} />
+								<Typography variant="regularBody" weight="medium">
+									7 different sizes
 								</Typography>
-								<Button color="white" background="bgLink" onClick={() => copyCode()}>
-									Copy code
+							</div>
+							<div className={styles.imageInfoItem}>
+								<SvgInfo className={styles.imageInfoItemSvg} />
+								<Typography variant="regularBody" weight="medium">
+									Code generated
+								</Typography>
+								<Button
+									className={styles.showCode}
+									variant="regularTransparent"
+									weight="bold"
+									color="link"
+									onClick={() => setIsModalOpen(true)}>
+									Show
 								</Button>
 							</div>
-							<div className={styles.modalCode}>
-								<pre>
-									<code className="language-markup" dangerouslySetInnerHTML={{ __html: htmlCode }}></code>
-								</pre>
-							</div>
 						</div>
-					</Modal>
-				</>
-			)}
+						<div className={classnames(styles.imageFooter, styles.spaceBetween, { [styles.dark]: isDark })}>
+							<Button variant="transparent" color="link" onClick={resetImage}>
+								← Make a new one
+							</Button>
+							<Button
+								color="white"
+								background="bgGreen"
+								className={styles.imageGenerate}
+								onClick={() => onDownload(zipData)}>
+								Download Favicon ↓
+							</Button>
+						</div>
+						<Modal style={customStyles} isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Code generated">
+							<div className={styles.modalContainer}>
+								<div className={styles.modalHeader}>
+									<Typography variant="title" weight="bold">
+										Insert the following code in the &lt;head&gt; section of your pages:
+									</Typography>
+									<Button color="white" background="bgLink" onClick={() => copyCode()}>
+										Copy code
+									</Button>
+								</div>
+								<div className={styles.modalCode}>
+									<pre>
+										<code className="language-markup" dangerouslySetInnerHTML={{ __html: htmlCode }}></code>
+									</pre>
+								</div>
+							</div>
+						</Modal>
+					</>
+				)}
+			</div>
 		</div>
 	)
 }
