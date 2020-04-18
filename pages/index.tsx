@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import { NextPage } from 'next'
 import NProgress from 'nprogress'
 import { BaseLayout } from 'components/base-layout'
@@ -18,12 +18,20 @@ const Home: NextPage = () => {
 
 	const [error, setError] = useState('')
 	const [file, setFile] = useState(false)
+	const [counter, setCounter] = useState(0)
 
-	const onGenerate = async (file: File) => {
+	useEffect(() => {
+		if (!file) {
+			setCounter((c) => c + 1)
+		}
+	}, [file])
+
+	const onGenerate = async (file: File, pwa: boolean) => {
 		try {
 			NProgress.start()
 			const formData = new FormData()
 			formData.append('icon', file)
+			formData.append('pwa', pwa ? '1' : '0')
 			const response = await fetch('/api/favycon', {
 				method: 'POST',
 				body: formData,
@@ -45,7 +53,7 @@ const Home: NextPage = () => {
 			<main className={styles.container}>
 				<FavyconInfo imageIndex={backgroundId - 1} />
 				<FavyconWizard backgroundId={backgroundId} error={error} clearError={() => setError('')} showDndImage={!file}>
-					<DragAndDrop onFile={setFile} onGenerate={onGenerate} onError={setError} />
+					<DragAndDrop key={counter} onFile={setFile} onGenerate={onGenerate} onError={setError} />
 				</FavyconWizard>
 			</main>
 		</BaseLayout>

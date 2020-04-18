@@ -9,7 +9,7 @@ type TypographyProps = {
 	children: PropTypes.ReactNodeLike
 	variant: 'h1' | 'smallBody' | 'regularBody' | 'mediumBody' | 'largeBody' | 'footer' | 'superscript' | 'title'
 	weight: 'regular' | 'medium' | 'semiBold' | 'bold'
-	color: 'black' | 'gray' | 'white'
+	color: 'black' | 'gray' | 'white' | 'green'
 	tag?: string
 	muted?: boolean
 } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>

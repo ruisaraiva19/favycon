@@ -6,8 +6,8 @@
 
 .container {
 	max-width: 1440px;
-	height: 64px;
-	padding: 0 20px;
+	height: 68px;
+	padding: 20px 20px 0 20px;
 	margin: 0 auto;
 }
 
@@ -23,6 +23,12 @@
 	border-radius: 16px;
 	box-shadow: 0 0 10px rgba($off-white, 0.5);
 	transition: all 0.2s ease;
+
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 }
 
 .dark {

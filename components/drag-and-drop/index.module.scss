@@ -330,10 +330,36 @@
 	color: $white;
 	background: $darker-grey;
 	border-radius: 8px;
+}
 
-	code {
-		font-family: Monaco, monospace;
-		font-size: $font-size-small-body;
-		line-height: $line-height-small-body;
+.overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	background-color: rgba(255, 255, 255, 0.64);
+
+	&.dark {
+		background-color: rgba(0, 0, 0, 0.8);
 	}
+}
+
+.content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	max-width: 730px;
+	height: 100%;
+	max-height: 536px;
+	padding: 0;
+	overflow: auto;
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	transform: translate(-50%, -50%);
+	-webkit-overflow-scrolling: touch;
 }

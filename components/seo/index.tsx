@@ -10,9 +10,9 @@ const SEO = ({ title, description }: SEOProps) => (
 	<Head>
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
-		<link rel="icon" type="image/png" href="/favicon.png?v=2" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+		<link rel="icon" type="image/png" href="/favicon.png?v=3" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />

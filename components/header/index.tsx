@@ -1,9 +1,10 @@
 import React from 'react'
+import Link from 'next/link'
 import useDarkMode from 'use-dark-mode'
 import classnames from 'classnames'
 import { DarkModeToggle } from 'components/dark-mode-toggle'
-import { Typography } from 'components/typography'
 import { Sticky } from 'components/sticky'
+import { SvgFavycon } from 'components/svgs/svg-favycon'
 
 import styles from './index.module.scss'
 
@@ -16,7 +17,11 @@ const Header = () => {
 				<div className={styles.container}>
 					<header className={styles.header}>
 						<div className={itemClassName}>
-							<Typography weight="bold">Menu</Typography>
+							<Link href="/">
+								<a href="/">
+									<SvgFavycon />
+								</a>
+							</Link>
 						</div>
 						<div className={itemClassName}>
 							<DarkModeToggle />

@@ -29,7 +29,6 @@ const Button = ({
 		styles[background],
 		{
 			[styles.dark]: isDark,
-			[styles.noClick]: !props.onClick,
 		},
 		props.className
 	)

@@ -1,6 +1,8 @@
+import { NextApiRequest } from 'next'
+
 export const ONE_MB = 1048576 // 1MB
 export const MIN_SIZE = 310
-export const MIN_PWA_SIZE = 1024
+export const MIN_PWA_SIZE = 512
 export const SVG_MIME_TYPE = 'image/svg+xml'
 export const RECOMMENDED_MIME_TYPES = ['image/png', SVG_MIME_TYPE]
 export const ACCEPT_MIME_TYPES = {
@@ -35,5 +37,19 @@ export const downloadFile = (data: ArrayBuffer, filename: string) => {
 		document.body.appendChild(link)
 		link.click()
 		link.remove()
+	}
+}
+
+export type MulterApiRequest = NextApiRequest & {
+	file: {
+		fieldname: string
+		originalname: string
+		encoding: string
+		mimetype: string
+		size: number
+		destination: string
+		filename: string
+		path: string
+		buffer: Buffer
 	}
 }
