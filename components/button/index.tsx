@@ -7,7 +7,7 @@ import styles from './index.module.scss'
 
 type ButtonProps = {
 	children: PropTypes.ReactNodeLike
-	variant: 'primary' | 'transparent'
+	variant: 'primary' | 'transparent' | 'regularTransparent'
 	weight: 'regular' | 'medium' | 'semiBold' | 'bold'
 	color: 'black' | 'gray' | 'white' | 'link'
 	background: 'bgLink' | 'bgGreen'

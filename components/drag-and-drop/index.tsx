@@ -1,7 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react'
+import dynamic from 'next/dynamic'
+import React, { useState, useEffect, useCallback } from 'react'
 import classnames from 'classnames'
 import useDarkMode from 'use-dark-mode'
-import { useDropzone, DropEvent } from 'react-dropzone'
+import { useDropzone } from 'react-dropzone'
+import Prism from 'prismjs'
 import { Typography } from 'components/typography'
 import { SvgDropZone } from 'components/svgs/svg-drop-zone'
 import { SvgImageUpload } from 'components/svgs/svg-image-upload'
@@ -17,12 +19,51 @@ import {
 	downloadFile,
 } from 'utils/files'
 import { Button } from 'components/button'
-
-import styles from './index.module.scss'
-import { SvgBackground } from 'components/svgs/svg-background'
 import { SvgCheck } from 'components/svgs/svg-check'
 import { SvgError } from 'components/svgs/svg-error'
 import { Checkbox } from 'components/checkbox'
+
+import styles from './index.module.scss'
+
+const Modal = dynamic(() => import('react-modal'))
+
+const customStyles: any = {
+	/* stylelint-disable */
+	overlay: {
+		position: 'fixed',
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
+		zIndex: 10,
+		backgroundColor: 'rgba(255, 255, 255, 0.64)',
+	},
+	content: {
+		position: 'absolute',
+		top: '50%',
+		left: '50%',
+		width: '100%',
+		maxWidth: '730px',
+		height: '100%',
+		maxHeight: '536px',
+		padding: '0',
+		overflow: 'auto',
+		background: 'transparent',
+		border: 'none',
+		borderRadius: '0',
+		outline: 'none',
+		transform: 'translate(-50%, -50%)',
+		WebkitOverflowScrolling: 'touch',
+	},
+}
+
+const code = `<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">`
 
 type DragAndDropProps = {
 	onFile: (hasFile: boolean) => void
@@ -32,9 +73,10 @@ type DragAndDropProps = {
 
 const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	const { value: isDark } = useDarkMode(false)
-	const imageRef = useRef<HTMLImageElement>(null)
 	const [imageSizes, setImageSizes] = useState({ width: 0, height: 0 })
 	const [image, setImage] = useState<File>()
+	const [imageBase64, setImageBase64] = useState('')
+	const [imageBgBase64, setImageBgBase64] = useState('')
 	const [title, setTitle] = useState('')
 	const [isSquare, setIsSquare] = useState(false)
 	const [isPngOrSvg, setIsPngOrSvg] = useState(false)
@@ -44,19 +86,33 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	const [isLoading, setIsLoading] = useState(false)
 	const [pwa, setPwa] = useState(false)
 	const [zipData, setZipData] = useState<ArrayBuffer>()
+	const [isModalOpen, setIsModalOpen] = useState(false)
+	const [htmlCode, setHtmlCode] = useState('')
 	const PWADisabled = !isSvg || !is1024px
+
+	const generateImgFromCanvas = useCallback(() => {
+		const canvas = document.createElement('canvas')
+		canvas.width = imageSizes.width
+		canvas.height = imageSizes.height
+		const ctx = canvas.getContext('2d')
+		if (ctx) {
+			ctx.fillStyle = 'white'
+			ctx.fillRect(0, 0, imageSizes.width, imageSizes.height)
+			return canvas.toDataURL()
+		}
+		return ''
+	}, [imageSizes])
 
 	useEffect(() => {
 		const reader = new FileReader()
 		reader.onloadend = () => {
-			if (imageRef.current) {
-				imageRef.current.src = reader.result as string
-			}
+			setImageBase64(reader.result as string)
+			setImageBgBase64(generateImgFromCanvas())
 		}
 		if (image) {
 			reader.readAsDataURL(image)
 		}
-	}, [image])
+	}, [image, zipData, generateImgFromCanvas])
 
 	useEffect(() => {
 		if (isPngOrSvg && isSquare) {
@@ -75,6 +131,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 			setIsLoading(true)
 			const zip = await onGenerate(file)
 			setZipData(zip)
+			setHtmlCode(Prism.highlight(code, Prism.languages.markup, 'markup'))
 		} catch (error) {
 			console.log(error)
 		} finally {
@@ -92,11 +149,11 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 		setZipData(undefined)
 	}
 
-	const onDrop = async (acceptedFiles: File[], rejectedFiles: File[], _: DropEvent) => {
+	const onDrop = async (acceptedFiles: File[], rejectedFiles: File[]) => {
 		if (acceptedFiles.length) {
 			const file = acceptedFiles[0]
 			const sizes = await getImageFileSizes(file)
-			setImageSizes(sizes)
+			setImageSizes({ width: 48, height: (48 * sizes.height) / sizes.width })
 			setIsSquare(sizes.width === sizes.height)
 			setIsPngOrSvg(RECOMMENDED_MIME_TYPES.includes(file.type))
 			setIsSvg(file.type === SVG_MIME_TYPE)
@@ -123,6 +180,14 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 		accept: Object.keys(ACCEPT_MIME_TYPES),
 		maxSize: ONE_MB,
 	})
+
+	const closeModal = () => {
+		setIsModalOpen(false)
+	}
+
+	const copyCode = () => {
+		console.log('copyCode')
+	}
 
 	return (
 		<div className={classnames(styles.root, { [styles.dark]: isDark, [styles.loading]: isLoading })}>
@@ -159,8 +224,8 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 				<>
 					<div className={styles.imagePreviewWrapper}>
 						<div className={classnames(styles.imagePreview, { [styles.notSquare]: !isSquare })}>
-							<SvgBackground {...imageSizes} />
-							<img ref={imageRef} alt="Favicon preview" />
+							<img src={imageBgBase64} alt="Favicon preview" />
+							<img src={imageBase64} alt="Favicon preview" />
 						</div>
 						<div className={styles.imagePreviewInfo}>
 							<Typography variant="title" weight="bold" className={styles.filename}>
@@ -174,7 +239,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							</Typography>
 						</div>
 					</div>
-					<div className={styles.imageInfo}>
+					<div className={classnames(styles.imageInfo, { [styles.dark]: isDark })}>
 						<div className={styles.imageInfoItem}>
 							<span>{isSquare ? <SvgCheck /> : <SvgError />}</span>
 							<Typography variant="regularBody" weight="medium">
@@ -194,7 +259,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							</Typography>
 						</div>
 					</div>
-					<div className={styles.imageOptionsWrapper}>
+					<div className={classnames(styles.imageOptionsWrapper, { [styles.dark]: isDark })}>
 						<Typography variant="footer" weight="semiBold" color="gray">
 							Advanced
 						</Typography>
@@ -222,7 +287,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							</div>
 						</div>
 					</div>
-					<div className={styles.imageFooter}>
+					<div className={classnames(styles.imageFooter, { [styles.dark]: isDark })}>
 						<Button variant="transparent" color="gray" onClick={resetImage}>
 							Re-upload
 						</Button>
@@ -239,25 +304,75 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 			{zipData && (
 				<>
 					<div>
-						<Typography variant="title" weight="bold">
+						<div className={styles.imagePreviewDownload}>
+							<div className={classnames(styles.preview, styles.circle)}>
+								<img src={imageBase64} alt="Favicon preview circle" />
+							</div>
+							<div className={classnames(styles.preview, styles.square)}>
+								<img src={imageBase64} alt="Favicon preview square" />
+							</div>
+							<div className={classnames(styles.preview, styles.rounded)}>
+								<img src={imageBase64} alt="Favicon preview rounded" />
+							</div>
+						</div>
+						<Typography variant="title" weight="bold" className={styles.imagePreviewTitle}>
 							Your new favicon is ready!
 						</Typography>
-						<Typography variant="footer" weight="semiBold" color="gray">
+						<Typography variant="footer" weight="semiBold" color="gray" className={styles.imagePreviewSubtitle}>
 							We’ve prepared a zip file with all the sizes and a README with the code plus other resources.
 						</Typography>
 					</div>
-					<div className={styles.imageFooter}>
+					<div className={classnames(styles.imageInfo, { [styles.dark]: isDark })}>
+						<div className={styles.imageInfoItem}>
+							<SvgInfo className={styles.imageInfoItemSvg} />
+							<Typography variant="regularBody" weight="medium">
+								7 different sizes
+							</Typography>
+						</div>
+						<div className={styles.imageInfoItem}>
+							<SvgInfo className={styles.imageInfoItemSvg} />
+							<Typography variant="regularBody" weight="medium">
+								Code generated
+							</Typography>
+							<Button
+								className={styles.showCode}
+								variant="regularTransparent"
+								weight="bold"
+								color="link"
+								onClick={() => setIsModalOpen(true)}>
+								Show
+							</Button>
+						</div>
+					</div>
+					<div className={classnames(styles.imageFooter, styles.spaceBetween, { [styles.dark]: isDark })}>
 						<Button variant="transparent" color="link" onClick={resetImage}>
-							Make a new one
+							← Make a new one
 						</Button>
 						<Button
 							color="white"
 							background="bgGreen"
 							className={styles.imageGenerate}
 							onClick={() => onDownload(zipData)}>
-							Download Favicon
+							Download Favicon ↓
 						</Button>
 					</div>
+					<Modal style={customStyles} isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Code generated">
+						<div className={styles.modalContainer}>
+							<div className={styles.modalHeader}>
+								<Typography variant="title" weight="bold">
+									Insert the following code in the &lt;head&gt; section of your pages:
+								</Typography>
+								<Button color="white" background="bgLink" onClick={() => copyCode()}>
+									Copy code
+								</Button>
+							</div>
+							<div className={styles.modalCode}>
+								<pre>
+									<code className="language-markup" dangerouslySetInnerHTML={{ __html: htmlCode }}></code>
+								</pre>
+							</div>
+						</div>
+					</Modal>
 				</>
 			)}
 		</div>

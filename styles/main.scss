@@ -2,6 +2,7 @@
 @import 'font';
 @import 'variables';
 @import 'nprogress';
+@import 'prism';
 
 html,
 body {
@@ -23,7 +24,7 @@ body {
 	}
 
 	&.dark-mode {
-		background: $dark-black;
+		background: $darker-black;
 	}
 }
 

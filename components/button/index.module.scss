@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 
 .base {
-	padding: 6px 12px;
+	padding: 5px 12px;
 	font-size: $font-size-title;
 	line-height: $line-height-title;
 	color: $black;
@@ -33,7 +33,7 @@
 
 .transparent {
 	composes: base;
-	padding: 6px 0;
+	padding: 5px 0;
 	border: 1px solid transparent;
 
 	&:hover,
@@ -43,10 +43,19 @@
 	}
 }
 
+.regularTransparent {
+	composes: transparent;
+	padding: 0;
+	font-size: $font-size-regular-body;
+	line-height: $line-height-regular-body;
+	text-decoration: underline;
+	border: 0;
+}
+
 .dark {
 	color: $white;
-	background-color: $darker-grey;
-	border: 1px solid $darker-grey;
+	background-color: $dark-black;
+	border: 1px solid $dark-black;
 
 	&:disabled {
 		color: $grey;
@@ -87,8 +96,10 @@
 
 .bgLink {
 	background: $link;
+	border-color: $link;
 }
 
 .bgGreen {
 	background: $green;
+	border-color: $green;
 }
