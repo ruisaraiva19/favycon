@@ -1,5 +1,9 @@
 @import '../../styles/variables.scss';
 
+.root {
+	font-family: Manrope, Arial, Helvetica Neue, Helvetica, sans-serif;
+}
+
 .h1 {
 	font-size: $font-size-h1;
 	line-height: $line-height-h1;
@@ -45,6 +49,11 @@
 	line-height: $line-height-superscript;
 }
 
+.title {
+	font-size: $font-size-title;
+	line-height: $line-height-title;
+}
+
 .regular {
 	font-weight: 400;
 }
@@ -80,5 +89,18 @@
 
 	&.dark {
 		color: $black;
+	}
+}
+
+.green {
+	color: $green;
+}
+
+.muted {
+	color: $grey;
+	transition: color 0.2s ease;
+
+	&.dark {
+		color: $grey;
 	}
 }

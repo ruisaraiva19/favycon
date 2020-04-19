@@ -1,16 +1,29 @@
 @import '../../styles/variables.scss';
 
 .root {
+	position: relative;
 	width: 100%;
 	max-width: 476px;
-	padding: 24px 24px 20px;
+	min-height: 360px;
 	background: $white;
 	border-radius: 8px;
 	box-shadow: 0 2px 4px rgba($black, 0.12);
 	transition: background 0.2s ease;
 
 	&.dark {
-		background: $darker-grey;
+		background: $dark-black;
+	}
+}
+
+.container {
+	padding: 24px 24px 20px;
+	pointer-events: all;
+	border-radius: 8px;
+	transition: opacity 0.2s ease;
+
+	&.loading {
+		pointer-events: none;
+		opacity: 0.32;
 	}
 }
 
@@ -38,13 +51,19 @@
 	border-radius: 6px;
 
 	rect {
-		transition: stroke 0.2s ease;
+		transition: all 0.2s ease;
 		animation: dash 0.75s linear infinite forwards;
 		animation-play-state: paused;
 	}
 
 	&.dragActive rect {
+		stroke: $link;
+		stroke-width: 4px;
 		animation-play-state: running;
+	}
+
+	&.dragActive.dark rect {
+		stroke: $link-dark;
 	}
 }
 
@@ -98,4 +117,249 @@
 		flex: 0 0 20px;
 		margin-right: 8px;
 	}
+
+	strong {
+		padding: 0 4px;
+		font-weight: 700;
+	}
+}
+
+.imagePreviewWrapper {
+	display: flex;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.imagePreview {
+	position: relative;
+	display: flex;
+	flex: 0 0 48px;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	margin-right: 16px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba($black, 0.12);
+
+	&.notSquare {
+		background: rgba($red, 0.2);
+		border: 1px solid rgba($black, 0.08);
+	}
+
+	img {
+		position: absolute;
+		top: -1px;
+		left: -1px;
+		width: 48px;
+		height: 48px;
+		border-radius: 4px;
+		object-fit: contain;
+	}
+}
+
+.imagePreviewInfo {
+	width: calc(100% - 64px);
+}
+
+.filenameWrapper {
+	display: flex;
+}
+
+.filename {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.fileSize {
+	flex-shrink: 0;
+	margin-left: 2px;
+}
+
+.imageInfo {
+	display: flex;
+	padding: 16px 0;
+	border-top: 1px solid $light-grey;
+	transition: all 0.2s ease;
+
+	&.dark {
+		border-top: 1px solid $darker-grey;
+	}
+}
+
+.imageOptionsWrapper {
+	padding: 8px 0 16px;
+	border-top: 1px solid $light-grey;
+	transition: all 0.2s ease;
+
+	&.dark {
+		border-top: 1px solid $darker-grey;
+	}
+}
+
+.imageOptions {
+	display: flex;
+	padding: 8px 0 16px;
+}
+
+.imageInfoItem {
+	display: flex;
+	align-items: center;
+	margin-right: 24px;
+
+	span {
+		margin-right: 8px;
+	}
+}
+
+.pwaCheck {
+	width: 12px;
+	height: 12px;
+	margin-right: 8px;
+	transition: opacity 0.2s ease-in-out;
+
+	&.hide {
+		opacity: 0;
+	}
+}
+
+.imagePreviewDownload {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 16px 0 12px;
+}
+
+.preview {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	margin-right: 12px;
+	background: $white;
+	box-shadow: 0 2px 4px rgba($black, 0.12);
+
+	img {
+		width: 40px;
+		height: 40px;
+		object-fit: contain;
+	}
+
+	&.circle,
+	&.circle img {
+		border-radius: 24px;
+	}
+
+	&.square,
+	&.square img {
+		width: 48px;
+		height: 48px;
+		border-radius: 4px;
+	}
+
+	&.rounded,
+	&.rounded img {
+		margin-right: 0;
+		border-radius: 14px;
+	}
+}
+
+.imagePreviewTitle {
+	margin-bottom: 4px;
+	text-align: center;
+}
+
+.imagePreviewSubtitle {
+	max-width: 348px;
+	margin: 0 auto;
+	margin-bottom: 42px;
+	text-align: center;
+}
+
+.imageInfoItemSvg {
+	margin-right: 8px;
+}
+
+.showCode {
+	margin-left: 12px;
+}
+
+.imageFooter {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	width: 100%;
+	padding: 23px 24px 24px 24px;
+	border-top: 1px solid $light-grey;
+	transition: all 0.2s ease;
+
+	&.dark {
+		border-top: 1px solid $darker-grey;
+	}
+}
+
+.spaceBetween {
+	justify-content: space-between;
+}
+
+.imageGenerate {
+	margin-left: 24px;
+}
+
+.modalContainer {
+	max-width: 730px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.modalHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.modalCode {
+	height: 100%;
+	max-height: 488px;
+	padding: 28px;
+	color: $white;
+	background: $darker-grey;
+	border-radius: 8px;
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	background-color: rgba(255, 255, 255, 0.64);
+
+	&.dark {
+		background-color: rgba(0, 0, 0, 0.8);
+	}
+}
+
+.content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	max-width: 730px;
+	height: 100%;
+	max-height: 536px;
+	padding: 0;
+	overflow: auto;
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	transform: translate(-50%, -50%);
+	-webkit-overflow-scrolling: touch;
 }

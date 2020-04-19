@@ -9,13 +9,20 @@ export default {
 
 export const DragAndDropDesktop = () => {
 	const { toggle } = useDarkMode(false)
-	const onDrop = (acceptedFiles: File[]) => {
-		console.log('acceptedFiles[0]', acceptedFiles[0])
+	const onGenerate = async (image: File) => {
+		console.log('onGenerate', image)
+		return Promise.resolve(new ArrayBuffer(8))
+	}
+	const onError = (message: string) => {
+		console.log(message)
+	}
+	const onFile = (hasFile: boolean) => {
+		console.log(hasFile)
 	}
 
 	return (
 		<div style={{ padding: 20 }}>
-			<DragAndDrop onDrop={onDrop} />
+			<DragAndDrop onGenerate={onGenerate} onError={onError} onFile={onFile} />
 			<br />
 			<Button onClick={toggle}>Toggle Dark Mode</Button>
 		</div>

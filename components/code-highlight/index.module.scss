@@ -1,0 +1,11 @@
+@import '../../styles/variables.scss';
+
+.root {
+	overflow: auto;
+
+	code {
+		font-family: Monaco, monospace;
+		font-size: $font-size-small-body;
+		line-height: $line-height-small-body;
+	}
+}
