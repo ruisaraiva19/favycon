@@ -17,6 +17,7 @@ type TypographyProps = {
 const Typography = ({ children, variant, weight, color, tag, muted, ...props }: TypographyProps) => {
 	const { value: isDark } = useDarkMode(false)
 	const className = classNames(
+		styles.root,
 		styles[variant],
 		styles[color],
 		styles[weight],

@@ -1,5 +1,9 @@
 @import '../../styles/variables.scss';
 
+.root {
+	font-family: Manrope, Arial, Helvetica Neue, Helvetica, sans-serif;
+}
+
 .h1 {
 	font-size: $font-size-h1;
 	line-height: $line-height-h1;

@@ -265,13 +265,12 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							</div>
 						</div>
 						<div className={classnames(styles.imageFooter, { [styles.dark]: isDark })}>
-							<Button variant="transparent" color="gray" weight="semiBold" onClick={resetImage}>
+							<Button variant="transparent" color="gray" onClick={resetImage}>
 								Re-upload
 							</Button>
 							<Button
 								color="white"
 								background="bgLink"
-								weight="semiBold"
 								className={styles.imageGenerate}
 								onClick={() => generateFavicon(image)}>
 								Generate Favicon
@@ -315,7 +314,6 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								<Button
 									className={styles.showCode}
 									variant="regularTransparent"
-									weight="bold"
 									color="link"
 									onClick={() => setIsModalOpen(true)}>
 									Show
@@ -323,13 +321,12 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							</div>
 						</div>
 						<div className={classnames(styles.imageFooter, styles.spaceBetween, { [styles.dark]: isDark })}>
-							<Button variant="transparent" color="link" weight="semiBold" onClick={resetImage}>
+							<Button variant="transparent" color="link" onClick={resetImage}>
 								← Make a new one
 							</Button>
 							<Button
 								color="white"
 								background="bgGreen"
-								weight="semiBold"
 								className={styles.imageGenerate}
 								onClick={() => onDownload(zipData)}>
 								Download Favicon ↓
