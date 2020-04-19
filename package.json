@@ -1,7 +1,7 @@
 {
 	"name": "favycon",
 	"version": "1.0.0",
-	"description": "Favicon generator tool",
+	"description": "A Favicon generator tool",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/ruisaraiva19/favycon.git"
@@ -9,7 +9,11 @@
 	"keywords": [
 		"favicon",
 		"generator",
-		"tool"
+		"tool",
+		"icon",
+		"svg",
+		"png",
+		"pwa"
 	],
 	"author": {
 		"name": "Rui Saraiva",
@@ -22,8 +26,7 @@
 	},
 	"homepage": "https://github.com/ruisaraiva19/favycon#readme",
 	"engines": {
-		"node": ">= 12.x",
-		"yarn": "^1.16.0"
+		"node": ">= 10.x"
 	},
 	"scripts": {
 		"dev": "next dev",

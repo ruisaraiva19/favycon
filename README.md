@@ -1,6 +1,10 @@
+![Favycon logo](./public/favicon.svg)
+
 # Favycon
 
-Favicon generator tool
+> A Favicon generator tool
+
+A small online tool to help you generate your favicon in all the sizes and formats you need.
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
@@ -65,7 +69,7 @@ Favicon generator tool
 <meta name="msapplication-TileImage" content="/favicon-144x144.png">
 <meta name="msapplication-config" content="/browserconfig.xml">
 <!-- SVG favicon -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <!-- PWA compatible -->
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#ffffff">
