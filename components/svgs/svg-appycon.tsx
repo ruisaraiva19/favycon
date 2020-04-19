@@ -4,7 +4,7 @@ import { uniqueId } from 'utils/ids'
 const SvgAppycon: React.FC<JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>> = (props) => {
 	const idPrefix = uniqueId('svg-')
 	return (
-		<svg width={64} height={64} aria-labelledby={`${idPrefix}-title`} {...props}>
+		<svg width={64} height={64} viewBox="0 0 64 64" aria-labelledby={`${idPrefix}-title`} {...props}>
 			<title id={`${idPrefix}-title`}>Appycon logo</title>
 			<defs>
 				<linearGradient x1="50%" y1="99.731%" x2="50%" y2=".44%" id={`${idPrefix}-c`}>

@@ -1,0 +1,30 @@
+@import '../../styles/variables.scss';
+
+.root {
+	position: relative;
+	display: flex;
+}
+
+.checkbox {
+	margin: 0;
+	overflow: hidden;
+	cursor: pointer;
+	visibility: hidden;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.label {
+	display: flex;
+	align-items: flex-start;
+}
+
+.checkboxSvg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2px;
+	margin: 2px 8px 2px 0;
+}

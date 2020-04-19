@@ -1,6 +1,8 @@
 @import 'reset';
 @import 'font';
 @import 'variables';
+@import 'nprogress';
+@import 'prism';
 
 html,
 body {
@@ -22,7 +24,7 @@ body {
 	}
 
 	&.dark-mode {
-		background: $dark-black;
+		background: $darker-black;
 	}
 }
 
@@ -42,4 +44,17 @@ hr {
 	hr {
 		background: $darker-grey;
 	}
+}
+
+.ReactModal__Overlay {
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+
+.ReactModal__Overlay--after-open {
+	opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+	opacity: 0;
 }

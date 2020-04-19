@@ -6,7 +6,7 @@ const SvgInfo: React.FC<JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>>
 	const { value: isDark } = useDarkMode(false)
 	const idPrefix = uniqueId('svg-')
 	return (
-		<svg width={20} height={20} aria-labelledby={`${idPrefix}-title`} {...props}>
+		<svg width={20} height={20} viewBox="0 0 20 20" aria-labelledby={`${idPrefix}-title`} {...props}>
 			<title id={`${idPrefix}-title`}>Info</title>
 			<path
 				d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10z"
