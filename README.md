@@ -2,7 +2,7 @@
 
 # Favycon
 
-> A Favicon generator tool
+> A favicon generator tool
 
 A small online tool to help you generate your favicon in all the sizes and formats you need.
 
