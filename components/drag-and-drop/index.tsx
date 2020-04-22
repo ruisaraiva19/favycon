@@ -51,6 +51,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	const [darkMode, setDarkMode] = useState(false)
 	const [zipData, setZipData] = useState<ArrayBuffer>()
 	const [isModalOpen, setIsModalOpen] = useState(false)
+	const [copied, setCopied] = useState(false)
 	const PWADisabled = !isPngOrSvg || (!isSvg && !is512px)
 	let sizesCount = 16
 	if (isSvg) {
@@ -154,6 +155,13 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 		accept: Object.keys(ACCEPT_MIME_TYPES),
 		maxSize: ONE_MB,
 	})
+
+	const onCopy = () => {
+		setCopied(true)
+		setTimeout(() => {
+			setCopied(false)
+		}, 3000)
+	}
 
 	return (
 		<div className={styles.root}>
@@ -338,10 +346,15 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 									<Typography variant="title" weight="bold">
 										Insert the following code in the &lt;head&gt; section of your pages:
 									</Typography>
-									<Clipboard component="div" data-clipboard-text={headTemplate(undefined, isSvg, pwa)}>
-										<Button color="white" background="bgLink">
-											Copy code
-										</Button>
+									<Clipboard
+										component="div"
+										data-clipboard-text={headTemplate(undefined, isSvg, pwa)}
+										onSuccess={onCopy}>
+										<div className={classnames(styles.copyWrapper, { [styles.copied]: copied })}>
+											<Button color="white" background="bgLink">
+												Copy code
+											</Button>
+										</div>
 									</Clipboard>
 								</div>
 								<div className={styles.modalCode}>

@@ -367,3 +367,30 @@
 	transform: translate(-50%, -50%);
 	-webkit-overflow-scrolling: touch;
 }
+
+.copyWrapper {
+	position: relative;
+
+	&::before {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		padding-right: 16px;
+		font-size: $font-size-title;
+		font-weight: 700;
+		line-height: $line-height-title;
+		color: $link;
+		content: 'Copied!';
+		opacity: 0;
+		transition: all 0.2s ease;
+		transform: translate(-100%, -50%);
+	}
+
+	&.copied::before {
+		opacity: 1;
+	}
+}
+
+:global(.dark-mode) .copyWrapper::before {
+	color: $link-dark;
+}
