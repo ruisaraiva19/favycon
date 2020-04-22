@@ -78,10 +78,10 @@
 .black {
 	color: $black;
 	transition: color 0.2s ease;
+}
 
-	&.dark {
-		color: $white;
-	}
+:global(.dark-mode) .black {
+	color: $white;
 }
 
 .gray {
@@ -91,10 +91,10 @@
 .white {
 	color: $white;
 	transition: color 0.2s ease;
+}
 
-	&.dark {
-		color: $black;
-	}
+:global(.dark-mode) .white {
+	color: $black;
 }
 
 .green {
@@ -104,8 +104,8 @@
 .muted {
 	color: $grey;
 	transition: color 0.2s ease;
+}
 
-	&.dark {
-		color: $grey;
-	}
+:global(.dark-mode) .muted {
+	color: $grey;
 }

@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic'
 import React, { useState, useEffect, useCallback } from 'react'
 import classnames from 'classnames'
-import useDarkMode from 'use-dark-mode'
 import { useDropzone } from 'react-dropzone'
 import { headTemplate } from 'utils/favicon'
 import { Typography } from 'components/typography'
@@ -36,7 +35,6 @@ type DragAndDropProps = {
 }
 
 const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
-	const { value: isDark } = useDarkMode(false)
 	const [imageSizes, setImageSizes] = useState({ width: 0, height: 0 })
 	const [image, setImage] = useState<File>()
 	const [imageBase64, setImageBase64] = useState('')
@@ -158,23 +156,18 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	})
 
 	return (
-		<div className={classnames(styles.root, { [styles.dark]: isDark })}>
+		<div className={styles.root}>
 			<div className={classnames(styles.container, { [styles.loading]: isLoading })}>
 				{!image && !zipData && (
 					<>
-						<div className={classnames(styles.dropZoneWrapper, { [styles.dark]: isDark })}>
-							<SvgDropZone
-								className={classnames(styles.dashed, { [styles.dragActive]: isDragActive, [styles.dark]: isDark })}
-							/>
+						<div className={styles.dropZoneWrapper}>
+							<SvgDropZone className={classnames(styles.dashed, { [styles.dragActive]: isDragActive })} />
 							<div {...getRootProps()} className={styles.dropZone}>
 								<input {...getInputProps()} />
 								<div className={styles.imageUpload}>
 									<SvgImageUpload active={isDragActive} />
 								</div>
-								<Typography
-									variant="regularBody"
-									weight="medium"
-									className={classnames(styles.imageUploadText, { [styles.dark]: isDark })}>
+								<Typography variant="regularBody" weight="medium" className={styles.imageUploadText}>
 									Drag &amp; drop an image file or
 									<br />
 									<u>click here to upload it</u>.
@@ -216,7 +209,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								</Typography>
 							</div>
 						</div>
-						<div className={classnames(styles.imageInfo, { [styles.dark]: isDark })}>
+						<div className={styles.imageInfo}>
 							<div className={styles.imageInfoItem}>
 								<span>{isSquare ? <SvgCheck /> : <SvgError />}</span>
 								<Typography variant="regularBody" weight="medium">
@@ -236,7 +229,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								</Typography>
 							</div>
 						</div>
-						<div className={classnames(styles.imageOptionsWrapper, { [styles.dark]: isDark })}>
+						<div className={styles.imageOptionsWrapper}>
 							<Typography variant="footer" weight="semiBold" color="gray">
 								Advanced
 							</Typography>
@@ -264,7 +257,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								</div>
 							</div>
 						</div>
-						<div className={classnames(styles.imageFooter, { [styles.dark]: isDark })}>
+						<div className={styles.imageFooter}>
 							<Button variant="transparent" color="gray" onClick={resetImage}>
 								Re-upload
 							</Button>
@@ -299,7 +292,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								We’ve prepared a zip file with all the sizes and a README with the code plus other resources.
 							</Typography>
 						</div>
-						<div className={classnames(styles.imageInfo, { [styles.dark]: isDark })}>
+						<div className={styles.imageInfo}>
 							<div className={styles.imageInfoItem}>
 								<SvgInfo className={styles.imageInfoItemSvg} />
 								<Typography variant="regularBody" weight="medium">
@@ -320,7 +313,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								</Button>
 							</div>
 						</div>
-						<div className={classnames(styles.imageFooter, styles.spaceBetween, { [styles.dark]: isDark })}>
+						<div className={classnames(styles.imageFooter, styles.spaceBetween)}>
 							<Button variant="transparent" color="link" onClick={resetImage}>
 								← Make a new one
 							</Button>
@@ -337,7 +330,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							isOpen={isModalOpen}
 							onRequestClose={() => setIsModalOpen(false)}
 							className={styles.content}
-							overlayClassName={classnames(styles.overlay, { [styles.dark]: isDark })}
+							overlayClassName={styles.overlay}
 							closeTimeoutMS={200}
 							contentLabel="Code generated">
 							<div className={styles.modalContainer}>

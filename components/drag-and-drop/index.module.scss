@@ -9,10 +9,10 @@
 	border-radius: 8px;
 	box-shadow: 0 2px 4px rgba($black, 0.12);
 	transition: background 0.2s ease;
+}
 
-	&.dark {
-		background: $dark-black;
-	}
+:global(.dark-mode) .root {
+	background: $dark-black;
 }
 
 .container {
@@ -35,10 +35,10 @@
 	background: $off-white;
 	border-radius: 6px;
 	transition: background 0.2s ease;
+}
 
-	&.dark {
-		background: $dark-grey;
-	}
+:global(.dark-mode) .dropZoneWrapper {
+	background: $dark-grey;
 }
 
 .dashed {
@@ -61,10 +61,10 @@
 		stroke-width: 4px;
 		animation-play-state: running;
 	}
+}
 
-	&.dragActive.dark rect {
-		stroke: $link-dark;
-	}
+:global(.dark-mode) .dashed.dragActive rect {
+	stroke: $link-dark;
 }
 
 @keyframes dash {
@@ -106,6 +106,10 @@
 	&.dark u {
 		color: $link-dark;
 	}
+}
+
+:global(.dark-mode) .imageUploadText u {
+	color: $link-dark;
 }
 
 .info {
@@ -183,20 +187,20 @@
 	padding: 16px 0;
 	border-top: 1px solid $light-grey;
 	transition: all 0.2s ease;
+}
 
-	&.dark {
-		border-top: 1px solid $darker-grey;
-	}
+:global(.dark-mode) .imageInfo {
+	border-top: 1px solid $darker-grey;
 }
 
 .imageOptionsWrapper {
 	padding: 8px 0 16px;
 	border-top: 1px solid $light-grey;
 	transition: all 0.2s ease;
+}
 
-	&.dark {
-		border-top: 1px solid $darker-grey;
-	}
+:global(.dark-mode) .imageOptionsWrapper {
+	border-top: 1px solid $darker-grey;
 }
 
 .imageOptions {
@@ -296,10 +300,10 @@
 	padding: 23px 24px 24px 24px;
 	border-top: 1px solid $light-grey;
 	transition: all 0.2s ease;
+}
 
-	&.dark {
-		border-top: 1px solid $darker-grey;
-	}
+:global(.dark-mode) .imageFooter {
+	border-top: 1px solid $darker-grey;
 }
 
 .spaceBetween {
@@ -340,10 +344,10 @@
 	left: 0;
 	z-index: 10;
 	background-color: rgba(255, 255, 255, 0.64);
+}
 
-	&.dark {
-		background-color: rgba(0, 0, 0, 0.8);
-	}
+:global(.dark-mode) .overlay {
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
 .content {

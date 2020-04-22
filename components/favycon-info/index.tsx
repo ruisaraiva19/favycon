@@ -1,13 +1,11 @@
 import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
-import classnames from 'classnames'
 import { Typography } from 'components/typography'
 import { ToolTitle } from 'components/tool-title'
-
-import styles from './index.module.scss'
-import useDarkMode from 'use-dark-mode'
 import { LazyImage } from 'components/lazy-image'
 import { SvgTwitter } from 'components/svgs/svg-twitter'
+
+import styles from './index.module.scss'
 
 const Modal = dynamic(() => import('react-modal'))
 
@@ -45,7 +43,6 @@ const people = [
 ]
 
 const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
-	const { value: isDark } = useDarkMode(false)
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	return (
 		<div className={styles.root}>
@@ -74,7 +71,7 @@ const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
 				isOpen={isModalOpen}
 				onRequestClose={() => setIsModalOpen(false)}
 				className={styles.content}
-				overlayClassName={classnames(styles.overlay, { [styles.dark]: isDark })}
+				overlayClassName={styles.overlay}
 				closeTimeoutMS={200}
 				contentLabel="About Us">
 				<div className={styles.modalContainer}>
