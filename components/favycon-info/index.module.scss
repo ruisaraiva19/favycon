@@ -13,3 +13,111 @@
 	margin-top: 16px;
 	margin-bottom: 60px;
 }
+
+.peopleButton {
+	padding: 0;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+	color: $grey;
+	text-decoration: underline;
+	cursor: pointer;
+	background: transparent;
+	outline: none;
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	background-color: rgba(255, 255, 255, 0.64);
+
+	&.dark {
+		background-color: rgba(0, 0, 0, 0.8);
+	}
+}
+
+.content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	max-width: 730px;
+	height: 100%;
+	max-height: 497px;
+	padding: 0;
+	overflow: auto;
+	background: $white;
+	border: none;
+	border-radius: 8px;
+	outline: none;
+	box-shadow: 0 2px 4px rgba($black, 0.12);
+	transform: translate(-50%, -50%);
+	-webkit-overflow-scrolling: touch;
+}
+
+:global(.dark-mode) .content {
+	background: $dark-black;
+}
+
+.modalHeader {
+	padding-top: 48px;
+	text-align: center;
+}
+
+.logo {
+	margin-bottom: 16px;
+}
+
+.title {
+	margin-bottom: 4px;
+}
+
+.subTitle {
+	margin-bottom: 24px;
+}
+
+.hr {
+	padding: 0;
+}
+
+.people {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 572px;
+	margin: 32px auto 0;
+}
+
+.person {
+	display: flex;
+	flex: 0 0 50%;
+	padding: 0 16px;
+	margin-bottom: 24px;
+}
+
+.personAvatar {
+	width: 56px;
+	margin-right: 16px;
+}
+
+.personTwitter {
+	color: #55acee;
+
+	p {
+		display: flex;
+		align-items: center;
+		color: #55acee;
+	}
+
+	svg {
+		margin-right: 2px;
+	}
+}
+
+:global(.dark-mode) .personTwitter p {
+	color: #55acee;
+}

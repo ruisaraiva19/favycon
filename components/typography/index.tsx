@@ -7,7 +7,16 @@ import styles from './index.module.scss'
 
 type TypographyProps = {
 	children: PropTypes.ReactNodeLike
-	variant: 'h1' | 'smallBody' | 'regularBody' | 'mediumBody' | 'largeBody' | 'footer' | 'superscript' | 'title'
+	variant:
+		| 'h1'
+		| 'smallBody'
+		| 'regularBody'
+		| 'mediumBody'
+		| 'largeBody'
+		| 'footer'
+		| 'superscript'
+		| 'title'
+		| 'largeTitle'
 	weight: 'regular' | 'medium' | 'semiBold' | 'bold'
 	color: 'black' | 'gray' | 'white' | 'green'
 	tag?: string

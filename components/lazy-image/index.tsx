@@ -6,13 +6,13 @@ import styles from './index.module.scss'
 
 type LazyImageProps = {
 	src: string
-	srcRetina: string
-	srcPlaceholder: string
+	srcRetina?: string
+	srcPlaceholder?: string
 	alt: string
 	aspectRatio: string
 }
 
-const LazyImage = ({ src, srcRetina, srcPlaceholder, alt, aspectRatio }: LazyImageProps) => {
+const LazyImage = ({ src, srcRetina = src, srcPlaceholder = src, alt, aspectRatio }: LazyImageProps) => {
 	const [widthString, heightString] = aspectRatio.split('/')
 	const width = parseInt(widthString)
 	const height = parseInt(heightString)
