@@ -1,0 +1,18 @@
+@import '../../styles/variables.scss';
+
+.path {
+	fill: #ccc;
+	transition: fill 0.2s ease;
+
+	&.active {
+		fill: $link;
+	}
+}
+
+:global(.dark-mode) .path {
+	fill: #5a5b66;
+
+	&.active {
+		fill: $link-dark;
+	}
+}

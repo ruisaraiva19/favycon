@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import useDarkMode from 'use-dark-mode'
 import { LazyImage } from 'components/lazy-image'
-
-import styles from './index.module.scss'
 import { Typography } from 'components/typography'
 import { SvgError } from 'components/svgs/svg-error'
+
+import styles from './index.module.scss'
 
 type FavyconWizardProps = {
 	children: PropTypes.ReactNodeLike
@@ -17,7 +16,6 @@ type FavyconWizardProps = {
 }
 
 const FavyconWizardComponent = ({ children, backgroundId, error, clearError, showDndImage }: FavyconWizardProps) => {
-	const { value: isDark } = useDarkMode(false)
 	return (
 		<div className={styles.root}>
 			<div className={classnames(styles.error, { [styles.hide]: !error })}>
@@ -38,11 +36,18 @@ const FavyconWizardComponent = ({ children, backgroundId, error, clearError, sho
 			{children}
 			<div className={classnames(styles.image, { [styles.hide]: !showDndImage })}>
 				<LazyImage
-					src={`/images/dnd-${isDark ? 'dark' : 'light'}@1x.png`}
-					srcRetina={`/images/dnd-${isDark ? 'dark' : 'light'}@2x.png`}
-					srcPlaceholder={`/images/dnd-${isDark ? 'dark' : 'light'}@1x.png`}
+					src={`/images/dnd-light@1x.png`}
+					srcRetina={`/images/dnd-light@2x.png`}
 					alt="Drag and drop here!"
 					aspectRatio="184/108"
+					className={styles.imageLight}
+				/>
+				<LazyImage
+					src={`/images/dnd-dark@1x.png`}
+					srcRetina={`/images/dnd-dark@2x.png`}
+					alt="Drag and drop here!"
+					aspectRatio="184/108"
+					className={styles.imageDark}
 				/>
 			</div>
 		</div>
