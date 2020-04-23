@@ -75,3 +75,36 @@
 		opacity: 0;
 	}
 }
+
+.imageLight,
+.imageDark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: all 0.2s ease;
+}
+
+:global(.light-mode) {
+	.imageLight {
+		opacity: 1;
+	}
+
+	.imageDark {
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+
+:global(.dark-mode) {
+	.imageLight {
+		visibility: hidden;
+		opacity: 0;
+	}
+
+	.imageDark {
+		opacity: 1;
+	}
+}

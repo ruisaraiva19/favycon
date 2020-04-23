@@ -6,10 +6,11 @@ class MyDocument extends Document {
 		return (
 			<Html lang="en">
 				<Head />
-				<body>
+				<body className="preload">
 					<script src="/js/noflash.js" />
 					<Main />
 					<NextScript />
+					<script src="/js/onload.js" />
 				</body>
 			</Html>
 		)

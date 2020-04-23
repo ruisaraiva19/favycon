@@ -31,7 +31,7 @@
 	}
 }
 
-.dark {
+:global(.dark-mode) .item {
 	background: $darker-black;
 	box-shadow: 0 0 10px rgba($darker-black, 0.5);
 }

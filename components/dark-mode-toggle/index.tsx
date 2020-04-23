@@ -18,7 +18,8 @@ const DarkModeToggle = () => {
 				onChange={darkMode.toggle}
 			/>
 			<label htmlFor="darkMode" className={styles.label}>
-				{darkMode.value ? <SvgSun /> : <SvgMoon />}
+				<SvgSun className={styles.sun} />
+				<SvgMoon className={styles.moon} />
 			</label>
 		</div>
 	)

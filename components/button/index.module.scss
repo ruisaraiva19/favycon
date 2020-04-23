@@ -27,15 +27,15 @@
 	&:disabled {
 		color: $grey;
 	}
+}
 
-	&.dark {
-		color: $white;
-		background-color: $dark-black;
-		border: 1px solid $dark-black;
+:global(.dark-mode) .primary {
+	color: $white;
+	background-color: $dark-black;
+	border: 1px solid $dark-black;
 
-		&:disabled {
-			color: $grey;
-		}
+	&:disabled {
+		color: $grey;
 	}
 }
 
@@ -96,19 +96,19 @@
 .bgLink {
 	background: $link;
 	border-color: $link;
+}
 
-	&.dark {
-		background: $link;
-		border-color: $link;
-	}
+:global(.dark-mode) .bgLink {
+	background: $link;
+	border-color: $link;
 }
 
 .bgGreen {
 	background: $green;
 	border-color: $green;
+}
 
-	&.dark {
-		background: $green;
-		border-color: $green;
-	}
+:global(.dark-mode) .bgGreen {
+	background: $green;
+	border-color: $green;
 }

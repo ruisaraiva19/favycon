@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import useDarkMode from 'use-dark-mode'
 
 import styles from './index.module.scss'
 
@@ -21,17 +20,7 @@ const Button = ({
 	background,
 	...props
 }: ButtonProps & React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>) => {
-	const { value: isDark } = useDarkMode(false)
-	const className = classNames(
-		styles[variant],
-		styles[weight],
-		styles[color],
-		styles[background],
-		{
-			[styles.dark]: isDark,
-		},
-		props.className
-	)
+	const className = classNames(styles[variant], styles[weight], styles[color], styles[background], props.className)
 
 	return (
 		<button {...props} className={className}>
