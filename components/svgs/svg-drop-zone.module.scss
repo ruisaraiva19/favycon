@@ -1,0 +1,10 @@
+@import '../../styles/variables.scss';
+
+.rect {
+	stroke: #ccc;
+	transition: stroke 0.2s ease;
+}
+
+:global(.dark-mode) .rect {
+	stroke: #5a5b66;
+}

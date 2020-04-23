@@ -10,9 +10,9 @@ type LazyImageProps = {
 	srcPlaceholder?: string
 	alt: string
 	aspectRatio: string
-}
+} & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
-const LazyImage = ({ src, srcRetina = src, srcPlaceholder = src, alt, aspectRatio }: LazyImageProps) => {
+const LazyImage = ({ src, srcRetina = src, srcPlaceholder = src, alt, aspectRatio, ...props }: LazyImageProps) => {
 	const [widthString, heightString] = aspectRatio.split('/')
 	const width = parseInt(widthString)
 	const height = parseInt(heightString)
@@ -30,7 +30,11 @@ const LazyImage = ({ src, srcRetina = src, srcPlaceholder = src, alt, aspectRati
 			{({ imageProps, imageState, ref }) => {
 				const loaded = imageState === ImageState.LoadSuccess
 				return (
-					<div className={styles.root} ref={ref} style={{ paddingBottom: `${(height / width) * 100 + '%'}` }}>
+					<div
+						className={styles.root}
+						ref={ref}
+						style={{ paddingBottom: `${(height / width) * 100 + '%'}` }}
+						{...props}>
 						<img
 							className={styles.placeholder}
 							src={srcPlaceholder}

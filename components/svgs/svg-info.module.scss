@@ -1,0 +1,35 @@
+@import '../../styles/variables.scss';
+
+.background {
+	fill: #f2f8fa;
+	transition: fill 0.2s ease;
+
+	&.active {
+		fill: $link;
+	}
+}
+
+:global(.dark-mode) .background {
+	fill: #41424b;
+
+	&.active {
+		fill: $link-dark;
+	}
+}
+
+.text {
+	fill: #4b67d6;
+	transition: fill 0.2s ease;
+
+	&.active {
+		fill: $link;
+	}
+}
+
+:global(.dark-mode) .text {
+	fill: #7185ff;
+
+	&.active {
+		fill: $link-dark;
+	}
+}
