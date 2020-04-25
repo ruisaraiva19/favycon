@@ -28,17 +28,17 @@ const people = [
 	{
 		screenName: 'rgllm',
 		name: 'Rogério Moreira',
-		role: 'Developer',
+		role: 'Front-End Developer',
 	},
 	{
 		screenName: 'ruisaraiva19',
 		name: 'Rui Saraiva',
-		role: 'Developer',
+		role: 'Full-Stack Developer',
 	},
 	{
 		screenName: 'aNyTh1nGeDuArDo',
 		name: 'Eduardo Pinto',
-		role: 'Developer',
+		role: 'Front-End Developer',
 	},
 ]
 
@@ -76,7 +76,7 @@ const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
 				contentLabel="About Us">
 				<div className={styles.modalContainer}>
 					<div className={styles.modalHeader}>
-						<img src="/favicon.svg" alt="Favycon logo" width="96" className={styles.logo} />
+						<img src="/favicon.svg" alt="Favycon logo" className={styles.logo} />
 						<Typography variant="largeTitle" weight="bold" className={styles.title}>
 							Behind the curtains
 						</Typography>
