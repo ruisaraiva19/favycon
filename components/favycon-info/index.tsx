@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
+import classnames from 'classnames'
 import { Typography } from 'components/typography'
 import { ToolTitle } from 'components/tool-title'
 import { LazyImage } from 'components/lazy-image'
@@ -115,6 +116,23 @@ const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
 								</div>
 							</div>
 						))}
+					</div>
+					<hr className={styles.hr} />
+					<div className={classnames(styles.footer, styles.modalFooter)}>
+						<Typography variant="footer" weight="semiBold">
+							Project on{' '}
+							<a
+								className={styles.repo}
+								href="https://github.com/ruisaraiva19/favycon"
+								target="_blank"
+								rel="noopener noreferrer">
+								GitHub
+							</a>
+							. Have feedback? Send it to{' '}
+							<a className={styles.contact} href="mailto:hello@favycon.app">
+								hello@favycon.app
+							</a>
+						</Typography>
 					</div>
 				</div>
 			</Modal>

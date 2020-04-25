@@ -11,7 +11,12 @@ import styles from './index.module.scss'
 
 NProgress.configure({ minimum: 0.15, speed: 300, trickleSpeed: 150, showSpinner: false })
 
-const getRandomNumber = (min = 1, max = 3) => Math.floor(Math.random() * max) + min
+const getRandomNumber = (min = 1, max = 3) => {
+	if (typeof window !== 'undefined') {
+		return Math.floor(Math.random() * max) + min
+	}
+	return 1
+}
 
 const Home: NextPage = () => {
 	const backgroundId = useMemo(() => getRandomNumber(), [])
