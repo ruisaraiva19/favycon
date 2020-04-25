@@ -90,25 +90,57 @@
 }
 
 .link {
-	color: $link;
+	color: $black;
+
+	&:hover {
+		color: $link;
+	}
+}
+
+:global(.dark-mode) .link {
+	color: $white;
+
+	&:hover {
+		color: $link-dark;
+	}
 }
 
 .bgLink {
 	background: $link;
 	border-color: $link;
+
+	&:hover {
+		background: darken($link, 5);
+		border-color: darken($link, 5);
+	}
 }
 
 :global(.dark-mode) .bgLink {
-	background: $link;
-	border-color: $link;
+	background: $link-dark;
+	border-color: $link-dark;
+
+	&:hover {
+		background: darken($link-dark, 5);
+		border-color: darken($link-dark, 5);
+	}
 }
 
 .bgGreen {
 	background: $green;
 	border-color: $green;
+
+	&:hover {
+		background: darken($green, 5);
+		border-color: darken($green, 5);
+	}
 }
 
 :global(.dark-mode) .bgGreen {
 	background: $green;
 	border-color: $green;
+
+	&:hover {
+		background: darken($green, 5);
+		border-color: darken($green, 5);
+	}
 }

@@ -76,3 +76,15 @@
 		}
 	}
 }
+
+:global(.light-mode) .label {
+	&:hover path {
+		fill: $link;
+	}
+}
+
+:global(.dark-mode) .label {
+	&:hover path {
+		fill: $link-dark;
+	}
+}

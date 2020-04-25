@@ -55,7 +55,7 @@ const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
 				add the favicons.
 			</Typography>
 			<hr />
-			<Typography variant="footer" weight="semiBold" color="gray">
+			<Typography variant="footer" weight="semiBold" color="gray" className={styles.footer}>
 				Created by{' '}
 				<button className={styles.peopleButton} onClick={() => setIsModalOpen(true)}>
 					{people.length} people

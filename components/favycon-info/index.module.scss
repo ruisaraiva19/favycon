@@ -27,6 +27,26 @@
 	outline: none;
 }
 
+.footer {
+	button,
+	a {
+		transition: all 0.2s ease;
+
+		&:hover {
+			color: $link;
+		}
+	}
+}
+
+:global(.dark-mode) .footer {
+	button,
+	a {
+		&:hover {
+			color: $link-dark;
+		}
+	}
+}
+
 .overlay {
 	position: fixed;
 	top: 0;

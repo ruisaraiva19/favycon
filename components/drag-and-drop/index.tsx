@@ -266,7 +266,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							</div>
 						</div>
 						<div className={styles.imageFooter}>
-							<Button variant="transparent" color="gray" onClick={resetImage}>
+							<Button variant="transparent" color="gray" className={styles.reUpload} onClick={resetImage}>
 								Re-upload
 							</Button>
 							<Button
@@ -322,7 +322,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							</div>
 						</div>
 						<div className={classnames(styles.imageFooter, styles.spaceBetween)}>
-							<Button variant="transparent" color="link" onClick={resetImage}>
+							<Button variant="transparent" color="link" className={styles.makeNewOne} onClick={resetImage}>
 								← Make a new one
 							</Button>
 							<Button

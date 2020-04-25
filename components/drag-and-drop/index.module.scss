@@ -101,15 +101,19 @@
 		color: $link;
 		cursor: pointer;
 		transition: color 0.2s ease;
-	}
 
-	&.dark u {
-		color: $link-dark;
+		&:hover {
+			color: darken($link, 5);
+		}
 	}
 }
 
 :global(.dark-mode) .imageUploadText u {
 	color: $link-dark;
+
+	&:hover {
+		color: darken($link-dark, 5);
+	}
 }
 
 .info {
@@ -308,6 +312,31 @@
 
 .spaceBetween {
 	justify-content: space-between;
+}
+
+.makeNewOne {
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+:global(.dark-mode) .makeNewOne {
+	&:hover {
+		color: $link-dark;
+	}
+}
+
+.reUpload {
+	&:hover {
+		color: $link;
+		text-decoration: none;
+	}
+}
+
+:global(.dark-mode) .reUpload {
+	&:hover {
+		color: $link-dark;
+	}
 }
 
 .imageGenerate {
