@@ -48,7 +48,7 @@
 	&:hover,
 	&:focus,
 	&:active {
-		text-decoration: underline;
+		// text-decoration: underline;
 	}
 }
 
@@ -110,8 +110,8 @@
 	border-color: $link;
 
 	&:hover {
-		background: darken($link, 5);
-		border-color: darken($link, 5);
+		background: $link-hover;
+		border-color: $link-hover;
 	}
 }
 
@@ -120,8 +120,8 @@
 	border-color: $link-dark;
 
 	&:hover {
-		background: darken($link-dark, 5);
-		border-color: darken($link-dark, 5);
+		background: $link-hover;
+		border-color: $link-hover;
 	}
 }
 
@@ -130,8 +130,8 @@
 	border-color: $green;
 
 	&:hover {
-		background: darken($green, 5);
-		border-color: darken($green, 5);
+		background: $green-hover;
+		border-color: $green-hover;
 	}
 }
 
@@ -140,7 +140,7 @@
 	border-color: $green;
 
 	&:hover {
-		background: darken($green, 5);
-		border-color: darken($green, 5);
+		background: $green-hover;
+		border-color: $green-hover;
 	}
 }

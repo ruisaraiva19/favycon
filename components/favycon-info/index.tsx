@@ -119,11 +119,11 @@ const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
 					</div>
 					<hr className={styles.hr} />
 					<div className={classnames(styles.footer, styles.modalFooter)}>
-						<Typography variant="footer" weight="semiBold">
+						<Typography variant="footer" weight="semiBold" color="gray">
 							Project on{' '}
 							<a
 								className={styles.repo}
-								href="https://github.com/ruisaraiva19/favycon"
+								href="https://github.com/toolslab/favycon"
 								target="_blank"
 								rel="noopener noreferrer">
 								GitHub

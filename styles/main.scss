@@ -48,15 +48,18 @@ hr {
 
 .ReactModal__Overlay {
 	opacity: 0;
-	transition: opacity 0.2s ease;
+	transition: all 0.2s ease;
+	transform: translate3d(0, 24px, 0);
 }
 
 .ReactModal__Overlay--after-open {
 	opacity: 1;
+	transform: translate3d(0, 0, 0);
 }
 
 .ReactModal__Overlay--before-close {
 	opacity: 0;
+	transform: translate3d(0, 24px, 0);
 }
 
 .preload,
@@ -65,4 +68,40 @@ hr {
 	-moz-transition: none !important;
 	-ms-transition: none !important;
 	-o-transition: none !important;
+}
+
+.collapse-enter {
+	max-width: 0;
+	opacity: 0;
+}
+.collapse-enter-active {
+	max-width: 50px;
+	opacity: 1;
+	transition: all 0.2s linear;
+}
+.collapse-exit {
+	max-width: 50px;
+	opacity: 1;
+}
+.collapse-exit-active {
+	max-width: 0;
+	opacity: 0;
+	transition: all 0.2s linear;
+}
+
+.fade-enter {
+	opacity: 0;
+}
+.fade-exit {
+	opacity: 1;
+}
+.fade-enter-active {
+	opacity: 1;
+}
+.fade-exit-active {
+	opacity: 0;
+}
+.fade-enter-active,
+.fade-exit-active {
+	transition: opacity 0.2s linear;
 }
