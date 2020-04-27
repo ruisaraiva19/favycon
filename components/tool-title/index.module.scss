@@ -3,4 +3,14 @@
 .root {
 	display: flex;
 	align-items: flex-start;
+
+	h1 {
+		color: $white;
+	}
+}
+
+:global(.dark-mode) .root {
+	h1 {
+		color: #e4ebf2;
+	}
 }

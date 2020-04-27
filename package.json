@@ -38,7 +38,8 @@
 		"lint:css": "stylelint './**/*.css' './**/*.scss'",
 		"storybook": "start-storybook -s ./public -p 6006",
 		"storybook:build": "build-storybook -s ./public",
-		"commit": "git-cz"
+		"commit": "git-cz",
+		"chromatic": "chromatic --build-script-name=storybook:build"
 	},
 	"dependencies": {
 		"@fiahfy/ico-convert": "0.0.7",
@@ -95,6 +96,7 @@
 		"babel-loader": "8.1.0",
 		"babel-plugin-prismjs": "2.0.1",
 		"babel-preset-react-app": "9.1.2",
+		"chromatic": "4.0.2",
 		"commitizen": "4.0.4",
 		"cz-conventional-changelog": "3.1.0",
 		"dotenv": "8.2.0",
