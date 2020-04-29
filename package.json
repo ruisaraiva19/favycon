@@ -4,7 +4,7 @@
 	"description": "A favicon generator tool",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ruisaraiva19/favycon.git"
+		"url": "git+https://github.com/toolslab/favycon.git"
 	},
 	"keywords": [
 		"favicon",
@@ -22,9 +22,9 @@
 	},
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/ruisaraiva19/favycon/issues"
+		"url": "https://github.com/toolslab/favycon/issues"
 	},
-	"homepage": "https://github.com/ruisaraiva19/favycon#readme",
+	"homepage": "https://github.com/toolslab/favycon#readme",
 	"engines": {
 		"node": ">= 10.x"
 	},
