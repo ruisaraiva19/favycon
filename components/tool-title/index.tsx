@@ -9,11 +9,11 @@ type ToolTitleProps = {
 
 const ToolTitle = ({ children }: ToolTitleProps) => (
 	<div className={styles.root}>
-		<Typography variant="h1" weight="bold">
+		<Typography variant="h1" weight="bold" color="black">
 			{children}
 		</Typography>
-		<Typography variant="superscript" tag="span" weight="bold" color="gray">
-			TOOL
+		<Typography variant="superscript" tag="span" weight="bold">
+			APP
 		</Typography>
 	</div>
 )

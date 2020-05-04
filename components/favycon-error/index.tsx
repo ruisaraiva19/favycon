@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { CSSTransition } from 'react-transition-group'
 import classnames from 'classnames'
 import { Typography } from 'components/typography'
 
@@ -10,17 +11,17 @@ type FavyconErrorProps = {
 }
 
 const FavyconError = ({ error, clearError }: FavyconErrorProps) => {
-	const [hideError, setHideError] = useState(() => !error)
+	const [showError, setShowError] = useState(false)
 
 	useEffect(() => {
 		if (error) {
 			let endTimeout: number
-			setHideError(false)
+			setShowError(true)
 			const errorTimeout = setTimeout(() => {
-				setHideError(true)
+				setShowError(false)
 				endTimeout = setTimeout(() => {
 					clearError()
-				}, 200) as any
+				}, 300) as any
 			}, 5300) as any
 			return () => {
 				clearTimeout(errorTimeout)
@@ -30,21 +31,16 @@ const FavyconError = ({ error, clearError }: FavyconErrorProps) => {
 	}, [error, clearError])
 
 	return (
-		<div className={classnames(styles.error, { [styles.hide]: hideError })}>
-			<Typography variant="regularBody" color="white" weight="semiBold">
-				{error}
-			</Typography>
-			<svg height={20} width={20}>
-				<circle
-					className={classnames(styles.progress, { [styles.animate]: !!error })}
-					fill="transparent"
-					stroke="white"
-					r={7}
-					cx={10}
-					cy={10}
-				/>
-			</svg>
-		</div>
+		<CSSTransition in={showError} timeout={300} classNames="error" unmountOnExit>
+			<div className={classnames(styles.error)}>
+				<Typography variant="regularBody" color="white" weight="semiBold">
+					{error}
+				</Typography>
+				<svg height={20} width={20}>
+					<circle className={classnames(styles.progress)} fill="transparent" stroke="white" r={7} cx={10} cy={10} />
+				</svg>
+			</div>
+		</CSSTransition>
 	)
 }
 

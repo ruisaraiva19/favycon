@@ -5,7 +5,6 @@
 }
 
 .container {
-	max-width: 1440px;
 	height: 68px;
 	padding: 20px 20px 0 20px;
 	margin: 0 auto;
@@ -14,7 +13,7 @@
 .header {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-end;
 	height: 100%;
 }
 

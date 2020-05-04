@@ -10,13 +10,6 @@
 	background: $red;
 	border-radius: 8px;
 	box-shadow: 0 2px 4px rgba($black, 0.12);
-	opacity: 1;
-	transition: opacity 0.2s ease-in-out;
-
-	&.hide {
-		pointer-events: none;
-		opacity: 0;
-	}
 
 	svg {
 		margin-left: 13px;
@@ -29,10 +22,7 @@
 	stroke-width: 2px;
 	transform: rotate(-90deg);
 	transform-origin: center;
-
-	&.animate {
-		animation: progress 5s linear 0.3s forwards;
-	}
+	animation: progress 5s linear 0.3s forwards;
 }
 
 @keyframes progress {

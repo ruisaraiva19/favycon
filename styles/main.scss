@@ -92,16 +92,32 @@ hr {
 .fade-enter {
 	opacity: 0;
 }
-.fade-exit {
-	opacity: 1;
-}
 .fade-enter-active {
+	opacity: 1;
+	transition: opacity 0.2s linear;
+}
+.fade-exit {
 	opacity: 1;
 }
 .fade-exit-active {
 	opacity: 0;
-}
-.fade-enter-active,
-.fade-exit-active {
 	transition: opacity 0.2s linear;
+}
+
+.error-enter {
+	opacity: 0;
+	transform: translate3d(0, -8px, 0);
+}
+.error-enter-active {
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+	transform: translate3d(0, 0, 0);
+}
+.error-exit {
+	opacity: 1;
+}
+.error-exit-active {
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+	transform: translate3d(0, 4px, 0);
 }

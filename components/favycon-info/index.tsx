@@ -123,7 +123,7 @@ const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
 							Project on{' '}
 							<a
 								className={styles.repo}
-								href="https://github.com/toolslab/favycon"
+								href="https://github.com/ruisaraiva19/favycon"
 								target="_blank"
 								rel="noopener noreferrer">
 								GitHub

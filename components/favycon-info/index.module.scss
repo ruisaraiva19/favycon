@@ -7,11 +7,18 @@
 
 .firstParagraph {
 	margin-top: 8px;
+	letter-spacing: 0.2px;
 }
 
 .secondParagraph {
 	margin-top: 16px;
 	margin-bottom: 60px;
+	letter-spacing: 0.2px;
+}
+
+:global(.dark-mode) .firstParagraph,
+:global(.dark-mode) .secondParagraph {
+	color: $white-dark;
 }
 
 .peopleButton {
@@ -28,8 +35,12 @@
 }
 
 .footer {
+	letter-spacing: 0.2px;
+
 	button,
 	a {
+		color: #424347;
+		text-decoration: none;
 		transition: all 0.2s ease;
 
 		&:hover {
@@ -41,8 +52,10 @@
 :global(.dark-mode) .footer {
 	button,
 	a {
+		color: $white-dark;
+
 		&:hover {
-			color: $link-dark;
+			color: $off-white-dark;
 		}
 	}
 }
@@ -133,11 +146,20 @@
 
 .personTwitter {
 	color: #55acee;
+	text-decoration: none;
+
+	&:hover {
+		color: $link;
+	}
 
 	p {
 		display: flex;
 		align-items: center;
 		color: #55acee;
+
+		&:hover {
+			color: darken(#55acee, 15);
+		}
 	}
 
 	svg {
@@ -147,6 +169,10 @@
 
 :global(.dark-mode) .personTwitter p {
 	color: #55acee;
+
+	&:hover {
+		color: $off-white-dark;
+	}
 }
 
 .modalFooter {

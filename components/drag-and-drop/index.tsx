@@ -140,10 +140,10 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 			setImage(file)
 		} else if (rejectedFiles.length) {
 			const file = rejectedFiles[0]
-			if (file.size > ONE_MB) {
-				onError(`The ${ACCEPT_MIME_TYPES[file.type]} file needs to be lower than 1 MB`)
-			} else if (!Object.keys(ACCEPT_MIME_TYPES).includes(file.type)) {
+			if (!Object.keys(ACCEPT_MIME_TYPES).includes(file.type)) {
 				onError(`The image file should be a ${Object.values(ACCEPT_MIME_TYPES).join(' or ')}`)
+			} else if (file.size > ONE_MB) {
+				onError(`The ${ACCEPT_MIME_TYPES[file.type]} file needs to be lower than 1 MB`)
 			} else {
 				onError('idk')
 			}
@@ -340,14 +340,14 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								<Button
 									className={styles.showCode}
 									variant="regularTransparent"
-									color="link"
+									color="gray"
 									onClick={() => setIsModalOpen(true)}>
 									Show
 								</Button>
 							</div>
 						</div>
 						<div className={classnames(styles.imageFooter, styles.spaceBetween)}>
-							<Button variant="transparent" color="link" className={styles.makeNewOne} onClick={resetImage}>
+							<Button variant="transparent" color="gray" className={styles.makeNewOne} onClick={resetImage}>
 								Make a new one
 							</Button>
 							<Button

@@ -10,9 +10,9 @@
 }
 
 :global(.dark-mode) .rect {
-	fill: #5a5b66;
+	fill: #495c70;
 
 	&.active {
-		fill: $link-dark;
+		fill: $off-white-dark;
 	}
 }

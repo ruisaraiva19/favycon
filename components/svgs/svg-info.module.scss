@@ -10,7 +10,7 @@
 }
 
 :global(.dark-mode) .background {
-	fill: #41424b;
+	fill: $dark-grey;
 
 	&.active {
 		fill: $link-dark;
@@ -27,7 +27,7 @@
 }
 
 :global(.dark-mode) .text {
-	fill: #7185ff;
+	fill: $off-white-dark;
 
 	&.active {
 		fill: $link-dark;
