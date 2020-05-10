@@ -57,10 +57,10 @@
 		"react": "16.13.1",
 		"react-clipboard.js": "2.0.16",
 		"react-dom": "16.13.1",
-		"react-dropzone": "10.2.2",
+		"react-dropzone": "11.0.1",
 		"react-lazy-images": "1.1.0",
 		"react-modal": "3.11.2",
-		"react-transition-group": "4.3.0",
+		"react-transition-group": "4.4.1",
 		"sharp": "0.25.2",
 		"use-dark-mode": "2.3.1"
 	},

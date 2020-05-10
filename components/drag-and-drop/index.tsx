@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import React, { useState, useEffect, useCallback } from 'react'
 import classnames from 'classnames'
-import { useDropzone } from 'react-dropzone'
+import { useDropzone, FileRejection } from 'react-dropzone'
 import { CSSTransition } from 'react-transition-group'
 import { headTemplate } from 'utils/favicon'
 import { Typography } from 'components/typography'
@@ -125,7 +125,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 		setZipData(undefined)
 	}
 
-	const onDrop = async (acceptedFiles: File[], rejectedFiles: File[]) => {
+	const onDrop = async (acceptedFiles: File[], fileRejections: FileRejection[]) => {
 		if (acceptedFiles.length) {
 			const file = acceptedFiles[0]
 			const sizes = await getImageFileSizes(file)
@@ -138,8 +138,8 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 			onError('')
 			onFile(true)
 			setImage(file)
-		} else if (rejectedFiles.length) {
-			const file = rejectedFiles[0]
+		} else if (fileRejections.length) {
+			const file = fileRejections[0].file
 			if (!Object.keys(ACCEPT_MIME_TYPES).includes(file.type)) {
 				onError(`The image file should be a ${Object.values(ACCEPT_MIME_TYPES).join(' or ')}`)
 			} else if (file.size > ONE_MB) {
