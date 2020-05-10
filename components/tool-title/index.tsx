@@ -1,16 +1,14 @@
 import React from 'react'
 import { Typography } from 'components/typography'
+import { SvgFavycon } from 'components/svgs/svg-favycon'
 
 import styles from './index.module.scss'
 
-type ToolTitleProps = {
-	children: string
-}
-
-const ToolTitle = ({ children }: ToolTitleProps) => (
+const ToolTitle = () => (
 	<div className={styles.root}>
+		<SvgFavycon />
 		<Typography variant="h1" weight="bold" color="black">
-			{children}
+			Favycon
 		</Typography>
 		<Typography variant="superscript" tag="span" weight="bold">
 			APP

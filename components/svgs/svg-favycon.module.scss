@@ -1,0 +1,55 @@
+@import '../../styles/variables.scss';
+
+.background {
+	fill: #2e3a47;
+	transition: fill 0.2s ease;
+}
+
+:global(.dark-mode) .background {
+	fill: #495c70;
+}
+
+.foreground {
+	fill: #fff;
+	transition: fill 0.2s ease;
+}
+
+:global(.dark-mode) .foreground {
+	fill: #1e262f;
+}
+
+.top {
+	fill: #f6a044;
+	transition: fill 0.2s ease;
+}
+
+:global(.dark-mode) .top {
+	fill: #f6a044;
+}
+
+.corner {
+	fill: #493b39;
+	transition: fill 0.2s ease;
+}
+
+:global(.dark-mode) .corner {
+	fill: #f9cdff;
+}
+
+.left {
+	fill: #4c5ed5;
+	transition: fill 0.2s ease;
+}
+
+:global(.dark-mode) .left {
+	fill: #728dff;
+}
+
+.star {
+	fill: #4c5ed5;
+	transition: fill 0.2s ease;
+}
+
+:global(.dark-mode) .star {
+	fill: #728dff;
+}

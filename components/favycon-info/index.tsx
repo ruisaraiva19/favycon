@@ -7,6 +7,7 @@ import { LazyImage } from 'components/lazy-image'
 import { SvgTwitter } from 'components/svgs/svg-twitter'
 
 import styles from './index.module.scss'
+import { SvgFavycon } from 'components/svgs/svg-favycon'
 
 const Modal = dynamic(() => import('react-modal'))
 
@@ -47,7 +48,7 @@ const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	return (
 		<div className={styles.root}>
-			<ToolTitle>Favycon</ToolTitle>
+			<ToolTitle />
 			<Typography variant="largeBody" weight="medium" className={styles.firstParagraph}>
 				A small online tool to help you generate your favicon in all the sizes and formats you need.
 			</Typography>
@@ -77,7 +78,8 @@ const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
 				contentLabel="About Us">
 				<div className={styles.modalContainer}>
 					<div className={styles.modalHeader}>
-						<img src="/favicon.svg" alt="Favycon logo" className={styles.logo} />
+						{/* <img src="/favicon.svg" alt="Favycon logo" className={styles.logo} /> */}
+						<SvgFavycon className={styles.logo} />
 						<Typography variant="largeTitle" weight="bold" className={styles.title}>
 							Behind the curtains
 						</Typography>
