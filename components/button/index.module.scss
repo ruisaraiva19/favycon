@@ -44,12 +44,6 @@
 	padding: 5px 0;
 	background: transparent;
 	border: 1px solid transparent;
-
-	&:hover,
-	&:focus,
-	&:active {
-		text-decoration: underline;
-	}
 }
 
 .regularTransparent {
@@ -57,7 +51,7 @@
 	padding: 0;
 	font-size: $font-size-regular-body;
 	line-height: $line-height-regular-body;
-	text-decoration: underline;
+	text-decoration: none;
 	border: 0;
 }
 
@@ -85,30 +79,66 @@
 	color: $grey;
 }
 
+:global(.dark-mode) .gray {
+	color: $grey-dark;
+}
+
 .white {
 	color: $white;
 }
 
 .link {
-	color: $link;
+	color: $black;
+
+	&:hover {
+		color: $link;
+	}
+}
+
+:global(.dark-mode) .link {
+	color: $white;
+
+	&:hover {
+		color: $link-dark;
+	}
 }
 
 .bgLink {
 	background: $link;
 	border-color: $link;
+
+	&:hover {
+		background: $link-hover;
+		border-color: $link-hover;
+	}
 }
 
 :global(.dark-mode) .bgLink {
-	background: $link;
-	border-color: $link;
+	background: $link-dark;
+	border-color: $link-dark;
+
+	&:hover {
+		background: $link-hover;
+		border-color: $link-hover;
+	}
 }
 
 .bgGreen {
 	background: $green;
 	border-color: $green;
+
+	&:hover {
+		background: $green-hover;
+		border-color: $green-hover;
+	}
 }
 
 :global(.dark-mode) .bgGreen {
 	background: $green;
 	border-color: $green;
+
+	&:hover {
+		background: $green-hover;
+		border-color: $green-hover;
+	}
 }

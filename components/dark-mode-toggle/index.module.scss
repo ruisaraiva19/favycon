@@ -72,7 +72,19 @@
 	.sun,
 	.moon {
 		path {
-			fill: #5a5b66;
+			fill: #657584;
 		}
+	}
+}
+
+:global(.light-mode) .label {
+	&:hover path {
+		fill: $link;
+	}
+}
+
+:global(.dark-mode) .label {
+	&:hover path {
+		fill: $link-dark;
 	}
 }

@@ -27,20 +27,6 @@
 	}
 }
 
-.dropZoneWrapper {
-	position: relative;
-	height: 244px;
-	margin-bottom: 16px;
-	text-align: center;
-	background: $off-white;
-	border-radius: 6px;
-	transition: background 0.2s ease;
-}
-
-:global(.dark-mode) .dropZoneWrapper {
-	background: $dark-grey;
-}
-
 .dashed {
 	position: absolute;
 	top: 0;
@@ -58,13 +44,46 @@
 
 	&.dragActive rect {
 		stroke: $link;
-		stroke-width: 4px;
 		animation-play-state: running;
 	}
 }
 
-:global(.dark-mode) .dashed.dragActive rect {
-	stroke: $link-dark;
+:global(.dark-mode) .dashed {
+	rect {
+		stroke: #495c70;
+	}
+
+	&.dragActive rect {
+		stroke: $off-white-dark;
+	}
+}
+
+.dropZoneWrapper {
+	position: relative;
+	height: 244px;
+	margin-bottom: 16px;
+	text-align: center;
+	background: $off-white;
+	border-radius: 6px;
+	transition: background 0.2s ease;
+
+	&:hover {
+		cursor: pointer;
+
+		.dashed rect {
+			stroke: $link;
+		}
+	}
+}
+
+:global(.dark-mode) .dropZoneWrapper {
+	background: $dark-grey;
+
+	&:hover {
+		.dashed rect {
+			stroke: $off-white-dark;
+		}
+	}
 }
 
 @keyframes dash {
@@ -96,26 +115,28 @@
 }
 
 .imageUploadText {
-	u {
-		font-weight: 700;
-		color: $link;
-		cursor: pointer;
-		transition: color 0.2s ease;
+	height: 48px;
+
+	span {
+		display: inline-block;
+		overflow: hidden;
+		white-space: nowrap;
 	}
 
-	&.dark u {
-		color: $link-dark;
+	&.dragActive {
+		height: 48px;
 	}
 }
 
-:global(.dark-mode) .imageUploadText u {
-	color: $link-dark;
+:global(.dark-mode) .imageUploadText {
+	color: $white-dark;
 }
 
 .info {
 	display: flex;
 	align-items: center;
 	margin-top: 8px;
+	letter-spacing: 0.2px;
 
 	svg {
 		flex: 0 0 20px;
@@ -126,6 +147,10 @@
 		padding: 0 4px;
 		font-weight: 700;
 	}
+}
+
+:global(.dark-mode) .info {
+	color: $off-white-dark;
 }
 
 .imagePreviewWrapper {
@@ -269,6 +294,10 @@
 	}
 }
 
+:global(.dark-mode) .preview {
+	background: $off-white-dark;
+}
+
 .imagePreviewTitle {
 	margin-bottom: 4px;
 	text-align: center;
@@ -279,14 +308,24 @@
 	margin: 0 auto;
 	margin-bottom: 42px;
 	text-align: center;
+	letter-spacing: 0.2px;
 }
 
 .imageInfoItemSvg {
 	margin-right: 8px;
+	letter-spacing: 0.2px;
 }
 
 .showCode {
 	margin-left: 12px;
+
+	&:hover {
+		color: $link;
+	}
+}
+
+:global(.dark-mode) .showCode:hover {
+	color: $off-white-dark;
 }
 
 .imageFooter {
@@ -308,6 +347,32 @@
 
 .spaceBetween {
 	justify-content: space-between;
+}
+
+.makeNewOne {
+	&:hover {
+		color: $link;
+		text-decoration: none;
+	}
+}
+
+:global(.dark-mode) .makeNewOne {
+	&:hover {
+		color: $off-white-dark;
+	}
+}
+
+.reUpload {
+	&:hover {
+		color: $link;
+		text-decoration: none;
+	}
+}
+
+:global(.dark-mode) .reUpload {
+	&:hover {
+		color: $off-white-dark;
+	}
 }
 
 .imageGenerate {
@@ -380,6 +445,7 @@
 		font-weight: 700;
 		line-height: $line-height-title;
 		color: $link;
+		letter-spacing: 0.2px;
 		content: 'Copied!';
 		opacity: 0;
 		transition: all 0.2s ease;
@@ -392,5 +458,5 @@
 }
 
 :global(.dark-mode) .copyWrapper::before {
-	color: $link-dark;
+	color: $off-white-dark;
 }

@@ -10,31 +10,6 @@
 	padding: 41px 0 0;
 }
 
-.error {
-	position: absolute;
-	top: -5px;
-	left: 6px;
-	display: flex;
-	align-items: center;
-	padding: 6px 8px 6px 16px;
-	background: $red;
-	border-radius: 18px;
-	box-shadow: 0 2px 4px rgba($black, 0.12);
-	opacity: 1;
-	transition: opacity 0.2s ease-in-out;
-	transform: translateY(-100%) rotate(2deg);
-
-	&.hide {
-		pointer-events: none;
-		opacity: 0;
-	}
-}
-
-.errorIcon {
-	margin-left: 24px;
-	cursor: pointer;
-}
-
 .background {
 	position: absolute;
 	top: 10px;
@@ -64,8 +39,8 @@
 	top: 57px;
 	right: 15px;
 	z-index: -1;
-	width: 184px;
-	height: 108px;
+	width: 185px;
+	height: 109px;
 	opacity: 1;
 	transition: opacity 0.2s ease-in-out;
 	transform: translate(100%, -100%);
