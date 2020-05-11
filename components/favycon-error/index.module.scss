@@ -1,0 +1,35 @@
+@import '../../styles/variables.scss';
+
+.error {
+	position: absolute;
+	top: 26px;
+	right: 72px;
+	display: flex;
+	align-items: center;
+	padding: 6px 13px 6px 16px;
+	background: $red;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba($black, 0.12);
+
+	svg {
+		margin-left: 13px;
+	}
+}
+
+.progress {
+	stroke-dasharray: 44 44;
+	stroke-dashoffset: 0;
+	stroke-width: 2px;
+	transform: rotate(-90deg);
+	transform-origin: center;
+	animation: progress 5s linear 0.3s forwards;
+}
+
+@keyframes progress {
+	0% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 44;
+	}
+}

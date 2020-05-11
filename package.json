@@ -38,7 +38,8 @@
 		"lint:css": "stylelint './**/*.css' './**/*.scss'",
 		"storybook": "start-storybook -s ./public -p 6006",
 		"storybook:build": "build-storybook -s ./public",
-		"commit": "git-cz"
+		"commit": "git-cz",
+		"chromatic": "chromatic --build-script-name=storybook:build"
 	},
 	"dependencies": {
 		"@fiahfy/ico-convert": "0.0.7",
@@ -56,9 +57,10 @@
 		"react": "16.13.1",
 		"react-clipboard.js": "2.0.16",
 		"react-dom": "16.13.1",
-		"react-dropzone": "10.2.2",
+		"react-dropzone": "11.0.1",
 		"react-lazy-images": "1.1.0",
 		"react-modal": "3.11.2",
+		"react-transition-group": "4.4.1",
 		"sharp": "0.25.2",
 		"use-dark-mode": "2.3.1"
 	},
@@ -85,6 +87,7 @@
 		"@types/prismjs": "1.16.0",
 		"@types/react": "16.9.34",
 		"@types/react-modal": "3.10.5",
+		"@types/react-transition-group": "4.2.4",
 		"@types/sharp": "0.25.0",
 		"@typescript-eslint/eslint-plugin": "2.31.0",
 		"@typescript-eslint/parser": "2.31.0",

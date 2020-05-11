@@ -1,7 +1,8 @@
 import dynamic from 'next/dynamic'
 import React, { useState, useEffect, useCallback } from 'react'
 import classnames from 'classnames'
-import { useDropzone } from 'react-dropzone'
+import { useDropzone, FileRejection } from 'react-dropzone'
+import { CSSTransition } from 'react-transition-group'
 import { headTemplate } from 'utils/favicon'
 import { Typography } from 'components/typography'
 import { CodeHighlight } from 'components/code-highlight'
@@ -124,7 +125,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 		setZipData(undefined)
 	}
 
-	const onDrop = async (acceptedFiles: File[], rejectedFiles: File[]) => {
+	const onDrop = async (acceptedFiles: File[], fileRejections: FileRejection[]) => {
 		if (acceptedFiles.length) {
 			const file = acceptedFiles[0]
 			const sizes = await getImageFileSizes(file)
@@ -137,12 +138,12 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 			onError('')
 			onFile(true)
 			setImage(file)
-		} else if (rejectedFiles.length) {
-			const file = rejectedFiles[0]
-			if (file.size > ONE_MB) {
-				onError(`The ${ACCEPT_MIME_TYPES[file.type]} file needs to be lower than 1 MB`)
-			} else if (!Object.keys(ACCEPT_MIME_TYPES).includes(file.type)) {
+		} else if (fileRejections.length) {
+			const file = fileRejections[0].file
+			if (!Object.keys(ACCEPT_MIME_TYPES).includes(file.type)) {
 				onError(`The image file should be a ${Object.values(ACCEPT_MIME_TYPES).join(' or ')}`)
+			} else if (file.size > ONE_MB) {
+				onError(`The ${ACCEPT_MIME_TYPES[file.type]} file needs to be lower than 1 MB`)
 			} else {
 				onError('idk')
 			}
@@ -163,25 +164,49 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 		}, 3000)
 	}
 
+	const [isHover, setIsHover] = useState(false)
+
 	return (
 		<div className={styles.root}>
 			<div className={classnames(styles.container, { [styles.loading]: isLoading })}>
 				{!image && !zipData && (
 					<>
-						<div className={styles.dropZoneWrapper}>
+						<div
+							className={styles.dropZoneWrapper}
+							onMouseEnter={() => setIsHover(true)}
+							onMouseLeave={() => setIsHover(false)}>
 							<SvgDropZone className={classnames(styles.dashed, { [styles.dragActive]: isDragActive })} />
 							<div {...getRootProps()} className={styles.dropZone}>
 								<input {...getInputProps()} />
 								<div className={styles.imageUpload}>
-									<SvgImageUpload active={isDragActive} />
+									<SvgImageUpload active={isDragActive || isHover} />
 								</div>
-								<Typography variant="regularBody" weight="medium" className={styles.imageUploadText}>
-									Drag &amp; drop an image file or
+								<Typography
+									variant="regularBody"
+									weight="medium"
+									className={classnames(styles.imageUploadText, { [styles.dragActive]: isDragActive })}>
+									<CSSTransition in={!isDragActive} timeout={200} classNames="collapse" unmountOnExit>
+										<span>Drag &amp;&nbsp;</span>
+									</CSSTransition>
+									<span>{isDragActive ? 'Drop' : 'drop'}</span>
+									<CSSTransition in={!isDragActive} timeout={200} classNames="collapse" unmountOnExit>
+										<span>&nbsp;an</span>
+									</CSSTransition>
+									<span>&nbsp;image file here</span>
+									<CSSTransition in={isDragActive} timeout={200} classNames="collapse" unmountOnExit>
+										<span>...</span>
+									</CSSTransition>
+									<CSSTransition in={!isDragActive} timeout={200} classNames="fade" unmountOnExit>
+										<span>,</span>
+									</CSSTransition>
 									<br />
-									<u>click here to upload it</u>.
+									<CSSTransition in={!isDragActive} timeout={200} classNames="fade" unmountOnExit>
+										<span>or click to select a file.</span>
+									</CSSTransition>
 								</Typography>
 							</div>
 						</div>
+						{/* <button onClick={() => setInProp(true)}>toggle</button> */}
 						<Typography variant="regularBody" weight="medium" className={styles.info}>
 							<SvgInfo /> We recommend a square <strong>PNG</strong> or <strong>SVG</strong> with at least 310px
 						</Typography>
@@ -266,7 +291,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							</div>
 						</div>
 						<div className={styles.imageFooter}>
-							<Button variant="transparent" color="gray" onClick={resetImage}>
+							<Button variant="transparent" color="gray" className={styles.reUpload} onClick={resetImage}>
 								Re-upload
 							</Button>
 							<Button
@@ -315,22 +340,22 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								<Button
 									className={styles.showCode}
 									variant="regularTransparent"
-									color="link"
+									color="gray"
 									onClick={() => setIsModalOpen(true)}>
 									Show
 								</Button>
 							</div>
 						</div>
 						<div className={classnames(styles.imageFooter, styles.spaceBetween)}>
-							<Button variant="transparent" color="link" onClick={resetImage}>
-								← Make a new one
+							<Button variant="transparent" color="gray" className={styles.makeNewOne} onClick={resetImage}>
+								Make a new one
 							</Button>
 							<Button
 								color="white"
 								background="bgGreen"
 								className={styles.imageGenerate}
 								onClick={() => onDownload(zipData)}>
-								Download Favicon ↓
+								Download Favicon
 							</Button>
 						</div>
 						<Modal

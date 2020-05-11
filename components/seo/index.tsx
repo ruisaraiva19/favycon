@@ -24,8 +24,6 @@ const SEO = ({ title, description }: SEOProps) => (
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
 		<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
-		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="msapplication-TileColor" content="#ffffff" />
 		<meta name="msapplication-TileImage" content="/favicon-144x144.png" />
 		<meta name="msapplication-config" content="/browserconfig.xml" />

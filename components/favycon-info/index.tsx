@@ -1,23 +1,15 @@
 import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
+import classnames from 'classnames'
 import { Typography } from 'components/typography'
 import { ToolTitle } from 'components/tool-title'
 import { LazyImage } from 'components/lazy-image'
 import { SvgTwitter } from 'components/svgs/svg-twitter'
 
 import styles from './index.module.scss'
+import { SvgFavycon } from 'components/svgs/svg-favycon'
 
 const Modal = dynamic(() => import('react-modal'))
-
-type FavyconInfoProps = {
-	imageIndex: number
-}
-
-const unsplashImagesUrls = [
-	'https://unsplash.com/photos/zKnQnyARggY',
-	'https://unsplash.com/photos/UQAQm_EpWR8',
-	'https://unsplash.com/photos/IXUM4cJynP0',
-]
 
 const people = [
 	{
@@ -42,11 +34,11 @@ const people = [
 	},
 ]
 
-const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
+const FavyconInfo = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	return (
 		<div className={styles.root}>
-			<ToolTitle>Favycon</ToolTitle>
+			<ToolTitle />
 			<Typography variant="largeBody" weight="medium" className={styles.firstParagraph}>
 				A small online tool to help you generate your favicon in all the sizes and formats you need.
 			</Typography>
@@ -55,13 +47,13 @@ const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
 				add the favicons.
 			</Typography>
 			<hr />
-			<Typography variant="footer" weight="semiBold" color="gray">
+			<Typography variant="footer" weight="semiBold" color="gray" className={styles.footer}>
 				Created by{' '}
 				<button className={styles.peopleButton} onClick={() => setIsModalOpen(true)}>
 					{people.length} people
 				</button>{' '}
 				on their 2020’s worldwide quarantine. Background image from{' '}
-				<a href={unsplashImagesUrls[imageIndex]} target="_blank" rel="noopener noreferrer">
+				<a href="https://unsplash.com/photos/bBiuSdck8tU" target="_blank" rel="noopener noreferrer">
 					Unsplash
 				</a>
 				.
@@ -76,7 +68,8 @@ const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
 				contentLabel="About Us">
 				<div className={styles.modalContainer}>
 					<div className={styles.modalHeader}>
-						<img src="/favicon.svg" alt="Favycon logo" className={styles.logo} />
+						{/* <img src="/favicon.svg" alt="Favycon logo" className={styles.logo} /> */}
+						<SvgFavycon className={styles.logo} />
 						<Typography variant="largeTitle" weight="bold" className={styles.title}>
 							Behind the curtains
 						</Typography>
@@ -115,6 +108,23 @@ const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
 								</div>
 							</div>
 						))}
+					</div>
+					<hr className={styles.hr} />
+					<div className={classnames(styles.footer, styles.modalFooter)}>
+						<Typography variant="footer" weight="semiBold" color="gray">
+							Project on{' '}
+							<a
+								className={styles.repo}
+								href="https://github.com/ruisaraiva19/favycon"
+								target="_blank"
+								rel="noopener noreferrer">
+								GitHub
+							</a>
+							. Have feedback? Send it to{' '}
+							<a className={styles.contact} href="mailto:hello@favycon.app">
+								hello@favycon.app
+							</a>
+						</Typography>
 					</div>
 				</div>
 			</Modal>

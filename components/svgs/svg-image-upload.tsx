@@ -16,8 +16,20 @@ const SvgImageUpload: React.FC<JSX.IntrinsicAttributes & React.SVGProps<SVGSVGEl
 	return (
 		<svg width={88} height={88} viewBox="0 0 88 88" aria-labelledby={`${idPrefix}-title`} {...props}>
 			<title id={`${idPrefix}-title`}>Image Upload</title>
-			<path className={classnames(styles.path, { [styles.active]: active })} d="M43 20H45V68H43z" />
-			<path className={classnames(styles.path, { [styles.active]: active })} d="M20 43H68V45H20z" />
+			<rect
+				x={43}
+				y={active ? 16 : 20}
+				width={2}
+				height={active ? 56 : 48}
+				className={classnames(styles.rect, { [styles.active]: active })}
+			/>
+			<rect
+				x={active ? 16 : 20}
+				y={43}
+				width={active ? 56 : 48}
+				height={2}
+				className={classnames(styles.rect, { [styles.active]: active })}
+			/>
 		</svg>
 	)
 }
