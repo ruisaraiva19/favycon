@@ -35,7 +35,7 @@ module.exports = ({ config, mode }) => {
 				title: 'Favycon Storybook',
 				excludeWarnings: true,
 				alwaysNotify: true,
-				contentImage: path.join(__dirname, 'logo.png'),
+				contentImage: path.join(__dirname, '../public/favicon.png'),
 			})
 		)
 	}
