@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NextPage } from 'next'
 import NProgress from 'nprogress'
 import { BaseLayout } from 'components/base-layout'
@@ -12,16 +12,7 @@ import styles from './index.module.scss'
 
 NProgress.configure({ minimum: 0.15, speed: 300, trickleSpeed: 150, showSpinner: false })
 
-const getRandomNumber = (min = 1, max = 3) => {
-	if (typeof window !== 'undefined') {
-		return Math.floor(Math.random() * max) + min
-	}
-	return 1
-}
-
 const Home: NextPage = () => {
-	const backgroundId = useMemo(() => getRandomNumber(), [])
-
 	const [error, setError] = useState('')
 	const [file, setFile] = useState(false)
 	const [fileCounter, setFileCounter] = useState(0)
@@ -64,8 +55,8 @@ const Home: NextPage = () => {
 			/>
 			<main className={styles.main}>
 				<div className={styles.container}>
-					<FavyconInfo imageIndex={backgroundId - 1} />
-					<FavyconWizard backgroundId={backgroundId} showDndImage={!file}>
+					<FavyconInfo />
+					<FavyconWizard showDndImage={!file}>
 						<DragAndDrop key={fileCounter} onFile={setFile} onGenerate={onGenerate} onError={onError} />
 					</FavyconWizard>
 				</div>

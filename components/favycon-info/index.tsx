@@ -11,16 +11,6 @@ import { SvgFavycon } from 'components/svgs/svg-favycon'
 
 const Modal = dynamic(() => import('react-modal'))
 
-type FavyconInfoProps = {
-	imageIndex: number
-}
-
-const unsplashImagesUrls = [
-	'https://unsplash.com/photos/zKnQnyARggY',
-	'https://unsplash.com/photos/UQAQm_EpWR8',
-	'https://unsplash.com/photos/IXUM4cJynP0',
-]
-
 const people = [
 	{
 		screenName: 'aboutaugusto',
@@ -44,7 +34,7 @@ const people = [
 	},
 ]
 
-const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
+const FavyconInfo = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	return (
 		<div className={styles.root}>
@@ -63,7 +53,7 @@ const FavyconInfo = ({ imageIndex }: FavyconInfoProps) => {
 					{people.length} people
 				</button>{' '}
 				on their 2020’s worldwide quarantine. Background image from{' '}
-				<a href={unsplashImagesUrls[imageIndex]} target="_blank" rel="noopener noreferrer">
+				<a href="https://unsplash.com/photos/bBiuSdck8tU" target="_blank" rel="noopener noreferrer">
 					Unsplash
 				</a>
 				.
