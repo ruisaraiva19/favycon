@@ -53,7 +53,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	const [zipData, setZipData] = useState<ArrayBuffer>()
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [copied, setCopied] = useState(false)
-	const PWADisabled = !isPngOrSvg || (!isSvg && !is512px)
+	const PWADisabled = !isSvg && !is512px
 	let sizesCount = 16
 	if (isSvg) {
 		sizesCount += 1
