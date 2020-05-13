@@ -10,7 +10,7 @@ const ToolTitle = () => (
 		<Typography variant="h1" weight="bold" color="black">
 			Favycon
 		</Typography>
-		<Typography variant="superscript" tag="span" weight="bold">
+		<Typography variant="superscript" tag="span" weight="bold" color="gray">
 			APP
 		</Typography>
 	</div>
