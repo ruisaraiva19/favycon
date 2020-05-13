@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+
+.unchecked {
+	fill: #f7f7f8;
+	stroke: #ccc;
+	transition: all 100ms ease-in-out;
+
+	&.disabled {
+		fill: #ececec;
+		stroke: #ccc;
+	}
+}
+
+:global(.dark-mode) .unchecked {
+	fill: $dark-grey;
+	stroke: $grey-dark;
+
+	&.disabled {
+		fill: $dark-black;
+		stroke: $dark-grey;
+	}
+}
+
+.checkBg {
+	opacity: 0;
+	fill: $link;
+	transition: all 100ms ease-in-out;
+	transform: scale(0);
+	transform-origin: center;
+}
+
+.checkBgChecked {
+	opacity: 1;
+	transform: scale(1);
+}
+
+.checkMark {
+	stroke: #f7f7f8;
+	stroke-dasharray: 12;
+	stroke-dashoffset: 12;
+	transition: all 150ms 100ms ease-in-out;
+}
+
+.checkMarkChecked {
+	stroke: #fff;
+	stroke-dashoffset: 0;
+}
