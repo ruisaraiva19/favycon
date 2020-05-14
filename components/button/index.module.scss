@@ -15,6 +15,14 @@
 	&:active {
 		outline: none;
 	}
+
+	&:hover {
+		transform: translate3d(0, -2px, 0);
+	}
+
+	&:active {
+		transform: translate3d(0, 0, 0);
+	}
 }
 
 .primary {

@@ -7,10 +7,10 @@ import styles from './index.module.scss'
 const ToolTitle = () => (
 	<div className={styles.root}>
 		<SvgFavycon />
-		<Typography variant="h1" weight="bold" color="black">
+		<Typography variant="h1" weight="extraBold" color="black">
 			Favycon
 		</Typography>
-		<Typography variant="superscript" tag="span" weight="bold">
+		<Typography variant="superscript" tag="span" weight="bold" color="gray">
 			APP
 		</Typography>
 	</div>
