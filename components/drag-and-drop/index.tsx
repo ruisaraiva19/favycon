@@ -53,7 +53,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	const [zipData, setZipData] = useState<ArrayBuffer>()
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [copied, setCopied] = useState(false)
-	const PWADisabled = !isPngOrSvg || (!isSvg && !is512px)
+	const PWADisabled = !isSvg && !is512px
 	let sizesCount = 16
 	if (isSvg) {
 		sizesCount += 1
@@ -245,19 +245,19 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 						<div className={styles.imageInfo}>
 							<div className={styles.imageInfoItem}>
 								<span>{isSquare ? <SvgCheck /> : <SvgError />}</span>
-								<Typography variant="regularBody" weight="medium">
+								<Typography variant="regularBody" weight="semiBold">
 									Square image
 								</Typography>
 							</div>
 							<div className={styles.imageInfoItem}>
 								<span>{isPngOrSvg ? <SvgCheck /> : <SvgError />}</span>
-								<Typography variant="regularBody" weight="medium">
+								<Typography variant="regularBody" weight="semiBold">
 									PNG or SVG
 								</Typography>
 							</div>
 							<div className={styles.imageInfoItem}>
 								<span>{isSvg || is310px ? <SvgCheck disabled={isSvg} /> : <SvgError />}</span>
-								<Typography variant="regularBody" weight="medium" muted={isSvg}>
+								<Typography variant="regularBody" weight="semiBold" muted={isSvg}>
 									310px or higher
 								</Typography>
 							</div>
@@ -269,7 +269,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							<div className={styles.imageOptions}>
 								<div className={styles.imageInfoItem}>
 									<Checkbox name="pwa" id="pwa" disabled={PWADisabled} onChange={() => setPwa(!pwa)}>
-										<Typography variant="regularBody" weight="medium" muted={PWADisabled}>
+										<Typography variant="regularBody" weight="semiBold" muted={PWADisabled}>
 											PWA compatible
 										</Typography>
 										<Typography variant="footer" weight="semiBold" color="green" muted={PWADisabled || isSvg}>
@@ -280,7 +280,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								</div>
 								<div className={styles.imageInfoItem}>
 									<Checkbox name="dark" id="dark" disabled onChange={() => setDarkMode(!darkMode)}>
-										<Typography variant="regularBody" weight="medium" muted>
+										<Typography variant="regularBody" weight="semiBold" muted>
 											Dark Mode version
 										</Typography>
 										<Typography variant="footer" weight="semiBold" color="green" muted>
