@@ -17,6 +17,10 @@
 .regularBody {
 	font-size: $font-size-regular-body;
 	line-height: $line-height-regular-body;
+
+	@include breakpoint-md {
+		font-size: $font-size-medium-body;
+	}
 }
 
 .mediumBody {
@@ -32,6 +36,10 @@
 .footer {
 	font-size: $font-size-footer;
 	line-height: $line-height-footer;
+
+	@include breakpoint-md {
+		font-size: $font-size-small-body;
+	}
 
 	a {
 		color: inherit;
@@ -52,6 +60,10 @@
 .title {
 	font-size: $font-size-title;
 	line-height: $line-height-title;
+
+	@include breakpoint-md {
+		font-size: $font-size-medium-body;
+	}
 }
 
 .largeTitle {

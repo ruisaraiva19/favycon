@@ -53,7 +53,7 @@ const FavyconInfo = () => {
 					{people.length} people
 				</button>{' '}
 				on their 2020’s worldwide quarantine. Background image from{' '}
-				<a href="https://unsplash.com/photos/bBiuSdck8tU" target="_blank" rel="noopener noreferrer">
+				<a href="https://unsplash.com/photos/3B_NrzTjajc" target="_blank" rel="noopener noreferrer">
 					Unsplash
 				</a>
 				.

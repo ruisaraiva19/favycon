@@ -5,8 +5,14 @@
 		"stylelint-config-css-modules",
 		"stylelint-config-prettier"
 	],
-	"plugins": ["stylelint-prettier"],
+	"plugins": ["stylelint-scss", "stylelint-prettier"],
 	"rules": {
-		"prettier/prettier": true
+		"prettier/prettier": true,
+		"at-rule-no-unknown": [
+			true,
+			{
+				"ignoreAtRules": ["mixin", "include"]
+			}
+		]
 	}
 }

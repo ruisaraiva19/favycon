@@ -1,8 +1,9 @@
 @import '../../styles/variables.scss';
 
 .unchecked {
-	fill: #f7f7f8;
+	fill: #f7f7f7;
 	stroke: #ccc;
+	stroke-width: 1.5px;
 	transition: all 100ms ease-in-out;
 
 	&.disabled {
@@ -13,11 +14,12 @@
 
 :global(.dark-mode) .unchecked {
 	fill: $dark-grey;
-	stroke: $grey-dark;
+	stroke: $darker-black;
+	stroke-width: 1.5px;
 
 	&.disabled {
 		fill: $dark-black;
-		stroke: $dark-grey;
+		stroke: $darker-black;
 	}
 }
 

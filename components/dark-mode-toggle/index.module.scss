@@ -73,18 +73,26 @@
 	.moon {
 		path {
 			fill: #657584;
+
+			@include breakpoint-md {
+				fill: #b1a8a3;
+			}
 		}
 	}
 }
 
 :global(.light-mode) .label {
-	&:hover path {
-		fill: $link;
+	@media (pointer: fine) {
+		&:hover path {
+			fill: $link;
+		}
 	}
 }
 
 :global(.dark-mode) .label {
-	&:hover path {
-		fill: $link-dark;
+	@media (pointer: fine) {
+		&:hover path {
+			fill: $link-dark;
+		}
 	}
 }

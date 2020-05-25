@@ -20,18 +20,10 @@ module.exports = {
 			}
 		}
 
-		config.resolve.alias['react'] = 'preact/compat'
-		config.resolve.alias['react-dom'] = 'preact/compat'
-		config.resolve.alias['react-ssr-prepass'] = 'preact-ssr-prepass'
-
-		// inject Preact DevTools
-		if (dev && !isServer) {
-			const { entry } = config
-			config.entry = () =>
-				entry().then((entries) => {
-					entries['main.js'] = ['preact/debug'].concat(entries['main.js'] || [])
-					return entries
-				})
+		if (!dev) {
+			config.resolve.alias['react'] = 'preact/compat'
+			config.resolve.alias['react-dom'] = 'preact/compat'
+			config.resolve.alias['react-ssr-prepass'] = 'preact-ssr-prepass'
 		}
 
 		return config

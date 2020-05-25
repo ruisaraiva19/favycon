@@ -1,8 +1,7 @@
 import React from 'react'
-import { uniqueId } from 'utils/ids'
 
 const SvgMoon: React.FC<JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>> = (props) => {
-	const idPrefix = uniqueId('svg-')
+	const idPrefix = 'svg-moon-'
 	return (
 		<svg width={32} height={32} viewBox="0 0 32 32" aria-labelledby={`${idPrefix}-title`} {...props}>
 			<title id={`${idPrefix}-title`}>Activate dark mode</title>

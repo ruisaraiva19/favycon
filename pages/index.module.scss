@@ -14,4 +14,9 @@
 	min-height: 100vh;
 	padding: 52px 20px;
 	margin: 0 auto;
+
+	@include breakpoint-md {
+		align-items: stretch;
+		padding: 0;
+	}
 }

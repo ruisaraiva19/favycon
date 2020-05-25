@@ -23,19 +23,23 @@ import { Button } from 'components/button'
 import { SvgCheck } from 'components/svgs/svg-check'
 import { SvgError } from 'components/svgs/svg-error'
 import { Checkbox } from 'components/checkbox'
+import { useToggle } from 'hooks/use-toggle'
+import { useMediaQueryContext } from 'components/media-query-provider'
 
 import styles from './index.module.scss'
+import { isTouchCapable } from 'utils/device'
 
 const Modal = dynamic(() => import('react-modal'))
 const Clipboard = dynamic(() => import('react-clipboard.js'))
 
 type DragAndDropProps = {
 	onFile: (hasFile: boolean) => void
-	onGenerate: (image: File, pwa: boolean) => Promise<ArrayBuffer>
+	onGenerate: (image: File, pwa: boolean, darkMode: boolean) => Promise<ArrayBuffer>
 	onError: (message: string) => void
 }
 
 const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
+	const { isMobile } = useMediaQueryContext()
 	const [imageSizes, setImageSizes] = useState({ width: 0, height: 0 })
 	const [image, setImage] = useState<File>()
 	const [imageBase64, setImageBase64] = useState('')
@@ -48,8 +52,8 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	const [is310px, setIs310px] = useState(false)
 	const [is512px, setIs512px] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
-	const [pwa, setPwa] = useState(false)
-	const [darkMode, setDarkMode] = useState(false)
+	const [pwa, togglePwa] = useToggle(false)
+	const [darkMode, toggleDarkMode] = useToggle(false)
 	const [zipData, setZipData] = useState<ArrayBuffer>()
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [copied, setCopied] = useState(false)
@@ -84,10 +88,11 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 		if (image) {
 			reader.readAsDataURL(image)
 			const matches = /(.+)(\..+)$/.exec(image.name) as RegExpExecArray
-			const name = matches[1].length > 30 ? `${matches[1].slice(0, 30)}..` : matches[1].slice(0, 30)
+			const length = isMobile ? 15 : 30
+			const name = matches[1].length > length ? `${matches[1].slice(0, length)}..` : matches[1].slice(0, length)
 			setImageData({ name, extension: matches[2] })
 		}
-	}, [image, zipData, generateImgFromCanvas])
+	}, [image, zipData, generateImgFromCanvas, isMobile])
 
 	useEffect(() => {
 		if (!image) {
@@ -106,10 +111,10 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	const generateFavicon = async (file: File) => {
 		try {
 			setIsLoading(true)
-			const zip = await onGenerate(file, pwa)
+			const zip = await onGenerate(file, pwa, darkMode)
 			setZipData(zip)
 		} catch (error) {
-			console.log(error)
+			onError(error.message || 'Something went wrong. Please try again.')
 		} finally {
 			setIsLoading(false)
 		}
@@ -165,10 +170,15 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	}
 
 	const [isHover, setIsHover] = useState(false)
+	const isTouch = isTouchCapable()
 
 	return (
-		<div className={styles.root}>
-			<div className={classnames(styles.container, { [styles.loading]: isLoading })}>
+		<div className={classnames(styles.root, { [styles.transparent]: isMobile && !image })}>
+			<div
+				className={classnames(styles.container, {
+					[styles.loading]: isLoading,
+					[styles.transparent]: isMobile && !image,
+				})}>
 				{!image && !zipData && (
 					<>
 						<div
@@ -179,40 +189,54 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							<div {...getRootProps()} className={styles.dropZone}>
 								<input {...getInputProps()} />
 								<div className={styles.imageUpload}>
-									<SvgImageUpload active={isDragActive || isHover} />
+									<SvgImageUpload active={isDragActive || (isHover && !isTouch)} />
 								</div>
 								<Typography
 									variant="regularBody"
 									weight="medium"
 									className={classnames(styles.imageUploadText, { [styles.dragActive]: isDragActive })}>
-									<CSSTransition in={!isDragActive} timeout={200} classNames="collapse" unmountOnExit>
-										<span>Drag &amp;&nbsp;</span>
-									</CSSTransition>
-									<span>{isDragActive ? 'Drop' : 'drop'}</span>
-									<CSSTransition in={!isDragActive} timeout={200} classNames="collapse" unmountOnExit>
-										<span>&nbsp;an</span>
-									</CSSTransition>
-									<span>&nbsp;image file here</span>
-									<CSSTransition in={isDragActive} timeout={200} classNames="collapse" unmountOnExit>
-										<span>...</span>
-									</CSSTransition>
-									<CSSTransition in={!isDragActive} timeout={200} classNames="fade" unmountOnExit>
-										<span>,</span>
-									</CSSTransition>
-									<br />
-									<CSSTransition in={!isDragActive} timeout={200} classNames="fade" unmountOnExit>
-										<span>or click to select a file.</span>
-									</CSSTransition>
+									{isMobile || isTouch ? (
+										<span>
+											Generate all the sizes for your
+											<br />
+											favicon. Tap to upload a file.
+										</span>
+									) : (
+										<>
+											<CSSTransition in={!isDragActive} timeout={200} classNames="collapse" unmountOnExit>
+												<span>Drag &amp;&nbsp;</span>
+											</CSSTransition>
+											<span>{isDragActive ? 'Drop' : 'drop'}</span>
+											<CSSTransition in={!isDragActive} timeout={200} classNames="collapse" unmountOnExit>
+												<span>&nbsp;an</span>
+											</CSSTransition>
+											<span>&nbsp;image file here</span>
+											<CSSTransition in={isDragActive} timeout={200} classNames="collapse" unmountOnExit>
+												<span>...</span>
+											</CSSTransition>
+											<CSSTransition in={!isDragActive} timeout={200} classNames="fade" unmountOnExit>
+												<span>,</span>
+											</CSSTransition>
+											<br />
+											<CSSTransition in={!isDragActive} timeout={200} classNames="fade" unmountOnExit>
+												<span>or click to select a file.</span>
+											</CSSTransition>
+										</>
+									)}
 								</Typography>
 							</div>
 						</div>
-						{/* <button onClick={() => setInProp(true)}>toggle</button> */}
-						<Typography variant="regularBody" weight="medium" className={styles.info}>
-							<SvgInfo /> We recommend a square <strong>PNG</strong> or <strong>SVG</strong> with at least 310px
-						</Typography>
-						<Typography variant="regularBody" weight="medium" className={styles.info}>
-							<SvgInfo /> No data or images are stored
-						</Typography>
+						<div className={styles.dropZoneFooter}>
+							<Typography variant="regularBody" weight="medium" className={styles.info}>
+								<SvgInfo />{' '}
+								<span>
+									We recommend a square <strong>PNG</strong> or <strong>SVG</strong> with at least 310px
+								</span>
+							</Typography>
+							<Typography variant="regularBody" weight="medium" className={styles.info}>
+								<SvgInfo /> No data or images are stored
+							</Typography>
+						</div>
 					</>
 				)}
 				{image && !zipData && (
@@ -268,7 +292,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							</Typography>
 							<div className={styles.imageOptions}>
 								<div className={styles.imageInfoItem}>
-									<Checkbox name="pwa" id="pwa" disabled={PWADisabled} onChange={() => setPwa(!pwa)}>
+									<Checkbox name="pwa" id="pwa" disabled={PWADisabled} onChange={togglePwa}>
 										<Typography variant="regularBody" weight="semiBold" muted={PWADisabled}>
 											PWA compatible
 										</Typography>
@@ -279,12 +303,12 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 									</Checkbox>
 								</div>
 								<div className={styles.imageInfoItem}>
-									<Checkbox name="dark" id="dark" disabled onChange={() => setDarkMode(!darkMode)}>
+									<Checkbox name="dark" id="dark" disabled onChange={toggleDarkMode}>
 										<Typography variant="regularBody" weight="semiBold" muted>
 											Dark Mode version
 										</Typography>
 										<Typography variant="footer" weight="semiBold" color="green" muted>
-											Available soon
+											Coming soon
 										</Typography>
 									</Checkbox>
 								</div>

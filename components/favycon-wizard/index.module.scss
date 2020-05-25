@@ -8,6 +8,11 @@
 	width: 100%;
 	max-width: 540px;
 	padding: 41px 0 0;
+
+	@include breakpoint-md {
+		max-width: 100%;
+		padding: 0;
+	}
 }
 
 .background {
@@ -28,9 +33,21 @@
 		bottom: 0;
 		left: 0;
 		z-index: 0;
-		content: '';
+		content: ' ';
 		background: rgba($black, 0.16);
 		border-radius: 8px;
+	}
+
+	@include breakpoint-md {
+		top: 0;
+		bottom: 0;
+		border-radius: 0;
+		transform: rotate(0);
+
+		&::after {
+			background: rgba($black, 0.56);
+			border-radius: 0;
+		}
 	}
 }
 
@@ -42,11 +59,22 @@
 	width: 185px;
 	height: 109px;
 	opacity: 1;
-	transition: opacity 0.2s ease-in-out;
-	transform: translate(100%, -100%);
+	transition: all 0.2s ease-in-out;
+	transform: translate(160px, -96px);
 
 	&.hide {
 		pointer-events: none;
+		visibility: hidden;
+		opacity: 0;
+	}
+
+	@media screen and (width >= 1280px) {
+		transform: translate(100%, -100%);
+	}
+
+	@include breakpoint-lg {
+		pointer-events: none;
+		visibility: hidden;
 		opacity: 0;
 	}
 }

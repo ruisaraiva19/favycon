@@ -1,5 +1,15 @@
 @import '../../styles/variables.scss';
 
+.circle {
+	opacity: 0;
+	fill: $white;
+	transition: all 0.2s ease;
+
+	@include breakpoint-md {
+		opacity: 0.1;
+	}
+}
+
 .rect {
 	fill: #ccc;
 	transition: all 0.2s ease;
@@ -7,12 +17,20 @@
 	&.active {
 		fill: $link;
 	}
+
+	@include breakpoint-md {
+		fill: $off-white-dark;
+	}
 }
 
 :global(.dark-mode) .rect {
 	fill: #495c70;
 
 	&.active {
+		fill: $off-white-dark;
+	}
+
+	@include breakpoint-md {
 		fill: $off-white-dark;
 	}
 }

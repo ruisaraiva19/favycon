@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { LazyImageFull, ImageState } from 'react-lazy-images'
 import objectFitImages from 'object-fit-images'
+import classNames from 'classnames'
 
 import styles from './index.module.scss'
 
@@ -10,9 +11,18 @@ type LazyImageProps = {
 	srcPlaceholder?: string
 	alt: string
 	aspectRatio: string
+	stretch?: boolean
 } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
-const LazyImage = ({ src, srcRetina = src, srcPlaceholder = src, alt, aspectRatio, ...props }: LazyImageProps) => {
+const LazyImage = ({
+	src,
+	srcRetina = src,
+	srcPlaceholder = src,
+	alt,
+	aspectRatio,
+	stretch = false,
+	...props
+}: LazyImageProps) => {
 	const [widthString, heightString] = aspectRatio.split('/')
 	const width = parseInt(widthString)
 	const height = parseInt(heightString)
@@ -31,7 +41,7 @@ const LazyImage = ({ src, srcRetina = src, srcPlaceholder = src, alt, aspectRati
 				const loaded = imageState === ImageState.LoadSuccess
 				return (
 					<div
-						className={styles.root}
+						className={classNames(styles.root, { [styles.stretch]: stretch })}
 						ref={ref}
 						style={{ paddingBottom: `${(height / width) * 100 + '%'}` }}
 						{...props}>
