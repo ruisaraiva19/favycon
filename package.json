@@ -116,7 +116,7 @@
 		"regenerator-runtime": "0.13.5",
 		"sass": "1.26.5",
 		"sass-loader": "8.0.2",
-		"semantic-release": "17.0.7",
+		"semantic-release": "17.0.8",
 		"stylelint": "13.3.3",
 		"stylelint-config-css-modules": "2.2.0",
 		"stylelint-config-prettier": "8.0.1",
