@@ -30,11 +30,7 @@ const LazyImage = ({ src, srcRetina = src, srcPlaceholder = src, alt, aspectRati
 			{({ imageProps, imageState, ref }) => {
 				const loaded = imageState === ImageState.LoadSuccess
 				return (
-					<div
-						className={styles.root}
-						ref={ref}
-						style={{ paddingBottom: `${(height / width) * 100 + '%'}` }}
-						{...props}>
+					<div className={styles.root} ref={ref} style={{ paddingBottom: `${(height / width) * 100}%` }} {...props}>
 						<img
 							className={styles.placeholder}
 							src={srcPlaceholder}
