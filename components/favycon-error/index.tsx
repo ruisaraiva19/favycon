@@ -17,12 +17,12 @@ const FavyconError = ({ error, clearError }: FavyconErrorProps) => {
 		if (error) {
 			let endTimeout: number
 			setShowError(true)
-			const errorTimeout = setTimeout(() => {
+			const errorTimeout = window.setTimeout(() => {
 				setShowError(false)
-				endTimeout = setTimeout(() => {
+				endTimeout = window.setTimeout(() => {
 					clearError()
-				}, 300) as any
-			}, 5300) as any
+				}, 300)
+			}, 5300)
 			return () => {
 				clearTimeout(errorTimeout)
 				clearTimeout(endTimeout)

@@ -43,7 +43,7 @@ const LazyImage = ({
 					<div
 						className={classNames(styles.root, { [styles.stretch]: stretch })}
 						ref={ref}
-						style={{ paddingBottom: `${(height / width) * 100 + '%'}` }}
+						style={{ paddingBottom: `${(height / width) * 100}%` }}
 						{...props}>
 						<img
 							className={styles.placeholder}
