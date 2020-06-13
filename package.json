@@ -91,7 +91,7 @@
 		"@types/sharp": "0.25.0",
 		"@typescript-eslint/eslint-plugin": "3.1.0",
 		"@typescript-eslint/parser": "3.1.0",
-		"all-contributors-cli": "6.15.0",
+		"all-contributors-cli": "6.16.0",
 		"babel-eslint": "10.1.0",
 		"babel-loader": "8.1.0",
 		"babel-plugin-prismjs": "2.0.1",
