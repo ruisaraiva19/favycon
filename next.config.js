@@ -1,9 +1,5 @@
-require('dotenv').config()
-
-const isProduction = process.env.NODE_ENV === 'production'
-
 module.exports = {
-	webpack(config, { dev, isServer }) {
+	webpack(config, { dev }) {
 		const splitChunks = config.optimization && config.optimization.splitChunks
 		if (splitChunks) {
 			const { cacheGroups } = splitChunks
@@ -29,5 +25,5 @@ module.exports = {
 		return config
 	},
 
-	poweredByHeader: !isProduction,
+	poweredByHeader: process.env.NODE_ENV !== 'production',
 }
