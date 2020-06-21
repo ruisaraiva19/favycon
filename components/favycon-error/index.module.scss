@@ -4,12 +4,28 @@
 	position: absolute;
 	top: 26px;
 	right: 72px;
+	z-index: 10;
 	display: flex;
 	align-items: center;
 	padding: 6px 13px 6px 16px;
 	background: $red;
 	border-radius: 8px;
 	box-shadow: 0 2px 4px rgba($black, 0.12);
+
+	@include breakpoint-md {
+		top: 13px;
+		right: 12px;
+		left: 12px;
+		justify-content: center;
+		max-width: 400px;
+		margin: auto;
+	}
+
+	.content {
+		@include breakpoint-md {
+			font-size: 14px;
+		}
+	}
 
 	svg {
 		margin-left: 13px;
