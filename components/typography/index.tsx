@@ -30,7 +30,7 @@ const Typography = ({ children, variant, weight, color, colorImmutable, tag, mut
 		styles[color],
 		styles[weight],
 		{ [styles.muted]: muted },
-		{ [styles['color-immutable']]: colorImmutable },
+		{ [styles.colorImmutable]: colorImmutable },
 		props.className
 	)
 	const componentType = ['h1'].includes(variant) ? variant : 'p'

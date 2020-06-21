@@ -113,7 +113,7 @@
 	transition: color 0.2s ease;
 }
 
-:global(.dark-mode) .white:not(.color-immutable) {
+:global(.dark-mode) .white:not(.colorImmutable) {
 	color: $black;
 }
 
