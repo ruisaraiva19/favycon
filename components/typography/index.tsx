@@ -18,17 +18,19 @@ type TypographyProps = {
 		| 'largeTitle'
 	weight: 'regular' | 'medium' | 'semiBold' | 'bold' | 'extraBold'
 	color: 'black' | 'gray' | 'white' | 'green'
+	colorImmutable?: boolean
 	tag?: string
 	muted?: boolean
 } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>
 
-const Typography = ({ children, variant, weight, color, tag, muted, ...props }: TypographyProps) => {
+const Typography = ({ children, variant, weight, color, colorImmutable, tag, muted, ...props }: TypographyProps) => {
 	const className = classNames(
 		styles.root,
 		styles[variant],
 		styles[color],
 		styles[weight],
 		{ [styles.muted]: muted },
+		{ [styles['color-immutable']]: colorImmutable },
 		props.className
 	)
 	const componentType = ['h1'].includes(variant) ? variant : 'p'
@@ -40,6 +42,7 @@ Typography.defaultProps = {
 	variant: 'p',
 	weight: 'regular',
 	color: 'black',
+	colorImmutable: false,
 }
 
 export { Typography }
