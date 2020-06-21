@@ -17,6 +17,7 @@
 
 	@include breakpoint-md {
 		align-items: stretch;
+		max-width: 100%;
 		padding: 0;
 	}
 }
