@@ -65,7 +65,7 @@
 		"use-dark-mode": "2.3.1"
 	},
 	"devDependencies": {
-		"@babel/core": "7.10.2",
+		"@babel/core": "7.10.3",
 		"@commitlint/cli": "9.0.1",
 		"@commitlint/config-conventional": "9.0.1",
 		"@storybook/addon-actions": "5.3.19",
