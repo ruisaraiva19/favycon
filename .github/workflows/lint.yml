@@ -4,6 +4,7 @@ on: pull_request
 
 jobs:
   code:
+    name: Lint code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -11,8 +12,12 @@ jobs:
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: "12"
       - name: Install dependencies
-        run: yarn install --frozen-lockfile &> /dev/null
-      - name: Lint
-        run: yarn lint
+        uses: bahmutov/npm-install@v1
+      - name: Lint Types
+        run: yarn lint:types
+      - name: Lint Scripts
+        run: yarn lint:scripts
+      - name: Lint CSS
+        run: yarn lint:css
