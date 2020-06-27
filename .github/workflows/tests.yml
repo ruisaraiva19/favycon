@@ -1,10 +1,10 @@
-name: E2E Tests
+name: Tests
 
 on: pull_request
 
 jobs:
-  test_setup:
-    name: Test setup
+  wait_deploy:
+    name: Wait Vercel Deploy
     runs-on: ubuntu-latest
     outputs:
       preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
@@ -14,16 +14,16 @@ jobs:
         id: waitForVercelPreviewDeployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 60
+          max_timeout: 120
 
   test_e2e:
-    name: Test end-to-end
-    needs: test_setup
+    name: Run Cypress
+    needs: wait_deploy
     runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v2
       - name: Run Cypress
         uses: cypress-io/github-action@v1
         with:
-          config: baseUrl=${{ needs.test_setup.outputs.preview_url }}
+          config: baseUrl=${{ needs.wait_deploy.outputs.preview_url }}
           install: false # We test a live preview URL, no need to install packages
