@@ -4,6 +4,7 @@ on: pull_request
 
 jobs:
   code:
+    name: Lint code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
