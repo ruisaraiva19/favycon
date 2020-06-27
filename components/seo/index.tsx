@@ -19,6 +19,7 @@ const SEO = ({ title, description }: SEOProps) => (
 		<link rel="apple-touch-icon" sizes="144x144" href="/favicon-144x144.png" />
 		<link rel="apple-touch-icon" sizes="152x152" href="/favicon-152x152.png" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png" />
+		<meta name="apple-mobile-web-app-title" content="Favycon" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -36,12 +37,7 @@ const SEO = ({ title, description }: SEOProps) => (
 		<meta property="og:image:type" content="image/png" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content={description} />
-		<meta name="twitter:card" content="summary" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:url" content="https://favycon.app" />
-		<meta name="twitter:image" content="https://favycon.app/share.png?v2" />
+		<meta name="twitter:card" content="summary_large_image" />
 	</Head>
 )
 
