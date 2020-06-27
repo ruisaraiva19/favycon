@@ -1,11 +1,29 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
+const isProd = process.env.NODE_ENV === 'production'
+
 class MyDocument extends Document {
 	render() {
 		return (
 			<Html lang="en">
-				<Head />
+				<Head>
+					{isProd && <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171039315-1" />}
+					{isProd && (
+						<script
+							dangerouslySetInnerHTML={{
+								__html: `
+							<script>
+								window.dataLayer = window.dataLayer || [];
+								function gtag() { dataLayer.push(arguments); }
+								gtag('js', new Date());
+								gtag('config', 'UA-171039315-1', { 'anonymize_ip': true });
+							</script>
+							`,
+							}}
+						/>
+					)}
+				</Head>
 				<body className="preload">
 					<script src="/js/noflash.js" />
 					<Main />
