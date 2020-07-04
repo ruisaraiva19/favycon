@@ -5,6 +5,7 @@ describe('Drag & Drop', () => {
 		beforeEach(() => {
 			cy.viewport(1280, 720)
 			cy.visit('/')
+			cy.wait(100)
 		})
 
 		function dropFile(fixture) {
