@@ -99,6 +99,7 @@
 		"babel-preset-react-app": "9.1.2",
 		"commitizen": "4.1.2",
 		"cypress": "4.9.0",
+		"cypress-file-upload": "4.0.7",
 		"cz-conventional-changelog": "3.2.0",
 		"dotenv": "8.2.0",
 		"eslint": "6.8.0",
