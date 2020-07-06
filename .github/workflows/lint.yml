@@ -15,9 +15,7 @@ jobs:
           node-version: "12"
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
-      - name: Lint Types
-        run: yarn lint:types
       - name: Lint Scripts
         run: yarn lint:scripts
       - name: Lint CSS
-        run: yarn lint:css
+        run: yarn lint:styles
