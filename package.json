@@ -118,7 +118,7 @@
 		"prettier": "2.0.5",
 		"regenerator-runtime": "0.13.5",
 		"sass": "1.26.10",
-		"sass-loader": "9.0.1",
+		"sass-loader": "9.0.2",
 		"semantic-release": "17.1.1",
 		"start-server-and-test": "1.11.0",
 		"stylelint": "13.6.1",
