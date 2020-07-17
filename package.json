@@ -37,7 +37,7 @@
 		"lint:styles": "stylelint ./**/*.{css,scss}",
 		"storybook": "start-storybook -s ./public -p 6006",
 		"storybook:build": "build-storybook -s ./public",
-		"commit": "git-cz",
+		"cm": "git-cz",
 		"e2e": "start-test dev 3000 cy:open",
 		"cy:open": "cypress open"
 	},
