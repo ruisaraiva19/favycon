@@ -89,7 +89,7 @@
 		"@types/react": "16.9.43",
 		"@types/react-modal": "3.10.6",
 		"@types/react-transition-group": "4.4.0",
-		"@types/sharp": "0.25.0",
+		"@types/sharp": "0.25.1",
 		"@typescript-eslint/eslint-plugin": "3.7.0",
 		"@typescript-eslint/parser": "3.7.0",
 		"all-contributors-cli": "6.16.1",
