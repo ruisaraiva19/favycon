@@ -490,6 +490,7 @@
 
 	@include breakpoint-md {
 		flex-direction: column-reverse;
+		padding: 11px 24px 12px 24px;
 		border-top: 1px solid transparent;
 
 		> * {
