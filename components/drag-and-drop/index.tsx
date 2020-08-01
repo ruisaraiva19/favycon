@@ -97,16 +97,20 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	useEffect(() => {
 		if (!image) {
 			return
-		} else if (isPngOrSvg && isSquare) {
+		} else if ((isPngOrSvg && isSquare && is310px) || isSvg) {
 			setTitle('Good to go!')
-		} else if (isSquare && isPngOrSvg && !is310px) {
-			setTitle('Your image is lower than 310px')
-		} else if ((!isSquare && !isPngOrSvg) || (!isSquare && !is310px) || (!isPngOrSvg && !is310px)) {
-			setTitle('Your image has a few issues')
+		} else if (isSquare && isPngOrSvg && !is310px && !isSvg) {
+			setTitle('Your image should be higher than 310px')
+		} else if ((isSquare && !isPngOrSvg && !is310px) || (!isSquare && !isPngOrSvg && is310px)) {
+			setTitle('Your image has a few problems')
+		} else if (isSquare && !isPngOrSvg && is310px) {
+			setTitle('Your image should be in PNG or SVG')
+		} else if (!isSquare && isPngOrSvg && is310px) {
+			setTitle('Your image should be squared')
 		} else {
 			setTitle('Your image is not in a good place')
 		}
-	}, [image, isSquare, is310px, isPngOrSvg])
+	}, [image, isSquare, is310px, isPngOrSvg, isSvg])
 
 	const generateFavicon = async (file: File) => {
 		try {
@@ -186,7 +190,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							onMouseEnter={() => setIsHover(true)}
 							onMouseLeave={() => setIsHover(false)}>
 							<SvgDropZone className={classnames(styles.dashed, { [styles.dragActive]: isDragActive })} />
-							<div {...getRootProps()} className={styles.dropZone}>
+							<div {...getRootProps()} className={styles.dropZone} data-cy="drag-and-drop">
 								<input {...getInputProps()} />
 								<div className={styles.imageUpload}>
 									<SvgImageUpload active={isDragActive || (isHover && !isTouch)} />
@@ -194,7 +198,8 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								<Typography
 									variant="regularBody"
 									weight="medium"
-									className={classnames(styles.imageUploadText, { [styles.dragActive]: isDragActive })}>
+									className={classnames(styles.imageUploadText, { [styles.dragActive]: isDragActive })}
+									data-cy="drag-and-drop-text">
 									{isMobile || isTouch ? (
 										<span>
 											Generate all the sizes for your
@@ -247,7 +252,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								<img src={imageBase64} alt="Favicon preview" />
 							</div>
 							<div className={styles.imagePreviewInfo}>
-								<Typography variant="title" weight="bold" className={styles.filename}>
+								<Typography variant="title" weight="bold" className={styles.filename} data-cy="preview-title">
 									{title}
 								</Typography>
 								<Typography
@@ -256,11 +261,11 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 									color="gray"
 									tag="div"
 									className={styles.filenameWrapper}>
-									<span className={styles.filename}>
+									<span className={styles.filename} data-cy="preview-filename">
 										{imageData.name}
 										{imageData.extension}
 									</span>
-									<span className={styles.fileSize}>
+									<span className={styles.fileSize} data-cy="preview-file-size">
 										({imageSizes.width}x{imageSizes.height})
 									</span>
 								</Typography>
@@ -268,19 +273,21 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 						</div>
 						<div className={styles.imageInfo}>
 							<div className={styles.imageInfoItem}>
-								<span>{isSquare ? <SvgCheck /> : <SvgError />}</span>
+								<span data-cy="preview-square-image">{isSquare ? <SvgCheck /> : <SvgError />}</span>
 								<Typography variant="regularBody" weight="semiBold">
 									Square image
 								</Typography>
 							</div>
 							<div className={styles.imageInfoItem}>
-								<span>{isPngOrSvg ? <SvgCheck /> : <SvgError />}</span>
+								<span data-cy="preview-png-svg-image">{isPngOrSvg ? <SvgCheck /> : <SvgError />}</span>
 								<Typography variant="regularBody" weight="semiBold">
 									PNG or SVG
 								</Typography>
 							</div>
 							<div className={styles.imageInfoItem}>
-								<span>{isSvg || is310px ? <SvgCheck disabled={isSvg} /> : <SvgError />}</span>
+								<span data-cy="preview-310px-image">
+									{isSvg || is310px ? <SvgCheck disabled={isSvg} /> : <SvgError />}
+								</span>
 								<Typography variant="regularBody" weight="semiBold" muted={isSvg}>
 									310px or higher
 								</Typography>
@@ -292,7 +299,12 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							</Typography>
 							<div className={styles.imageOptions}>
 								<div className={styles.imageInfoItem}>
-									<Checkbox name="pwa" id="pwa" disabled={PWADisabled} onChange={togglePwa}>
+									<Checkbox
+										name="pwa"
+										id="pwa"
+										disabled={PWADisabled}
+										onChange={togglePwa}
+										data-cy="preview-pwa-compatible">
 										<Typography variant="regularBody" weight="semiBold" muted={PWADisabled}>
 											PWA compatible
 										</Typography>
@@ -303,7 +315,12 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 									</Checkbox>
 								</div>
 								<div className={styles.imageInfoItem}>
-									<Checkbox name="dark" id="dark" disabled onChange={toggleDarkMode}>
+									<Checkbox
+										name="dark"
+										id="dark"
+										disabled
+										onChange={toggleDarkMode}
+										data-cy="preview-dark-mode-version">
 										<Typography variant="regularBody" weight="semiBold" muted>
 											Dark Mode version
 										</Typography>
