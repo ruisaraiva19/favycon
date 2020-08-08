@@ -98,7 +98,7 @@
 		"babel-plugin-prismjs": "2.0.1",
 		"babel-preset-react-app": "9.1.2",
 		"commitizen": "4.1.2",
-		"cypress": "4.11.0",
+		"cypress": "4.12.1",
 		"cypress-file-upload": "4.0.7",
 		"cz-conventional-changelog": "3.2.0",
 		"dotenv": "8.2.0",
