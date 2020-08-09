@@ -1,6 +1,11 @@
 const withPrefresh = require('@prefresh/next')
 
 module.exports = withPrefresh({
+	experimental: {
+		modern: true,
+		polyfillsOptimization: true,
+	},
+
 	webpack(config, { dev, isServer }) {
 		// Move Preact into the framework chunk instead of duplicating in routes:
 		const splitChunks = config.optimization && config.optimization.splitChunks
