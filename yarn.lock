@@ -2903,10 +2903,10 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.0.tgz#69a23a3ad29caf0097f06eda59b361ee2f0639f6"
   integrity sha1-aaI6OtKcrwCX8G7aWbNh7i8GOfY=
 
-"@types/multer@1.4.3":
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/@types/multer/-/multer-1.4.3.tgz#bdff74b334c38a8ee1de9fbedb5d1d3dbc377422"
-  integrity sha512-tWsKbF5LYtXrJ7eOfI0aLBgEv9B7fnJe1JRXTj5+Z6EMfX0yHVsRFsNGnKyN8Bs0gtDv+JR37xAqsPnALyVTqg==
+"@types/multer@1.4.4":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@types/multer/-/multer-1.4.4.tgz#bb5d9abc410da82726ceca74008bb81813349a88"
+  integrity sha512-wdfkiKBBEMTODNbuF3J+qDDSqJxt50yB9pgDiTcFew7f97Gcc7/sM4HR66ofGgpJPOALWOqKAch4gPyqEXSkeQ==
   dependencies:
     "@types/express" "*"
 
