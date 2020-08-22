@@ -2115,20 +2115,20 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@prefresh/core@^0.8.0":
+"@prefresh/core@^0.8.1":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.8.1.tgz#d4f15d9e3ee9c16bf420405e2b422774e807a594"
   integrity sha512-woho+Ja8w3pxnZwq68MnWzH9ffdidrpJsV6PDTNIsJOpsLYmfCNxqxGsxIqYw40d1yjg4h6HFGbb6Y9lhyTPNA==
 
-"@prefresh/next@0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-0.4.0.tgz#3af0fa50fbbee780eda24e89ee568d74a1b37b05"
-  integrity sha512-14sCiNujIo0LGJJb2dA9buU4E1oHnHUceE852G3OFy3TmNYSHaYpDM/U5vneICcfw/jzI+o6qdIOqQawSkLfwg==
+"@prefresh/next@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-1.0.0.tgz#594a8f87dcc4566d15598150159db36008caf029"
+  integrity sha512-t2RPd43IfzWDqGK8yKtbrYLrnnoSPqUw2EEBaAiQ60U5IVqIMq7g/v4vTy4pBVtDW1SrQDFbjlgrtf+6z9E0cA==
   dependencies:
-    "@prefresh/core" "^0.8.0"
-    "@prefresh/utils" "^0.3.0"
+    "@prefresh/core" "^0.8.1"
+    "@prefresh/utils" "^0.3.1"
 
-"@prefresh/utils@^0.3.0":
+"@prefresh/utils@^0.3.1":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-0.3.1.tgz#f9e1a5e1fa4bc02989980733950e60520f0f9869"
   integrity sha512-9kLzPWN4teeiKuc+Rle3SF/hyx5lzo35X4rHr+kQXnJT+BaEb1ymDWIHGkv85xjnw8+l6I1r1H7JB4BHOMJfmg==
