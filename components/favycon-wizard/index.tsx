@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { LazyImage } from 'components/lazy-image'
-import { useMediaQueryContext } from 'components/media-query-provider'
 
 import styles from './index.module.scss'
 
@@ -21,11 +20,11 @@ const unsplashImageProps = (isMobile: boolean) => ({
 })
 
 const FavyconWizardComponent = ({ children, showDndImage }: FavyconWizardProps) => {
-	const { isMobile } = useMediaQueryContext()
 	return (
 		<div className={styles.root}>
 			<div className={styles.background}>
-				<LazyImage {...unsplashImageProps(isMobile)} />
+				<LazyImage className={styles.mobileBackground} {...unsplashImageProps(true)} />
+				<LazyImage className={styles.desktopBackground} {...unsplashImageProps(false)} />
 			</div>
 			{children}
 			<div className={classnames(styles.image, { [styles.hide]: !showDndImage })}>

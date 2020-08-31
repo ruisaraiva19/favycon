@@ -27,7 +27,6 @@ import { useToggle } from 'hooks/use-toggle'
 import { useMediaQueryContext } from 'components/media-query-provider'
 
 import styles from './index.module.scss'
-import { isTouchCapable } from 'utils/device'
 
 const Modal = dynamic(() => import('react-modal'))
 const Clipboard = dynamic(() => import('react-clipboard.js'))
@@ -174,14 +173,13 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	}
 
 	const [isHover, setIsHover] = useState(false)
-	const isTouch = isTouchCapable()
 
 	return (
-		<div className={classnames(styles.root, { [styles.transparent]: isMobile && !image })}>
+		<div className={classnames(styles.root, { [styles.transparent]: !image })}>
 			<div
 				className={classnames(styles.container, {
 					[styles.loading]: isLoading,
-					[styles.transparent]: isMobile && !image,
+					[styles.transparent]: !image,
 				})}>
 				{!image && !zipData && (
 					<>
@@ -193,41 +191,46 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							<div {...getRootProps()} className={styles.dropZone} data-cy="drag-and-drop">
 								<input {...getInputProps()} />
 								<div className={styles.imageUpload}>
-									<SvgImageUpload active={isDragActive || (isHover && !isTouch)} />
+									<SvgImageUpload active={isDragActive || isHover} />
 								</div>
 								<Typography
 									variant="regularBody"
 									weight="medium"
-									className={classnames(styles.imageUploadText, { [styles.dragActive]: isDragActive })}
+									className={classnames(styles.imageUploadText, styles.mobileUploadText, {
+										[styles.dragActive]: isDragActive,
+									})}
 									data-cy="drag-and-drop-text">
-									{isMobile || isTouch ? (
-										<span>
-											Generate all the sizes for your
-											<br />
-											favicon. Tap to upload a file.
-										</span>
-									) : (
-										<>
-											<CSSTransition in={!isDragActive} timeout={200} classNames="collapse" unmountOnExit>
-												<span>Drag &amp;&nbsp;</span>
-											</CSSTransition>
-											<span>{isDragActive ? 'Drop' : 'drop'}</span>
-											<CSSTransition in={!isDragActive} timeout={200} classNames="collapse" unmountOnExit>
-												<span>&nbsp;an</span>
-											</CSSTransition>
-											<span>&nbsp;image file here</span>
-											<CSSTransition in={isDragActive} timeout={200} classNames="collapse" unmountOnExit>
-												<span>...</span>
-											</CSSTransition>
-											<CSSTransition in={!isDragActive} timeout={200} classNames="fade" unmountOnExit>
-												<span>,</span>
-											</CSSTransition>
-											<br />
-											<CSSTransition in={!isDragActive} timeout={200} classNames="fade" unmountOnExit>
-												<span>or click to select a file.</span>
-											</CSSTransition>
-										</>
-									)}
+									<span>
+										Generate all the sizes for your
+										<br />
+										favicon. Tap to upload a file.
+									</span>
+								</Typography>
+								<Typography
+									variant="regularBody"
+									weight="medium"
+									className={classnames(styles.imageUploadText, styles.desktopUploadText, {
+										[styles.dragActive]: isDragActive,
+									})}
+									data-cy="drag-and-drop-text">
+									<CSSTransition in={!isDragActive} timeout={200} classNames="collapse" unmountOnExit>
+										<span>Drag &amp;&nbsp;</span>
+									</CSSTransition>
+									<span>{isDragActive ? 'Drop' : 'drop'}</span>
+									<CSSTransition in={!isDragActive} timeout={200} classNames="collapse" unmountOnExit>
+										<span>&nbsp;an</span>
+									</CSSTransition>
+									<span>&nbsp;image file here</span>
+									<CSSTransition in={isDragActive} timeout={200} classNames="collapse" unmountOnExit>
+										<span>...</span>
+									</CSSTransition>
+									<CSSTransition in={!isDragActive} timeout={200} classNames="fade" unmountOnExit>
+										<span>,</span>
+									</CSSTransition>
+									<br />
+									<CSSTransition in={!isDragActive} timeout={200} classNames="fade" unmountOnExit>
+										<span>or click to select a file.</span>
+									</CSSTransition>
 								</Typography>
 							</div>
 						</div>

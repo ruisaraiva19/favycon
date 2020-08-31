@@ -7,14 +7,12 @@ import { FavyconInfo } from 'components/favycon-info'
 import { DragAndDrop } from 'components/drag-and-drop'
 import { FavyconError } from 'components/favycon-error'
 import { SEO } from 'components/seo'
-import { useMediaQueryContext } from 'components/media-query-provider'
 
 import styles from './index.module.scss'
 
 NProgress.configure({ minimum: 0.15, speed: 300, trickleSpeed: 150, showSpinner: false })
 
 const Home: NextPage = () => {
-	const { isMobile } = useMediaQueryContext()
 	const [error, setError] = useState('')
 	const [file, setFile] = useState(false)
 	const [fileCounter, setFileCounter] = useState(0)
@@ -61,7 +59,7 @@ const Home: NextPage = () => {
 			/>
 			<main className={styles.main}>
 				<div className={styles.container}>
-					{!isMobile && <FavyconInfo />}
+					<FavyconInfo className={styles.info} />
 					<FavyconWizard showDndImage={!file}>
 						<DragAndDrop key={fileCounter} onFile={setFile} onGenerate={onGenerate} onError={onError} />
 					</FavyconWizard>

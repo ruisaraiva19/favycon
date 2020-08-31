@@ -51,6 +51,18 @@
 	}
 }
 
+.mobileBackground {
+	@include breakpoint-md-up {
+		display: none;
+	}
+}
+
+.desktopBackground {
+	@include breakpoint-md {
+		display: none;
+	}
+}
+
 .image {
 	position: absolute;
 	top: 57px;

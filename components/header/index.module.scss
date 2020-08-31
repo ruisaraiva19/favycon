@@ -21,6 +21,12 @@
 	}
 }
 
+.logo {
+	@include breakpoint-md-up {
+		display: none;
+	}
+}
+
 .item {
 	background: $off-white;
 	border-radius: 16px;

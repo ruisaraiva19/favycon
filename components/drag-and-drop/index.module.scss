@@ -17,7 +17,9 @@
 	}
 
 	&.transparent {
-		background: transparent;
+		@include breakpoint-md {
+			background: transparent;
+		}
 	}
 }
 
@@ -25,7 +27,9 @@
 	background: $dark-black;
 
 	&.transparent {
-		background: transparent;
+		@include breakpoint-md {
+			background: transparent;
+		}
 	}
 }
 
@@ -50,7 +54,9 @@
 	}
 
 	&.transparent {
-		padding: 0;
+		@include breakpoint-md {
+			padding: 0;
+		}
 	}
 }
 
@@ -196,6 +202,22 @@
 		font-weight: 600;
 		line-height: 28px;
 		color: $off-white-dark;
+	}
+
+	&.mobileUploadText {
+		@include breakpoint-md-up {
+			display: none;
+		}
+	}
+
+	&.desktopUploadText {
+		/* smartphones, touchscreens */
+		@media (hover: none) and (pointer: coarse) {
+			display: none;
+		}
+		@include breakpoint-md {
+			display: none;
+		}
 	}
 }
 

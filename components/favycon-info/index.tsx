@@ -34,10 +34,13 @@ const people = [
 	},
 ]
 
-const FavyconInfo = () => {
+const FavyconInfo = ({
+	className,
+	...props
+}: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	return (
-		<div className={styles.root}>
+		<div className={classnames(styles.root, className)} {...props}>
 			<ToolTitle />
 			<Typography variant="largeBody" weight="medium" className={styles.firstParagraph}>
 				A small online tool to help you generate your favicon in all the sizes and formats you need.

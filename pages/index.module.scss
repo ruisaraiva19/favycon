@@ -21,3 +21,9 @@
 		padding: 0;
 	}
 }
+
+.info {
+	@include breakpoint-md {
+		display: none;
+	}
+}
