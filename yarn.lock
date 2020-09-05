@@ -2721,10 +2721,10 @@
   resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-0.8.1.tgz#d4f15d9e3ee9c16bf420405e2b422774e807a594"
   integrity sha512-woho+Ja8w3pxnZwq68MnWzH9ffdidrpJsV6PDTNIsJOpsLYmfCNxqxGsxIqYw40d1yjg4h6HFGbb6Y9lhyTPNA==
 
-"@prefresh/next@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-1.0.0.tgz#594a8f87dcc4566d15598150159db36008caf029"
-  integrity sha512-t2RPd43IfzWDqGK8yKtbrYLrnnoSPqUw2EEBaAiQ60U5IVqIMq7g/v4vTy4pBVtDW1SrQDFbjlgrtf+6z9E0cA==
+"@prefresh/next@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-1.1.0.tgz#b5d0cd5d62d157409e260c4f9f865e4645c90346"
+  integrity sha512-oCFckMeYK36tU7bwkcaIj8L5mnh9pIcCideBGgQk6dksO8nTsvsOT9ElpG85JKEVyGT7AMJhNOomPvfYeJRPwQ==
   dependencies:
     "@prefresh/core" "^0.8.1"
     "@prefresh/utils" "^0.3.1"
