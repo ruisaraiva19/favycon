@@ -26,6 +26,8 @@ jobs:
         uses: cypress-io/github-action@v1
         with:
           config: baseUrl=${{ needs.wait_deploy.outputs.preview_url }}
+          wait-on: ${{ needs.wait_deploy.outputs.preview_url }}
+          wait-on-timeout: 120
       # after the test run completes
       # store videos and any screenshots
       # NOTE: screenshots will be generated only if E2E test failed

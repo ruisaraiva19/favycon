@@ -5,14 +5,14 @@ describe('Drag & Drop', () => {
 		beforeEach(() => {
 			cy.viewport(1280, 720)
 			cy.visit('/')
-			cy.wait(100)
+			cy.wait(200)
 		})
 
 		function dropFile(fixture) {
 			cy.get('[data-cy="drag-and-drop"]').attachFile(fixture, {
 				subjectType: 'drag-n-drop',
 			})
-			cy.wait(10)
+			cy.wait(20)
 		}
 
 		it('Drop 310x310 PNG file', () => {
