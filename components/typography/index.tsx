@@ -8,6 +8,7 @@ type TypographyProps = {
 	children: PropTypes.ReactNodeLike
 	variant:
 		| 'h1'
+		| 'h2'
 		| 'smallBody'
 		| 'regularBody'
 		| 'mediumBody'
@@ -34,7 +35,7 @@ const Typography = ({ children, variant, weight, color, colorImmutable, tag, mut
 		{ [styles.colorImmutable]: colorImmutable },
 		props.className
 	)
-	const componentType = ['h1'].includes(variant) ? variant : 'p'
+	const componentType = ['h1', 'h2'].includes(variant) ? variant : 'p'
 
 	return React.createElement(tag || componentType, { ...props, className }, children)
 }

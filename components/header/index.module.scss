@@ -8,6 +8,11 @@
 	height: 68px;
 	padding: 20px 20px 0 20px;
 	margin: 0 auto;
+
+	@include breakpoint-md {
+		height: 74px;
+		padding: 26px 26px 0 26px;
+	}
 }
 
 .header {
