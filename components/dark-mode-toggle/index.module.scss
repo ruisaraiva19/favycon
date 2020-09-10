@@ -72,11 +72,7 @@
 	.sun,
 	.moon {
 		path {
-			fill: #657584;
-
-			@include breakpoint-md {
-				fill: #b1a8a3;
-			}
+			fill: $grey-dark;
 		}
 	}
 }
