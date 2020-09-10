@@ -16,6 +16,7 @@ type TypographyProps = {
 		| 'superscript'
 		| 'title'
 		| 'largeTitle'
+		| 'extraLargeTitle'
 	weight: 'regular' | 'medium' | 'semiBold' | 'bold' | 'extraBold'
 	color: 'black' | 'gray' | 'white' | 'green'
 	colorImmutable?: boolean

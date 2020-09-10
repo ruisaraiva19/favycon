@@ -411,7 +411,19 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							closeTimeoutMS={200}
 							contentLabel="Code generated">
 							<div className={styles.modalContainer}>
-								<div className={styles.modalHeader}>
+								<div className={classnames(styles.modalHeader, styles.modalHeaderMobile)}>
+									<Typography variant="extraLargeTitle" weight="extraBold" color="white" colorImmutable>
+										Code
+									</Typography>
+									<Button
+										variant="modalClose"
+										color="white"
+										background="bgDarkGray"
+										onClick={() => setIsModalOpen(false)}>
+										Close
+									</Button>
+								</div>
+								<div className={classnames(styles.modalHeader, styles.modalHeaderDesktop)}>
 									<Typography variant="title" weight="bold">
 										Insert the following code in the &lt;head&gt; section of your pages:
 									</Typography>
@@ -427,7 +439,25 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 									</Clipboard>
 								</div>
 								<div className={styles.modalCode}>
+									<Typography
+										variant="title"
+										weight="bold"
+										color="white"
+										colorImmutable
+										className={styles.modalCodeTitle}>
+										Insert the following code in the &lt;head&gt; section of your pages:
+									</Typography>
 									<CodeHighlight template={headTemplate(undefined, isSvg, pwa)} />
+									<Clipboard
+										component="div"
+										data-clipboard-text={headTemplate(undefined, isSvg, pwa)}
+										onSuccess={onCopy}>
+										<div className={classnames(styles.copyWrapper)}>
+											<Button color="white" background="bgLink">
+												{copied ? 'Copied!' : 'Copy code'}
+											</Button>
+										</div>
+									</Clipboard>
 								</div>
 							</div>
 						</Modal>

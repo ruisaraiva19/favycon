@@ -68,6 +68,14 @@
 	}
 }
 
+.modalClose {
+	composes: base;
+	padding: 5px 16px;
+	background-color: $off-white;
+	border: 1px solid $light-grey;
+	border-radius: 18px;
+}
+
 .regularTransparent {
 	composes: base;
 	padding: 0;
@@ -168,5 +176,15 @@
 	&:hover {
 		background: $green-hover;
 		border-color: $green-hover;
+	}
+}
+
+.bgDarkGray {
+	background: $dark-grey;
+	border-color: $dark-grey;
+
+	&:hover {
+		background: $darker-grey;
+		border-color: $darker-grey;
 	}
 }

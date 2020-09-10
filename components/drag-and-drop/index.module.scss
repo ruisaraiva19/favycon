@@ -571,6 +571,10 @@
 	max-width: 730px;
 	height: 100%;
 	margin: 0 auto;
+
+	@include breakpoint-md {
+		padding-top: 20px;
+	}
 }
 
 .modalHeader {
@@ -580,13 +584,23 @@
 	margin-bottom: 10px;
 }
 
-.modalCode {
-	height: 100%;
-	max-height: 488px;
-	padding: 28px;
-	color: $white;
-	background: $darker-grey;
-	border-radius: 8px;
+.modalHeaderMobile {
+	display: none;
+	padding: 36px 32px 8px;
+	margin-bottom: 0;
+
+	@include breakpoint-md {
+		display: flex;
+		background: $dark-black;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+}
+
+.modalHeaderDesktop {
+	@include breakpoint-md {
+		display: none;
+	}
 }
 
 .overlay {
@@ -610,8 +624,8 @@
 	width: 100%;
 	max-width: 730px;
 	height: 100%;
-	max-height: 536px;
-	padding: 0;
+	max-height: 538px;
+	padding: 2px 0 0;
 	overflow: auto;
 	background: transparent;
 	border: none;
@@ -619,6 +633,11 @@
 	outline: none;
 	transform: translate(-50%, -50%);
 	-webkit-overflow-scrolling: touch;
+
+	@include breakpoint-md {
+		max-height: 100vh;
+		padding: 0;
+	}
 }
 
 .copyWrapper {
@@ -647,4 +666,74 @@
 
 :global(.dark-mode) .copyWrapper::before {
 	color: $off-white-dark;
+}
+
+.modalCode {
+	position: relative;
+	height: 100%;
+	max-height: 488px;
+	padding: 28px;
+	color: $white;
+	background: $dark-black;
+	border-radius: 8px;
+
+	@include breakpoint-md {
+		max-height: calc(100% - 84px);
+		border-radius: 0;
+	}
+
+	&::before {
+		z-index: 2;
+		@include breakpoint-md {
+			position: absolute;
+			right: -1px;
+			bottom: 28px;
+			left: 0;
+			height: 136px;
+			content: '';
+			background: linear-gradient(to bottom, rgba($dark-black, 0), rgba($dark-black, 1));
+		}
+	}
+
+	.copyWrapper {
+		z-index: 3;
+		display: none;
+
+		@include breakpoint-md {
+			position: absolute;
+			right: 24px;
+			bottom: 80px;
+			left: 24px;
+			display: block;
+
+			button {
+				width: 100%;
+			}
+		}
+	}
+
+	pre {
+		position: relative;
+		z-index: 1;
+
+		@include breakpoint-md {
+			max-height: calc(100% - 68px);
+			padding-bottom: 104px;
+		}
+	}
+
+	pre code {
+		@include breakpoint-md {
+			white-space: pre-wrap;
+		}
+	}
+}
+
+.modalCodeTitle {
+	display: none;
+
+	@include breakpoint-md {
+		display: block;
+		margin-bottom: 20px;
+	}
 }

@@ -6,10 +6,10 @@ import styles from './index.module.scss'
 
 type ButtonProps = {
 	children: PropTypes.ReactNodeLike
-	variant: 'primary' | 'transparent' | 'regularTransparent'
+	variant: 'primary' | 'transparent' | 'regularTransparent' | 'modalClose'
 	weight: 'regular' | 'medium' | 'semiBold' | 'bold'
 	color: 'black' | 'gray' | 'white' | 'link'
-	background: 'bgLink' | 'bgGreen'
+	background: 'bgLink' | 'bgGreen' | 'bgDarkGray'
 }
 
 const Button = ({
