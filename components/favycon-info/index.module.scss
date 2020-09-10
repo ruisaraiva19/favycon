@@ -288,14 +288,43 @@
 	svg {
 		margin-right: 2px;
 	}
+
+	&.personGithub {
+		color: $black;
+
+		p {
+			color: $black;
+
+			&:hover {
+				color: darken($black, 15);
+			}
+		}
+
+		svg {
+			margin-right: 4px;
+		}
+	}
 }
 
+/* stylelint-disable-next-line */
 :global(.dark-mode) .personTwitter p {
 	color: #55acee;
 
 	&:hover {
 		color: $off-white-dark;
 	}
+}
+
+:global(.dark-mode) .personTwitter.personGithub p {
+	color: $white;
+
+	&:hover {
+		color: $off-white-dark;
+	}
+}
+
+:global(.dark-mode) .personTwitter.personGithub p svg path {
+	fill: $white;
 }
 
 .modalFooter {

@@ -5,6 +5,7 @@ import { Typography } from 'components/typography'
 import { ToolTitle } from 'components/tool-title'
 import { LazyImage } from 'components/lazy-image'
 import { SvgTwitter } from 'components/svgs/svg-twitter'
+import { SvgGithub } from 'components/svgs/svg-github'
 
 import styles from './index.module.scss'
 import { SvgFavycon } from 'components/svgs/svg-favycon'
@@ -17,21 +18,31 @@ const people = [
 		screenName: 'aboutaugusto',
 		name: 'Augusto Lopes',
 		role: 'Product Designer',
+		social: 'twitter',
 	},
 	{
 		screenName: 'rgllm',
 		name: 'Rogério Moreira',
 		role: 'Front-End Developer',
+		social: 'twitter',
 	},
 	{
 		screenName: 'ruisaraiva19',
 		name: 'Rui Saraiva',
 		role: 'Full-Stack Developer',
+		social: 'twitter',
 	},
 	{
 		screenName: 'aNyTh1nGeDuArDo',
 		name: 'Eduardo Pinto',
 		role: 'Front-End Developer',
+		social: 'twitter',
+	},
+	{
+		screenName: 'miguellteixeira',
+		name: 'Miguel Teixeira',
+		role: 'Full-Stack Developer',
+		social: 'github',
 	},
 ]
 
@@ -133,15 +144,27 @@ const FavyconInfo = ({
 										<Typography variant="regularBody" weight="medium" className={styles.personRole}>
 											{person.role}
 										</Typography>
-										<a
-											href={`https://twitter.com/${person.screenName}`}
-											className={styles.personTwitter}
-											target="_blank"
-											rel="noopener noreferrer">
-											<Typography variant="footer" weight="semiBold">
-												<SvgTwitter /> {person.screenName}
-											</Typography>
-										</a>
+										{person.social === 'twitter' ? (
+											<a
+												href={`https://twitter.com/${person.screenName}`}
+												className={styles.personTwitter}
+												target="_blank"
+												rel="noopener noreferrer">
+												<Typography variant="footer" weight="semiBold">
+													<SvgTwitter /> {person.screenName}
+												</Typography>
+											</a>
+										) : (
+											<a
+												href={`https://github.com/${person.screenName}`}
+												className={classnames(styles.personTwitter, styles.personGithub)}
+												target="_blank"
+												rel="noopener noreferrer">
+												<Typography variant="footer" weight="semiBold">
+													<SvgGithub /> {person.screenName}
+												</Typography>
+											</a>
+										)}
 									</div>
 								</div>
 							))}
