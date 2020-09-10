@@ -51,6 +51,16 @@
         "code",
         "review"
       ]
+    },
+    {
+      "login": "miguellteixeira",
+      "name": "Miguel Teixeira",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/17954325?v=4",
+      "profile": "https://github.com/miguellteixeira",
+      "contributions": [
+        "code",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7

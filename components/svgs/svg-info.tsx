@@ -1,10 +1,9 @@
 import React from 'react'
-import { uniqueId } from 'utils/ids'
 
 import styles from './svg-info.module.scss'
 
 const SvgInfo: React.FC<JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>> = (props) => {
-	const idPrefix = uniqueId('svg-')
+	const idPrefix = 'svg-info-'
 	return (
 		<svg width={20} height={20} viewBox="0 0 20 20" aria-labelledby={`${idPrefix}-title`} {...props}>
 			<title id={`${idPrefix}-title`}>Info</title>

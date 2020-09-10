@@ -4,10 +4,15 @@ import { SvgFavycon } from 'components/svgs/svg-favycon'
 
 import styles from './index.module.scss'
 
-const ToolTitle = () => (
+type ToolTitleProps = {
+	hideLogo?: boolean
+	small?: boolean
+}
+
+const ToolTitle = ({ hideLogo = false, small = false }: ToolTitleProps) => (
 	<div className={styles.root}>
-		<SvgFavycon />
-		<Typography variant="h1" weight="extraBold" color="black">
+		{!hideLogo && <SvgFavycon />}
+		<Typography variant={small ? 'h2' : 'h1'} weight="extraBold" color="black">
 			Favycon
 		</Typography>
 		<Typography variant="superscript" tag="span" weight="bold" color="gray">

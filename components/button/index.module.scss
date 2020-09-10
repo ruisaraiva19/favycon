@@ -10,18 +10,24 @@
 	border-radius: 4px;
 	transition: all 0.2s ease;
 
+	@include breakpoint-md {
+		padding: 9px 12px;
+	}
+
 	&:hover,
 	&:focus,
 	&:active {
 		outline: none;
 	}
 
-	&:hover {
-		transform: translate3d(0, -2px, 0);
-	}
+	@media (pointer: fine) {
+		&:hover {
+			transform: translate3d(0, -2px, 0);
+		}
 
-	&:active {
-		transform: translate3d(0, 0, 0);
+		&:active {
+			transform: translate3d(0, 0, 0);
+		}
 	}
 }
 
@@ -52,14 +58,34 @@
 	padding: 5px 0;
 	background: transparent;
 	border: 1px solid transparent;
+
+	@include breakpoint-md {
+		padding: 9px 0;
+	}
+}
+
+:global(.dark-mode) .transparent {
+	@include breakpoint-md {
+		background: $dark-grey;
+	}
+}
+
+.modalClose {
+	composes: base;
+	padding: 5px 16px;
+	background-color: $off-white;
+	border: 1px solid $light-grey;
+	border-radius: 18px;
 }
 
 .regularTransparent {
-	composes: transparent;
+	composes: base;
 	padding: 0;
 	font-size: $font-size-regular-body;
 	line-height: $line-height-regular-body;
 	text-decoration: none;
+	background: transparent;
+	border: 1px solid transparent;
 	border: 0;
 }
 
@@ -89,6 +115,10 @@
 
 :global(.dark-mode) .gray {
 	color: $grey-dark;
+
+	@include breakpoint-md {
+		color: $off-white-dark;
+	}
 }
 
 .white {
@@ -148,5 +178,15 @@
 	&:hover {
 		background: $green-hover;
 		border-color: $green-hover;
+	}
+}
+
+.bgDarkGray {
+	background: $dark-grey;
+	border-color: $dark-grey;
+
+	&:hover {
+		background: $darker-grey;
+		border-color: $darker-grey;
 	}
 }

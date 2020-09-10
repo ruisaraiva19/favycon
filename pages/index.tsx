@@ -29,16 +29,20 @@ const Home: NextPage = () => {
 		setError(error)
 	}
 
-	const onGenerate = async (file: File, pwa: boolean) => {
+	const onGenerate = async (file: File, pwa: boolean, dark: boolean) => {
 		try {
 			NProgress.start()
 			const formData = new FormData()
 			formData.append('icon', file)
 			formData.append('pwa', pwa ? '1' : '0')
+			formData.append('dark', dark ? '1' : '0')
 			const response = await fetch('/api/favycon', {
 				method: 'POST',
 				body: formData,
 			})
+			if (response.status >= 300) {
+				throw new Error(await response.text())
+			}
 			return await response.arrayBuffer()
 		} catch (error) {
 			throw error
@@ -55,12 +59,12 @@ const Home: NextPage = () => {
 			/>
 			<main className={styles.main}>
 				<div className={styles.container}>
-					<FavyconInfo />
+					<FavyconInfo className={styles.info} />
 					<FavyconWizard showDndImage={!file}>
 						<DragAndDrop key={fileCounter} onFile={setFile} onGenerate={onGenerate} onError={onError} />
 					</FavyconWizard>
 				</div>
-				<FavyconError key={errorCounter} error={error} clearError={() => onError('')} />
+				<FavyconError key={errorCounter} error={error} clearError={() => setError('')} />
 			</main>
 		</BaseLayout>
 	)

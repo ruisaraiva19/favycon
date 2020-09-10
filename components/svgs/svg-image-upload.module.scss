@@ -1,11 +1,53 @@
 @import '../../styles/variables.scss';
 
+.circle {
+	opacity: 0;
+	fill: $white;
+	transition: all 0.2s ease;
+
+	@include breakpoint-md {
+		opacity: 0.1;
+	}
+}
+
 .rect {
 	fill: #ccc;
 	transition: all 0.2s ease;
 
+	&:nth-of-type(1) {
+		y: 20px;
+		height: 48px;
+	}
+
+	&:nth-of-type(2) {
+		x: 20px;
+		width: 48px;
+	}
+
 	&.active {
-		fill: $link;
+		@include breakpoint-md-up {
+			fill: $link;
+		}
+
+		&:nth-of-type(1) {
+			/* mouse, touch pad */
+			@media (hover: hover) and (pointer: fine) {
+				y: 16px;
+				height: 56px;
+			}
+		}
+
+		&:nth-of-type(2) {
+			/* mouse, touch pad */
+			@media (hover: hover) and (pointer: fine) {
+				x: 16px;
+				width: 56px;
+			}
+		}
+	}
+
+	@include breakpoint-md {
+		fill: $off-white-dark;
 	}
 }
 
@@ -13,6 +55,10 @@
 	fill: #495c70;
 
 	&.active {
+		fill: $off-white-dark;
+	}
+
+	@include breakpoint-md {
 		fill: $off-white-dark;
 	}
 }

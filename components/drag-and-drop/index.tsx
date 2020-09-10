@@ -23,6 +23,8 @@ import { Button } from 'components/button'
 import { SvgCheck } from 'components/svgs/svg-check'
 import { SvgError } from 'components/svgs/svg-error'
 import { Checkbox } from 'components/checkbox'
+import { useToggle } from 'hooks/use-toggle'
+import { useMediaQueryContext } from 'components/media-query-provider'
 
 import styles from './index.module.scss'
 
@@ -31,11 +33,12 @@ const Clipboard = dynamic(() => import('react-clipboard.js'))
 
 type DragAndDropProps = {
 	onFile: (hasFile: boolean) => void
-	onGenerate: (image: File, pwa: boolean) => Promise<ArrayBuffer>
+	onGenerate: (image: File, pwa: boolean, darkMode: boolean) => Promise<ArrayBuffer>
 	onError: (message: string) => void
 }
 
 const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
+	const { isMobile } = useMediaQueryContext()
 	const [imageSizes, setImageSizes] = useState({ width: 0, height: 0 })
 	const [image, setImage] = useState<File>()
 	const [imageBase64, setImageBase64] = useState('')
@@ -48,8 +51,8 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	const [is310px, setIs310px] = useState(false)
 	const [is512px, setIs512px] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
-	const [pwa, setPwa] = useState(false)
-	const [darkMode, setDarkMode] = useState(false)
+	const [pwa, togglePwa] = useToggle(false)
+	const [darkMode, toggleDarkMode] = useToggle(false)
 	const [zipData, setZipData] = useState<ArrayBuffer>()
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [copied, setCopied] = useState(false)
@@ -84,10 +87,11 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 		if (image) {
 			reader.readAsDataURL(image)
 			const matches = /(.+)(\..+)$/.exec(image.name) as RegExpExecArray
-			const name = matches[1].length > 30 ? `${matches[1].slice(0, 30)}..` : matches[1].slice(0, 30)
+			const length = isMobile ? 15 : 30
+			const name = matches[1].length > length ? `${matches[1].slice(0, length)}..` : matches[1].slice(0, length)
 			setImageData({ name, extension: matches[2] })
 		}
-	}, [image, zipData, generateImgFromCanvas])
+	}, [image, zipData, generateImgFromCanvas, isMobile])
 
 	useEffect(() => {
 		if (!image) {
@@ -110,10 +114,10 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	const generateFavicon = async (file: File) => {
 		try {
 			setIsLoading(true)
-			const zip = await onGenerate(file, pwa)
+			const zip = await onGenerate(file, pwa, darkMode)
 			setZipData(zip)
 		} catch (error) {
-			console.log(error)
+			onError(error.message || 'Something went wrong. Please try again.')
 		} finally {
 			setIsLoading(false)
 		}
@@ -171,8 +175,12 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	const [isHover, setIsHover] = useState(false)
 
 	return (
-		<div className={styles.root}>
-			<div className={classnames(styles.container, { [styles.loading]: isLoading })}>
+		<div className={classnames(styles.root, { [styles.transparent]: !image })}>
+			<div
+				className={classnames(styles.container, {
+					[styles.loading]: isLoading,
+					[styles.transparent]: !image,
+				})}>
 				{!image && !zipData && (
 					<>
 						<div
@@ -188,7 +196,22 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								<Typography
 									variant="regularBody"
 									weight="medium"
-									className={classnames(styles.imageUploadText, { [styles.dragActive]: isDragActive })}
+									className={classnames(styles.imageUploadText, styles.mobileUploadText, {
+										[styles.dragActive]: isDragActive,
+									})}
+									data-cy="drag-and-drop-text">
+									<span>
+										Generate all the sizes for your
+										<br />
+										favicon. Tap to upload a file.
+									</span>
+								</Typography>
+								<Typography
+									variant="regularBody"
+									weight="medium"
+									className={classnames(styles.imageUploadText, styles.desktopUploadText, {
+										[styles.dragActive]: isDragActive,
+									})}
 									data-cy="drag-and-drop-text">
 									<CSSTransition in={!isDragActive} timeout={200} classNames="collapse" unmountOnExit>
 										<span>Drag &amp;&nbsp;</span>
@@ -211,13 +234,17 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								</Typography>
 							</div>
 						</div>
-						{/* <button onClick={() => setInProp(true)}>toggle</button> */}
-						<Typography variant="regularBody" weight="medium" className={styles.info}>
-							<SvgInfo /> We recommend a square <strong>PNG</strong> or <strong>SVG</strong> with at least 310px
-						</Typography>
-						<Typography variant="regularBody" weight="medium" className={styles.info}>
-							<SvgInfo /> No data or images are stored
-						</Typography>
+						<div className={styles.dropZoneFooter}>
+							<Typography variant="regularBody" weight="medium" className={styles.info}>
+								<SvgInfo />{' '}
+								<span>
+									We recommend a square <strong>PNG</strong> or <strong>SVG</strong> with at least 310px
+								</span>
+							</Typography>
+							<Typography variant="regularBody" weight="medium" className={styles.info}>
+								<SvgInfo /> No data or images are stored
+							</Typography>
+						</div>
 					</>
 				)}
 				{image && !zipData && (
@@ -279,7 +306,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 										name="pwa"
 										id="pwa"
 										disabled={PWADisabled}
-										onChange={() => setPwa(!pwa)}
+										onChange={togglePwa}
 										data-cy="preview-pwa-compatible">
 										<Typography variant="regularBody" weight="semiBold" muted={PWADisabled}>
 											PWA compatible
@@ -295,13 +322,13 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 										name="dark"
 										id="dark"
 										disabled
-										onChange={() => setDarkMode(!darkMode)}
+										onChange={toggleDarkMode}
 										data-cy="preview-dark-mode-version">
 										<Typography variant="regularBody" weight="semiBold" muted>
 											Dark Mode version
 										</Typography>
 										<Typography variant="footer" weight="semiBold" color="green" muted>
-											Available soon
+											Coming soon
 										</Typography>
 									</Checkbox>
 								</div>
@@ -384,7 +411,19 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							closeTimeoutMS={200}
 							contentLabel="Code generated">
 							<div className={styles.modalContainer}>
-								<div className={styles.modalHeader}>
+								<div className={classnames(styles.modalHeader, styles.modalHeaderMobile)}>
+									<Typography variant="extraLargeTitle" weight="extraBold" color="white" colorImmutable>
+										Code
+									</Typography>
+									<Button
+										variant="modalClose"
+										color="white"
+										background="bgDarkGray"
+										onClick={() => setIsModalOpen(false)}>
+										Close
+									</Button>
+								</div>
+								<div className={classnames(styles.modalHeader, styles.modalHeaderDesktop)}>
 									<Typography variant="title" weight="bold">
 										Insert the following code in the &lt;head&gt; section of your pages:
 									</Typography>
@@ -400,7 +439,25 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 									</Clipboard>
 								</div>
 								<div className={styles.modalCode}>
+									<Typography
+										variant="title"
+										weight="bold"
+										color="white"
+										colorImmutable
+										className={styles.modalCodeTitle}>
+										Insert the following code in the &lt;head&gt; section of your pages:
+									</Typography>
 									<CodeHighlight template={headTemplate(undefined, isSvg, pwa)} />
+									<Clipboard
+										component="div"
+										data-clipboard-text={headTemplate(undefined, isSvg, pwa)}
+										onSuccess={onCopy}>
+										<div className={classnames(styles.copyWrapper)}>
+											<Button color="white" background="bgLink">
+												{copied ? 'Copied!' : 'Copy code'}
+											</Button>
+										</div>
+									</Clipboard>
 								</div>
 							</div>
 						</Modal>

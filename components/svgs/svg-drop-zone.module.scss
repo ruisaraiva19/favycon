@@ -3,6 +3,10 @@
 .rect {
 	stroke: #ccc;
 	transition: stroke 0.2s ease;
+
+	@include breakpoint-md {
+		stroke-width: 0;
+	}
 }
 
 :global(.dark-mode) .rect {
