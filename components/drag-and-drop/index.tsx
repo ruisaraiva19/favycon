@@ -1,9 +1,11 @@
 import dynamic from 'next/dynamic'
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import classnames from 'classnames'
 import { useDropzone, FileRejection } from 'react-dropzone'
 import { CSSTransition } from 'react-transition-group'
+import { useDrag } from 'react-use-gesture'
 import { headTemplate } from 'utils/favicon'
+import { isTouchCapable } from 'utils/device'
 import { Typography } from 'components/typography'
 import { CodeHighlight } from 'components/code-highlight'
 import { SvgDropZone } from 'components/svgs/svg-drop-zone'
@@ -55,6 +57,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	const [darkMode, toggleDarkMode] = useToggle(false)
 	const [zipData, setZipData] = useState<ArrayBuffer>()
 	const [isModalOpen, setIsModalOpen] = useState(false)
+	const modalBodyRef = useRef<HTMLPreElement>(null)
 	const [copied, setCopied] = useState(false)
 	const PWADisabled = !isSvg && !is512px
 	let sizesCount = 16
@@ -64,6 +67,22 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	if (pwa) {
 		sizesCount += 3
 	}
+
+	const bind = useDrag(
+		(state) => {
+			const {
+				swipe, // [swipeX, swipeY] 0 if no swipe detected, -1 or 1 otherwise
+			} = state
+			const isSwipeDown = swipe[1] === 1
+			if (isSwipeDown && modalBodyRef.current?.scrollTop === 0) {
+				setIsModalOpen(false)
+			}
+		},
+		{
+			enabled: isTouchCapable(),
+			filterTaps: true,
+		}
+	)
 
 	const generateImgFromCanvas = useCallback(() => {
 		const canvas = document.createElement('canvas')
@@ -402,67 +421,52 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								Download Favicon
 							</Button>
 						</div>
-						<Modal
-							ariaHideApp={false}
-							isOpen={isModalOpen}
-							onRequestClose={() => setIsModalOpen(false)}
-							className={styles.content}
-							overlayClassName={styles.overlay}
-							closeTimeoutMS={200}
-							contentLabel="Code generated">
-							<div className={styles.modalContainer}>
-								<div className={classnames(styles.modalHeader, styles.modalHeaderMobile)}>
-									<Typography variant="extraLargeTitle" weight="extraBold" color="white" colorImmutable>
-										Code
-									</Typography>
-									<Button
-										variant="modalClose"
-										color="white"
-										background="bgDarkGray"
-										onClick={() => setIsModalOpen(false)}>
-										Close
-									</Button>
-								</div>
-								<div className={classnames(styles.modalHeader, styles.modalHeaderDesktop)}>
-									<Typography variant="title" weight="bold">
-										Insert the following code in the &lt;head&gt; section of your pages:
-									</Typography>
-									<Clipboard
-										component="div"
-										data-clipboard-text={headTemplate(undefined, isSvg, pwa)}
-										onSuccess={onCopy}>
-										<div className={classnames(styles.copyWrapper, { [styles.copied]: copied })}>
-											<Button color="white" background="bgLink">
-												Copy code
-											</Button>
-										</div>
-									</Clipboard>
-								</div>
-								<div className={styles.modalCode}>
-									<Typography
-										variant="title"
-										weight="bold"
-										color="white"
-										colorImmutable
-										className={styles.modalCodeTitle}>
-										Insert the following code in the &lt;head&gt; section of your pages:
-									</Typography>
-									<CodeHighlight template={headTemplate(undefined, isSvg, pwa)} />
-									<Clipboard
-										component="div"
-										data-clipboard-text={headTemplate(undefined, isSvg, pwa)}
-										onSuccess={onCopy}>
-										<div className={classnames(styles.copyWrapper)}>
-											<Button color="white" background="bgLink">
-												{copied ? 'Copied!' : 'Copy code'}
-											</Button>
-										</div>
-									</Clipboard>
-								</div>
-							</div>
-						</Modal>
 					</>
 				)}
+				<Modal
+					ariaHideApp={false}
+					isOpen={isModalOpen}
+					onRequestClose={() => setIsModalOpen(false)}
+					className={styles.content}
+					overlayClassName={styles.overlay}
+					closeTimeoutMS={200}
+					contentLabel="Code generated">
+					<div className={styles.modalContainer} {...bind()}>
+						<div className={classnames(styles.modalHeader, styles.modalHeaderMobile)}>
+							<Typography variant="extraLargeTitle" weight="extraBold" color="white" colorImmutable>
+								Code
+							</Typography>
+							<Button variant="modalClose" color="white" background="bgDarkGray" onClick={() => setIsModalOpen(false)}>
+								Close
+							</Button>
+						</div>
+						<div className={classnames(styles.modalHeader, styles.modalHeaderDesktop)}>
+							<Typography variant="title" weight="bold">
+								Insert the following code in the &lt;head&gt; section of your pages:
+							</Typography>
+							<Clipboard component="div" data-clipboard-text={headTemplate(undefined, isSvg, pwa)} onSuccess={onCopy}>
+								<div className={classnames(styles.copyWrapper, { [styles.copied]: copied })}>
+									<Button color="white" background="bgLink">
+										Copy code
+									</Button>
+								</div>
+							</Clipboard>
+						</div>
+						<div className={styles.modalCode}>
+							<Typography variant="title" weight="bold" color="white" colorImmutable className={styles.modalCodeTitle}>
+								Insert the following code in the &lt;head&gt; section of your pages:
+							</Typography>
+							<CodeHighlight ref={modalBodyRef} template={headTemplate(undefined, isSvg, pwa)} />
+							<Clipboard component="div" data-clipboard-text={headTemplate(undefined, isSvg, pwa)} onSuccess={onCopy}>
+								<div className={classnames(styles.copyWrapper)}>
+									<Button color="white" background="bgLink">
+										{copied ? 'Copied!' : 'Copy code'}
+									</Button>
+								</div>
+							</Clipboard>
+						</div>
+					</div>
+				</Modal>
 			</div>
 		</div>
 	)

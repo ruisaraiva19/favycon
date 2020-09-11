@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import classnames from 'classnames'
+import { useDrag } from 'react-use-gesture'
 import { Typography } from 'components/typography'
 import { ToolTitle } from 'components/tool-title'
 import { LazyImage } from 'components/lazy-image'
@@ -10,6 +11,7 @@ import { SvgGithub } from 'components/svgs/svg-github'
 import styles from './index.module.scss'
 import { SvgFavycon } from 'components/svgs/svg-favycon'
 import { Button } from 'components/button'
+import { isTouchCapable } from 'utils/device'
 
 const Modal = dynamic(() => import('react-modal'))
 
@@ -51,6 +53,24 @@ const FavyconInfo = ({
 	...props
 }: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
 	const [isModalOpen, setIsModalOpen] = useState(false)
+	const modalBodyRef = useRef<HTMLDivElement>(null)
+
+	const bind = useDrag(
+		(state) => {
+			const {
+				swipe, // [swipeX, swipeY] 0 if no swipe detected, -1 or 1 otherwise
+			} = state
+			const isSwipeDown = swipe[1] === 1
+			if (isSwipeDown && modalBodyRef.current?.scrollTop === 0) {
+				setIsModalOpen(false)
+			}
+		},
+		{
+			enabled: isTouchCapable(),
+			filterTaps: true,
+		}
+	)
+
 	return (
 		<div className={classnames(styles.root, className)} {...props}>
 			<div className={styles.bodyMobile}>
@@ -88,7 +108,7 @@ const FavyconInfo = ({
 				overlayClassName={styles.overlay}
 				closeTimeoutMS={200}
 				contentLabel="About Us">
-				<div className={styles.modalContainer}>
+				<div className={styles.modalContainer} {...bind()}>
 					<div className={styles.modalHeaderMobile}>
 						<div className={styles.modalHeaderTop}>
 							<SvgFavycon className={styles.logoMobile} />
@@ -97,7 +117,7 @@ const FavyconInfo = ({
 							</Button>
 						</div>
 					</div>
-					<div className={styles.modalBodyScroll}>
+					<div ref={modalBodyRef} className={styles.modalBodyScroll}>
 						<div className={styles.modalHeaderMobile}>
 							<ToolTitle hideLogo small />
 							<Typography variant="largeBody" weight="medium" className={styles.firstParagraph}>

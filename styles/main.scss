@@ -10,6 +10,9 @@ body {
 	margin: 0;
 	font-family: Manrope, Arial, Helvetica Neue, Helvetica, sans-serif;
 
+	/* Disables pull-to-refresh but allows overscroll glow effects. */
+	overscroll-behavior-y: contain;
+
 	/* https://gist.github.com/hsleonis/55712b0eafc9b25f1944 */
 	font-size: 100%;
 	text-shadow: rgba($black, 0.01) 0 0 1px;

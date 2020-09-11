@@ -7,13 +7,15 @@ type CodeHighlightProps = {
 	template: string
 }
 
-const CodeHighlight = ({ template }: CodeHighlightProps) => {
+const CodeHighlight = React.forwardRef<HTMLPreElement, CodeHighlightProps>(({ template }, ref) => {
 	const htmlCode = Prism.highlight(template, Prism.languages.markup, 'markup')
 	return (
-		<pre className={styles.root}>
+		<pre className={styles.root} ref={ref}>
 			<code className="language-markup" dangerouslySetInnerHTML={{ __html: htmlCode }}></code>
 		</pre>
 	)
-}
+})
+
+CodeHighlight.displayName = 'CodeHighlight'
 
 export { CodeHighlight }
