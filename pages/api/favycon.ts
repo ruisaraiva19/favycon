@@ -104,6 +104,6 @@ export default async (req: MulterApiRequest, res: NextApiResponse) => {
 			break
 		default:
 			res.setHeader('Allow', ['POST'])
-			res.status(405).end(`Method ${req.method} Not Allowed`)
+			res.status(405).end(`Method ${req.method || ''} Not Allowed`)
 	}
 }

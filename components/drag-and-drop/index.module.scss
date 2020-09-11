@@ -9,10 +9,28 @@
 	border-radius: 8px;
 	box-shadow: 0 2px 4px rgba($black, 0.12);
 	transition: background 0.2s ease;
+
+	@include breakpoint-md {
+		max-width: 100%;
+		height: 100%;
+		border-radius: 0;
+	}
+
+	&.transparent {
+		@include breakpoint-md {
+			background: transparent;
+		}
+	}
 }
 
 :global(.dark-mode) .root {
 	background: $dark-black;
+
+	&.transparent {
+		@include breakpoint-md {
+			background: transparent;
+		}
+	}
 }
 
 .container {
@@ -24,6 +42,21 @@
 	&.loading {
 		pointer-events: none;
 		opacity: 0.32;
+	}
+
+	@include breakpoint-md {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: calc(100% - 68px);
+		margin-top: 68px;
+		border-radius: 0;
+	}
+
+	&.transparent {
+		@include breakpoint-md {
+			padding: 0;
+		}
 	}
 }
 
@@ -67,6 +100,13 @@
 	border-radius: 6px;
 	transition: background 0.2s ease;
 
+	@include breakpoint-md {
+		flex-grow: 1;
+		margin-bottom: 0;
+		background: transparent;
+		border-radius: 0;
+	}
+
 	&:hover {
 		cursor: pointer;
 
@@ -78,6 +118,10 @@
 
 :global(.dark-mode) .dropZoneWrapper {
 	background: $dark-grey;
+
+	@include breakpoint-md {
+		background: transparent;
+	}
 
 	&:hover {
 		.dashed rect {
@@ -92,6 +136,32 @@
 	}
 	100% {
 		stroke-dashoffset: -20;
+	}
+}
+
+.dropZoneFooter {
+	transition: background 0.2s ease;
+
+	@include breakpoint-md {
+		padding: 16px 24px 24px;
+		padding-bottom: env(safe-area-inset-bottom);
+		background: rgba($white, 0.88);
+		border-radius: 16px 16px 0 0;
+		box-shadow: 0 -2px 4px rgba($black, 0.12);
+
+		@supports (padding: max(1px)) {
+			padding-bottom: max(24px, env(safe-area-inset-bottom));
+		}
+
+		p {
+			font-size: 15px;
+		}
+	}
+}
+
+:global(.dark-mode) .dropZoneFooter {
+	@include breakpoint-md {
+		background: rgba($dark-black, 0.88);
 	}
 }
 
@@ -126,25 +196,55 @@
 	&.dragActive {
 		height: 48px;
 	}
+
+	@include breakpoint-md {
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 28px;
+		color: $off-white-dark;
+	}
+
+	&.mobileUploadText {
+		@include breakpoint-md-up {
+			display: none;
+		}
+	}
+
+	&.desktopUploadText {
+		/* smartphones, touchscreens */
+		@media (hover: none) and (pointer: coarse) {
+			display: none;
+		}
+		@include breakpoint-md {
+			display: none;
+		}
+	}
 }
 
 :global(.dark-mode) .imageUploadText {
 	color: $white-dark;
+
+	@include breakpoint-md {
+		color: $off-white-dark;
+	}
 }
 
 .info {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	margin-top: 8px;
 	letter-spacing: 0.2px;
 
 	svg {
 		flex: 0 0 20px;
 		margin-right: 8px;
+
+		@include breakpoint-md {
+			height: 24px;
+		}
 	}
 
 	strong {
-		padding: 0 4px;
 		font-weight: 700;
 	}
 }
@@ -209,6 +309,7 @@
 
 .imageInfo {
 	display: flex;
+	flex-wrap: wrap;
 	padding: 16px 0;
 	border-top: 1px solid $light-grey;
 	transition: all 0.2s ease;
@@ -222,15 +323,14 @@
 	padding: 8px 0 16px;
 	border-top: 1px solid $light-grey;
 	transition: all 0.2s ease;
+
+	@include breakpoint-md {
+		padding: 24px 0;
+	}
 }
 
 :global(.dark-mode) .imageOptionsWrapper {
 	border-top: 1px solid $dark-grey;
-}
-
-.imageOptions {
-	display: flex;
-	padding: 8px 0 16px;
 }
 
 .imageInfoItem {
@@ -240,6 +340,24 @@
 
 	span {
 		margin-right: 8px;
+	}
+
+	@include breakpoint-md {
+		margin-top: 8px;
+		margin-bottom: 8px;
+	}
+}
+
+.imageOptions {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 8px 0 16px;
+
+	.imageInfoItem {
+		@include breakpoint-md {
+			margin-top: 0;
+			margin-bottom: 24px;
+		}
 	}
 }
 
@@ -259,6 +377,10 @@
 	align-items: center;
 	justify-content: center;
 	margin: 16px 0 12px;
+
+	@include breakpoint-md {
+		align-items: flex-end;
+	}
 }
 
 .preview {
@@ -269,15 +391,39 @@
 	background: $white;
 	box-shadow: 0 2px 4px rgba($black, 0.12);
 
+	@include breakpoint-md {
+		width: 96px;
+		height: 96px;
+		margin-right: 0;
+	}
+
 	img {
 		width: 40px;
 		height: 40px;
 		object-fit: contain;
+
+		@include breakpoint-md {
+			width: 96px;
+			height: 96px;
+		}
 	}
 
 	&.circle,
 	&.circle img {
 		border-radius: 24px;
+
+		@include breakpoint-md {
+			width: 52px;
+			height: 52px;
+			border-radius: 26px;
+		}
+	}
+
+	&.circle {
+		@include breakpoint-md {
+			z-index: 1;
+			transform: translate3d(21px, 3px, 0);
+		}
 	}
 
 	&.square,
@@ -285,12 +431,31 @@
 		width: 48px;
 		height: 48px;
 		border-radius: 4px;
+
+		@include breakpoint-md {
+			width: 96px;
+			height: 96px;
+			border-radius: 8px;
+		}
 	}
 
 	&.rounded,
 	&.rounded img {
 		margin-right: 0;
 		border-radius: 14px;
+
+		@include breakpoint-md {
+			width: 40px;
+			height: 40px;
+			border-radius: 13px;
+		}
+	}
+
+	&.rounded {
+		@include breakpoint-md {
+			z-index: 1;
+			transform: translate3d(-12px, 3px, 0);
+		}
 	}
 }
 
@@ -339,14 +504,32 @@
 	padding: 23px 24px 24px 24px;
 	border-top: 1px solid $light-grey;
 	transition: all 0.2s ease;
+
+	&.spaceBetween {
+		justify-content: space-between;
+	}
+
+	@include breakpoint-md {
+		flex-direction: column-reverse;
+		padding: 11px 24px 12px 24px;
+		border-top: 1px solid transparent;
+
+		> * {
+			margin-bottom: 12px;
+		}
+	}
+
+	@include breakpoint-xs {
+		align-items: stretch;
+	}
 }
 
 :global(.dark-mode) .imageFooter {
 	border-top: 1px solid $dark-grey;
-}
 
-.spaceBetween {
-	justify-content: space-between;
+	@include breakpoint-md {
+		border-top: 1px solid transparent;
+	}
 }
 
 .makeNewOne {
@@ -377,12 +560,20 @@
 
 .imageGenerate {
 	margin-left: 24px;
+
+	@include breakpoint-md {
+		margin-left: 0;
+	}
 }
 
 .modalContainer {
 	max-width: 730px;
 	height: 100%;
 	margin: 0 auto;
+
+	@include breakpoint-md {
+		padding-top: 20px;
+	}
 }
 
 .modalHeader {
@@ -392,13 +583,23 @@
 	margin-bottom: 10px;
 }
 
-.modalCode {
-	height: 100%;
-	max-height: 488px;
-	padding: 28px;
-	color: $white;
-	background: $darker-grey;
-	border-radius: 8px;
+.modalHeaderMobile {
+	display: none;
+	padding: 36px 32px 8px;
+	margin-bottom: 0;
+
+	@include breakpoint-md {
+		display: flex;
+		background: $dark-black;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+}
+
+.modalHeaderDesktop {
+	@include breakpoint-md {
+		display: none;
+	}
 }
 
 .overlay {
@@ -422,8 +623,8 @@
 	width: 100%;
 	max-width: 730px;
 	height: 100%;
-	max-height: 536px;
-	padding: 0;
+	max-height: 538px;
+	padding: 2px 0 0;
 	overflow: auto;
 	background: transparent;
 	border: none;
@@ -431,6 +632,11 @@
 	outline: none;
 	transform: translate(-50%, -50%);
 	-webkit-overflow-scrolling: touch;
+
+	@include breakpoint-md {
+		max-height: 100vh;
+		padding: 0;
+	}
 }
 
 .copyWrapper {
@@ -459,4 +665,74 @@
 
 :global(.dark-mode) .copyWrapper::before {
 	color: $off-white-dark;
+}
+
+.modalCode {
+	position: relative;
+	height: 100%;
+	max-height: 488px;
+	padding: 28px;
+	color: $white;
+	background: $dark-black;
+	border-radius: 8px;
+
+	@include breakpoint-md {
+		max-height: calc(100% - 84px);
+		border-radius: 0;
+	}
+
+	&::before {
+		z-index: 2;
+		@include breakpoint-md {
+			position: absolute;
+			right: -1px;
+			bottom: 28px;
+			left: 0;
+			height: 136px;
+			content: '';
+			background: linear-gradient(to bottom, rgba($dark-black, 0), rgba($dark-black, 1));
+		}
+	}
+
+	.copyWrapper {
+		z-index: 3;
+		display: none;
+
+		@include breakpoint-md {
+			position: absolute;
+			right: 24px;
+			bottom: 80px;
+			left: 24px;
+			display: block;
+
+			button {
+				width: 100%;
+			}
+		}
+	}
+
+	pre {
+		position: relative;
+		z-index: 1;
+
+		@include breakpoint-md {
+			max-height: calc(100% - 68px);
+			padding-bottom: 104px;
+		}
+	}
+
+	pre code {
+		@include breakpoint-md {
+			white-space: pre-wrap;
+		}
+	}
+}
+
+.modalCodeTitle {
+	display: none;
+
+	@include breakpoint-md {
+		display: block;
+		margin-bottom: 20px;
+	}
 }

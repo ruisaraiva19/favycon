@@ -17,12 +17,12 @@ const FavyconError = ({ error, clearError }: FavyconErrorProps) => {
 		if (error) {
 			let endTimeout: number
 			setShowError(true)
-			const errorTimeout = setTimeout(() => {
+			const errorTimeout = window.setTimeout(() => {
 				setShowError(false)
-				endTimeout = setTimeout(() => {
+				endTimeout = window.setTimeout(() => {
 					clearError()
-				}, 300) as any
-			}, 5300) as any
+				}, 300)
+			}, 5300)
 			return () => {
 				clearTimeout(errorTimeout)
 				clearTimeout(endTimeout)
@@ -33,7 +33,12 @@ const FavyconError = ({ error, clearError }: FavyconErrorProps) => {
 	return (
 		<CSSTransition in={showError} timeout={300} classNames="error" unmountOnExit>
 			<div className={classnames(styles.error)}>
-				<Typography variant="regularBody" color="white" weight="semiBold">
+				<Typography
+					className={classnames(styles.content)}
+					variant="regularBody"
+					color="white"
+					colorImmutable={true}
+					weight="semiBold">
 					{error}
 				</Typography>
 				<svg height={20} width={20}>

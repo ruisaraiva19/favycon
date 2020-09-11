@@ -2,14 +2,14 @@
 	"parser": "@typescript-eslint/parser",
 	"extends": [
 		"react-app",
-		"prettier",
+		"plugin:prettier/recommended",
 		"prettier/react",
 		"prettier/@typescript-eslint",
 		"plugin:react/recommended",
+		"plugin:react-hooks/recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:@typescript-eslint/recommended-requiring-type-checking"
 	],
-	"plugins": ["@typescript-eslint", "react", "react-hooks", "prettier"],
 	"parserOptions": {
 		"project": "./tsconfig.json"
 	},
@@ -17,12 +17,26 @@
 		"prettier/prettier": "error",
 		"react/prop-types": "off",
 		"no-param-reassign": "off",
-		"react/jsx-filename-extension": [1, { "extensions": [".js", ".ts", "tsx"] }],
+		"react/jsx-filename-extension": [
+			1,
+			{
+				"extensions": [".js", ".ts", ".tsx"]
+			}
+		],
 		"@typescript-eslint/explicit-function-return-type": "off",
 		"@typescript-eslint/explicit-member-accessibility": "off",
 		"@typescript-eslint/member-delimiter-style": "off",
 		"@typescript-eslint/no-explicit-any": "off",
-		"@typescript-eslint/ban-ts-ignore": "off"
+		"@typescript-eslint/ban-ts-ignore": "off",
+		"@typescript-eslint/ban-ts-comment": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/no-unsafe-call": "off",
+		"@typescript-eslint/no-extra-semi": "off",
+		"@typescript-eslint/no-unsafe-assignment": "off",
+		"@typescript-eslint/no-unsafe-return": "off",
+		"@typescript-eslint/no-floating-promises": "off",
+		"@typescript-eslint/no-unsafe-member-access": "off",
+		"@typescript-eslint/unbound-method": "off"
 	},
 	"overrides": [
 		{

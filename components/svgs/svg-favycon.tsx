@@ -1,10 +1,9 @@
 import React from 'react'
-import { uniqueId } from 'utils/ids'
 
 import styles from './svg-favycon.module.scss'
 
 const SvgFavycon: React.FC<JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>> = (props) => {
-	const idPrefix = uniqueId('svg-')
+	const idPrefix = 'svg-favycon-'
 	return (
 		<svg width={64} height={64} viewBox="0 0 64 64" aria-labelledby={`${idPrefix}-title`} {...props}>
 			<title id={`${idPrefix}-title`}>Favycon logo</title>

@@ -1,8 +1,50 @@
 @import '../../styles/variables.scss';
 
 .root {
+	position: relative;
 	width: 100%;
 	max-width: 350px;
+
+	@include breakpoint-md {
+		position: absolute;
+		top: 32px;
+		right: 72px;
+		z-index: 3;
+		display: block;
+		width: 80px;
+		max-width: 100%;
+	}
+}
+
+.bodyMobile {
+	display: none;
+
+	@include breakpoint-md {
+		display: block;
+	}
+}
+
+.bodyDesktop {
+	@include breakpoint-md {
+		display: none;
+	}
+}
+
+.modalBodyScroll {
+	height: calc(100% - 96px);
+	overflow: auto;
+}
+
+.button {
+	color: $black !important;
+	background: $light-grey !important;
+	border: 1px solid $light-grey !important;
+}
+
+:global(.dark-mode) .button {
+	color: $off-white-dark !important;
+	background: $dark-grey !important;
+	border: 1px solid $dark-grey !important;
 }
 
 .firstParagraph {
@@ -14,11 +56,15 @@
 	margin-top: 16px;
 	margin-bottom: 60px;
 	letter-spacing: 0.2px;
+
+	@include breakpoint-md {
+		margin-bottom: 24px;
+	}
 }
 
 :global(.dark-mode) .firstParagraph,
 :global(.dark-mode) .secondParagraph {
-	color: $white-dark;
+	color: $white-dark !important;
 }
 
 .peopleButton {
@@ -46,6 +92,10 @@
 		&:hover {
 			color: $link;
 		}
+	}
+
+	@include breakpoint-md {
+		margin-top: 12px;
 	}
 }
 
@@ -91,27 +141,83 @@
 	box-shadow: 0 2px 4px rgba($black, 0.12);
 	transform: translate(-50%, -50%);
 	-webkit-overflow-scrolling: touch;
+
+	@include breakpoint-md {
+		height: 100%;
+		max-height: 100vh;
+		padding-top: 20px;
+		background: transparent;
+		border-radius: 0;
+	}
 }
 
 :global(.dark-mode) .content {
 	background: $dark-black;
+
+	@include breakpoint-md {
+		background: transparent;
+	}
 }
 
 .modalContainer {
 	max-width: 572px;
 	padding: 0 16px;
 	margin: 0 auto;
+	background: $white;
+
+	@include breakpoint-md {
+		height: 100%;
+		padding: 0;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+
+		> * {
+			padding: 0 32px;
+		}
+	}
+}
+
+:global(.dark-mode) .modalContainer {
+	background: $dark-black;
+}
+
+.modalHeaderTop {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 28px 0 16px;
+}
+
+.modalHeaderMobile {
+	display: none;
+
+	@include breakpoint-md {
+		display: block;
+	}
 }
 
 .modalHeader {
 	padding-top: 48px;
 	text-align: center;
+
+	@include breakpoint-md {
+		text-align: left;
+	}
+}
+
+.logoMobile {
+	width: 52px;
+	height: 52px;
 }
 
 .logo {
 	width: 96px;
 	height: 96px;
 	margin-bottom: 16px;
+
+	@include breakpoint-md {
+		display: none;
+	}
 }
 
 .title {
@@ -120,6 +226,12 @@
 
 .subTitle {
 	margin-bottom: 24px;
+}
+
+:global(.dark-mode) .subTitle {
+	@include breakpoint-md {
+		color: $white-dark !important;
+	}
 }
 
 .hr {
@@ -138,11 +250,21 @@
 	display: flex;
 	width: calc(50% - 15px);
 	margin-top: 24px;
+
+	@include breakpoint-xs {
+		width: 100%;
+	}
 }
 
 .personAvatar {
 	width: 56px;
 	margin-right: 16px;
+}
+
+:global(.dark-mode) .personRole {
+	@include breakpoint-md {
+		color: $white-dark !important;
+	}
 }
 
 .personTwitter {
@@ -166,8 +288,25 @@
 	svg {
 		margin-right: 2px;
 	}
+
+	&.personGithub {
+		color: $black;
+
+		p {
+			color: $black;
+
+			&:hover {
+				color: darken($black, 15);
+			}
+		}
+
+		svg {
+			margin-right: 4px;
+		}
+	}
 }
 
+/* stylelint-disable-next-line */
 :global(.dark-mode) .personTwitter p {
 	color: #55acee;
 
@@ -176,8 +315,24 @@
 	}
 }
 
+:global(.dark-mode) .personTwitter.personGithub p {
+	color: $white;
+
+	&:hover {
+		color: $off-white-dark;
+	}
+}
+
+:global(.dark-mode) .personTwitter.personGithub p svg path {
+	fill: $white;
+}
+
 .modalFooter {
 	padding-bottom: 48px;
 	margin-top: 12px;
 	text-align: center;
+
+	@include breakpoint-md {
+		text-align: left;
+	}
 }

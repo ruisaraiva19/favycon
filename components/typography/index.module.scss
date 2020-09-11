@@ -9,6 +9,11 @@
 	line-height: $line-height-h1;
 }
 
+.h2 {
+	font-size: $font-size-extra-large-title;
+	line-height: $line-height-extra-large-title;
+}
+
 .smallBody {
 	font-size: $font-size-small-body;
 	line-height: $line-height-small-body;
@@ -17,6 +22,10 @@
 .regularBody {
 	font-size: $font-size-regular-body;
 	line-height: $line-height-regular-body;
+
+	@include breakpoint-md {
+		font-size: $font-size-medium-body;
+	}
 }
 
 .mediumBody {
@@ -32,6 +41,10 @@
 .footer {
 	font-size: $font-size-footer;
 	line-height: $line-height-footer;
+
+	@include breakpoint-md {
+		font-size: $font-size-small-body;
+	}
 
 	a {
 		color: inherit;
@@ -52,11 +65,20 @@
 .title {
 	font-size: $font-size-title;
 	line-height: $line-height-title;
+
+	@include breakpoint-md {
+		font-size: $font-size-medium-body;
+	}
 }
 
 .largeTitle {
 	font-size: $font-size-large-title;
 	line-height: $line-height-large-title;
+}
+
+.extraLargeTitle {
+	font-size: $font-size-extra-large-title;
+	line-height: $line-height-extra-large-title;
 }
 
 .regular {
@@ -101,7 +123,7 @@
 	transition: color 0.2s ease;
 }
 
-:global(.dark-mode) .white {
+:global(.dark-mode) .white:not(.colorImmutable) {
 	color: $black;
 }
 
@@ -115,5 +137,5 @@
 }
 
 :global(.dark-mode) .muted {
-	color: $grey;
+	color: $grey-dark;
 }

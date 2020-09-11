@@ -72,19 +72,23 @@
 	.sun,
 	.moon {
 		path {
-			fill: #657584;
+			fill: $grey-dark;
 		}
 	}
 }
 
 :global(.light-mode) .label {
-	&:hover path {
-		fill: $link;
+	@media (pointer: fine) {
+		&:hover path {
+			fill: $link;
+		}
 	}
 }
 
 :global(.dark-mode) .label {
-	&:hover path {
-		fill: $link-dark;
+	@media (pointer: fine) {
+		&:hover path {
+			fill: $link-dark;
+		}
 	}
 }

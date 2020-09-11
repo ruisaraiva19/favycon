@@ -1,0 +1,45 @@
+name: Tests
+
+on: pull_request
+
+jobs:
+  wait_deploy:
+    name: Wait Vercel Deploy
+    runs-on: ubuntu-latest
+    outputs:
+      preview_url: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
+    steps:
+      - name: Wait for Vercel preview deployment to be ready
+        uses: patrickedqvist/wait-for-vercel-preview@master
+        id: waitForVercelPreviewDeployment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 120
+
+  test_e2e:
+    name: Run Cypress
+    needs: wait_deploy
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Cypress
+        uses: cypress-io/github-action@v1
+        with:
+          config: baseUrl=${{ needs.wait_deploy.outputs.preview_url }}
+          wait-on: ${{ needs.wait_deploy.outputs.preview_url }}
+          wait-on-timeout: 120
+      # after the test run completes
+      # store videos and any screenshots
+      # NOTE: screenshots will be generated only if E2E test failed
+      # thus we store screenshots only on failures
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      # Test run video was always captured, so this action uses "always()" condition
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos

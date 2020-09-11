@@ -8,6 +8,11 @@
 	height: 68px;
 	padding: 20px 20px 0 20px;
 	margin: 0 auto;
+
+	@include breakpoint-md {
+		height: 74px;
+		padding: 26px 26px 0 26px;
+	}
 }
 
 .header {
@@ -15,6 +20,16 @@
 	align-items: center;
 	justify-content: flex-end;
 	height: 100%;
+
+	@include breakpoint-md {
+		justify-content: space-between;
+	}
+}
+
+.logo {
+	@include breakpoint-md-up {
+		display: none;
+	}
 }
 
 .item {
@@ -23,14 +38,30 @@
 	box-shadow: 0 0 10px rgba($off-white, 0.5);
 	transition: all 0.2s ease;
 
+	@include breakpoint-md {
+		background: transparent;
+		box-shadow: none;
+	}
+
 	a {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	&:first-child {
+		svg {
+			width: 48px;
+		}
 	}
 }
 
 :global(.dark-mode) .item {
 	background: $darker-black;
 	box-shadow: 0 0 10px rgba($darker-black, 0.5);
+
+	@include breakpoint-md {
+		background: transparent;
+		box-shadow: none;
+	}
 }

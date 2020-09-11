@@ -1,0 +1,10 @@
+{
+	"recommendations": [
+		"editorconfig.editorconfig",
+		"dbaeumer.vscode-eslint",
+		"syler.sass-indented",
+		"stylelint.vscode-stylelint",
+		"knisterpeter.vscode-commitizen"
+	],
+	"unwantedRecommendations": ["esbenp.prettier-vscode"]
+}
