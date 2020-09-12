@@ -182,6 +182,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 		onDrop,
 		accept: Object.keys(ACCEPT_MIME_TYPES),
 		maxSize: ONE_MB,
+		multiple: false,
 	})
 
 	const onCopy = () => {
