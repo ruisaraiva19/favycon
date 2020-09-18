@@ -12759,12 +12759,10 @@ posix-character-classes@^0.1.0:
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
 
-postcss-100vh-fix@0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/postcss-100vh-fix/-/postcss-100vh-fix-0.1.1.tgz#b3a5f816b5a7ba05b8073c3b0e7b44a48e0654df"
-  integrity sha512-Dv0OdLLIskpAgB70XxFTwHHs0mQnDbnXF12NI2DjIt7pq5wvwDr9p3jAoP7P7OBo7Uu2v6mQzj33tU7o0lI+NA==
-  dependencies:
-    postcss "^7.0.32"
+postcss-100vh-fix@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-100vh-fix/-/postcss-100vh-fix-1.0.0.tgz#e9283449f6dc8098c07fc97393f1fc4bb1b160f7"
+  integrity sha512-8DpkUD9RVAzRs4U1mG1LfIvVhaIOd3i/y0OZMY40uKxEyOVyRqpSsqd8eRjkb8nNwB1KMwg7jZ2cHufTDH617Q==
 
 postcss-attribute-case-insensitive@^4.0.1:
   version "4.0.2"
