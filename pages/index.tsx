@@ -24,9 +24,12 @@ const Home: NextPage = () => {
 		}
 	}, [file])
 
-	const onError = (error: string) => {
+	const onError = (message: string) => {
 		setErrorCounter((c) => c + 1)
-		setError(error)
+		setError(message)
+		if (message.length > 0 && navigator.vibrate) {
+			navigator.vibrate(300)
+		}
 	}
 
 	const onGenerate = async (file: File, pwa: boolean, dark: boolean) => {
