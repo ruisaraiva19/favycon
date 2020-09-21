@@ -124,7 +124,7 @@
 		"prettier": "2.1.2",
 		"react-refresh": "0.8.3",
 		"regenerator-runtime": "0.13.7",
-		"sass": "1.26.10",
+		"sass": "1.26.11",
 		"sass-loader": "9.0.3",
 		"semantic-release": "17.1.1",
 		"start-server-and-test": "1.11.3",
