@@ -126,7 +126,7 @@
 		"regenerator-runtime": "0.13.7",
 		"sass": "1.26.10",
 		"sass-loader": "9.0.3",
-		"semantic-release": "17.1.1",
+		"semantic-release": "17.1.2",
 		"start-server-and-test": "1.11.3",
 		"stylelint": "13.7.1",
 		"stylelint-config-css-modules": "2.2.0",
