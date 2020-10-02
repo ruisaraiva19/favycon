@@ -50,7 +50,7 @@
 		"next": "9.5.3",
 		"nprogress": "0.2.0",
 		"object-fit-images": "3.2.4",
-		"preact": "10.5.2",
+		"preact": "10.5.3",
 		"preact-render-to-string": "5.1.10",
 		"preact-ssr-prepass": "1.1.1",
 		"prismjs": "1.21.0",
