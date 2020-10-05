@@ -23,21 +23,9 @@ const people = [
 		social: 'twitter',
 	},
 	{
-		screenName: 'rgllm',
-		name: 'Rogério Moreira',
-		role: 'Front-End Developer',
-		social: 'twitter',
-	},
-	{
 		screenName: 'ruisaraiva19',
 		name: 'Rui Saraiva',
 		role: 'Full-Stack Developer',
-		social: 'twitter',
-	},
-	{
-		screenName: 'aNyTh1nGeDuArDo',
-		name: 'Eduardo Pinto',
-		role: 'Front-End Developer',
 		social: 'twitter',
 	},
 	{
