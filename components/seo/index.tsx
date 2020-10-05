@@ -33,7 +33,7 @@ const SEO = ({ title, description }: SEOProps) => (
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content={title} />
 		<meta property="og:url" content="https://favycon.app" />
-		<meta property="og:image" content="https://favycon.app/share.png?v3" />
+		<meta property="og:image" content="https://favycon.app/share.png?v4" />
 		<meta property="og:image:type" content="image/png" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
