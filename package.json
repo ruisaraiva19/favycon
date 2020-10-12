@@ -84,7 +84,7 @@
 		"@types/adm-zip": "0.4.33",
 		"@types/classnames": "2.2.10",
 		"@types/multer": "1.4.4",
-		"@types/node": "14.11.5",
+		"@types/node": "14.11.8",
 		"@types/nprogress": "0.2.0",
 		"@types/object-fit-images": "3.2.0",
 		"@types/prismjs": "1.16.1",
