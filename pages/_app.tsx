@@ -1,4 +1,3 @@
-import React from 'react'
 import { AppProps } from 'next/app'
 import { MediaQueryProvider } from 'components/media-query-provider'
 

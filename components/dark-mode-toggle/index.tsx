@@ -1,4 +1,3 @@
-import React from 'react'
 import useDarkMode from 'use-dark-mode'
 import { SvgSun } from 'components/svgs/svg-sun'
 import { SvgMoon } from 'components/svgs/svg-moon'

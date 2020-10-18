@@ -1,5 +1,3 @@
-import React from 'react'
-
 const SvgMoon: React.FC<JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>> = (props) => {
 	const idPrefix = 'svg-moon-'
 	return (

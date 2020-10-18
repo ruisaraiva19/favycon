@@ -1,9 +1,9 @@
-import React from 'react'
+import { useState, useCallback } from 'react'
 
 export const useToggle = (initialValue = false): [boolean, () => void] => {
-	const [value, setValue] = React.useState(initialValue)
+	const [value, setValue] = useState(initialValue)
 
-	const toggle = React.useCallback(() => {
+	const toggle = useCallback(() => {
 		setValue((v) => !v)
 	}, [])
 

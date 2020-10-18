@@ -1,4 +1,3 @@
-import React from 'react'
 import { withKnobs, text, select } from '@storybook/addon-knobs'
 import useDarkMode from 'use-dark-mode'
 import { Button } from 'components/button'

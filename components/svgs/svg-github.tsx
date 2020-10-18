@@ -1,5 +1,3 @@
-import React from 'react'
-
 const SvgGithub: React.FC<JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>> = (props) => (
 	<svg height={18} viewBox="0 0 16 16" width={18} {...props}>
 		<path

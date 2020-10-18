@@ -1,4 +1,3 @@
-import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 const isProd = process.env.NODE_ENV === 'production'
