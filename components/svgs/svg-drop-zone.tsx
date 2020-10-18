@@ -1,5 +1,3 @@
-import React from 'react'
-
 import styles from './svg-drop-zone.module.scss'
 
 const SvgDropZone: React.FC<JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>> = (props) => {

@@ -1,4 +1,3 @@
-import React from 'react'
 import { DarkModeToggle } from '.'
 import useDarkMode from 'use-dark-mode'
 import { Typography } from 'components/typography'

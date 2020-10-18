@@ -1,5 +1,3 @@
-import React from 'react'
-
 import styles from './svg-info.module.scss'
 
 const SvgInfo: React.FC<JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>> = (props) => {

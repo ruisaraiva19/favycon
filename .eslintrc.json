@@ -17,6 +17,8 @@
 		"prettier/prettier": "error",
 		"react/prop-types": "off",
 		"no-param-reassign": "off",
+		"react/jsx-uses-react": "off",
+		"react/react-in-jsx-scope": "off",
 		"react/jsx-filename-extension": [
 			1,
 			{
