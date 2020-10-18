@@ -1,5 +1,3 @@
-import React from 'react'
-
 import styles from './svg-favycon.module.scss'
 
 const SvgFavycon: React.FC<JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>> = (props) => {

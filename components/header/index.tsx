@@ -1,4 +1,3 @@
-import React from 'react'
 import classnames from 'classnames'
 import { DarkModeToggle } from 'components/dark-mode-toggle'
 import { SvgFavycon } from 'components/svgs/svg-favycon'
