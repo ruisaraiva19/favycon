@@ -82,7 +82,7 @@
 		"@storybook/react": "5.3.21",
 		"@storybook/source-loader": "5.3.21",
 		"@types/adm-zip": "0.4.33",
-		"@types/classnames": "2.2.10",
+		"@types/classnames": "2.2.11",
 		"@types/multer": "1.4.4",
 		"@types/node": "14.14.2",
 		"@types/nprogress": "0.2.0",
