@@ -58,7 +58,7 @@
 		"react": "16.14.0",
 		"react-clipboard.js": "2.0.16",
 		"react-dom": "16.14.0",
-		"react-dropzone": "11.2.2",
+		"react-dropzone": "11.2.3",
 		"react-lazy-images": "1.1.0",
 		"react-modal": "3.11.2",
 		"react-transition-group": "4.4.1",
