@@ -44,7 +44,7 @@
 	"dependencies": {
 		"@fiahfy/ico-convert": "0.0.7",
 		"@prefresh/next": "1.4.1",
-		"adm-zip": "0.4.16",
+		"adm-zip": "0.5.0",
 		"classnames": "2.2.6",
 		"multer": "1.4.2",
 		"next": "9.5.5",
