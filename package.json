@@ -127,7 +127,7 @@
 		"sass": "1.29.0",
 		"sass-loader": "10.1.0",
 		"semantic-release": "17.2.3",
-		"start-server-and-test": "1.11.5",
+		"start-server-and-test": "1.11.6",
 		"stylelint": "13.8.0",
 		"stylelint-config-css-modules": "2.2.0",
 		"stylelint-config-prettier": "8.0.2",
