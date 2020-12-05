@@ -17648,10 +17648,10 @@ webpack-log@^2.0.0:
     ansi-colors "^3.0.0"
     uuid "^3.3.2"
 
-webpack-notifier@1.10.1:
-  version "1.10.1"
-  resolved "https://registry.yarnpkg.com/webpack-notifier/-/webpack-notifier-1.10.1.tgz#a01006d8213c9d52a341d76219779d025534b8c1"
-  integrity sha512-1ntvm2QwT+i21Nur88HU/WaaDq1Ppq1XCpBR0//wb6gPJ65IkRkuYzIu8z8MpnkLEHj9wSf+yNUzMANyqvvtWg==
+webpack-notifier@1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/webpack-notifier/-/webpack-notifier-1.11.0.tgz#ee03ddf9e91596147b058a7346d20d79b54ddd0b"
+  integrity sha512-IhgldCkfrUaLP4dCPlac0pBGdNtBiiQJmcVlg/IgWgbU7O+J83EmvbR1m2LAe/WxgBxV2x+otN46PtL0pTgWkQ==
   dependencies:
     node-notifier "^6.0.0"
     object-assign "^4.1.0"
