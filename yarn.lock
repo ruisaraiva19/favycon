@@ -3372,38 +3372,48 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@prefresh/babel-plugin@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@prefresh/babel-plugin/-/babel-plugin-0.2.2.tgz#b921f0a1350a9daa9106518378a4e5a49211e6f6"
-  integrity sha512-NDPMsDs5QncSdOX7zsATwypf1IWtYvOX23X3t4DOcZsVErRABqdlUTZ2RAf4KfOAIjSZhR9p0Htchqp8rQr14Q==
+"@prefresh/babel-plugin@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@prefresh/babel-plugin/-/babel-plugin-0.3.0.tgz#6e5be66dc120f495bbcc94c5645e68ec10b98674"
+  integrity sha512-4VqFK5r0ySG+crNrLuP2AQUtny1hwJ42Usd1IYvPDOClpS5TeKw9hXwvoZ06BZQehCWyJY4WYJ39hkuvFNiX3g==
 
 "@prefresh/core@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-1.0.0.tgz#4abab30594ce28968c62e1692f6e6941637fd95e"
   integrity sha512-oCqtJmc1HqarTmOYmXf7aQY1gKko0y42w8w7RaT6oqvaK862h7tSXlW/XTTsaUWHtjoHHjV2FimppGkvQ44RCw==
 
-"@prefresh/next@1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-1.4.1.tgz#b8f781dfdad35eba60da21875c14a3514fba2597"
-  integrity sha512-RyRaoJVJ11yb5/t1IK5ROZvAq5pFfAYUV5O+LwDMyD6ExtObLGQZP3ME8W5D3nW8AmnS6Agr3wmY8mAHECtOdw==
+"@prefresh/core@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@prefresh/core/-/core-1.2.0.tgz#035f30e558a5268c26b0c815a6787a93efedc46e"
+  integrity sha512-ArwAnFp+9i2RJadmnkwQmityxq+RBNeBesqagS9Z/s0FTbu9neC8jA7/7EBxE2sSTKaje+8r4F4DA0AsBM4zng==
+
+"@prefresh/next@1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@prefresh/next/-/next-1.4.3.tgz#590068bcd72effb46c1285e9e2d649bd33a0566f"
+  integrity sha512-pcDCUzVOUDMACz9qQOQ30LDH6A/jgxwx8VapMS/gctvwtJFvtkD1H4troxG71NPlIidJ1tGtlgJ7Ir/41k4yZw==
   dependencies:
-    "@prefresh/babel-plugin" "0.2.2"
+    "@prefresh/babel-plugin" "0.3.0"
     "@prefresh/core" "^1.0.0"
     "@prefresh/utils" "^1.0.0"
-    "@prefresh/webpack" "^2.2.0"
+    "@prefresh/webpack" "^2.3.0"
 
 "@prefresh/utils@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-1.0.0.tgz#183846f8c826982a5f2a408a5b0990a3d12b4383"
   integrity sha512-98epbP6cLl8qDgw0nq1GDbQGURVOkQnYpgfU+nxtGTFBJwJEYxViwXi02WEQcytS8Kr2xjWA6t66qz9RLxtbBA==
 
-"@prefresh/webpack@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@prefresh/webpack/-/webpack-2.2.0.tgz#65bd9d3fb92ad89c6437d4b9b7459847050abd42"
-  integrity sha512-2ThnpimTsZ7uAyKVlYLnl8X6Re3qnmqSYJAGCEtHdsk6fzZoPSw4Oy/+S+gu9dTWOGYwwqrKpeDXqSe2vmmyqw==
+"@prefresh/utils@^1.1.0":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@prefresh/utils/-/utils-1.1.1.tgz#ffe7f2e6bd48a0633631a3d92c0ee4bdeb0ac330"
+  integrity sha512-MUhT5m2XNN5NsZl4GnpuvlzLo6VSTa/+wBfBd3fiWUvHGhv0GF9hnA1pd//v0uJaKwUnVRQ1hYElxCV7DtYsCQ==
+
+"@prefresh/webpack@^2.3.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@prefresh/webpack/-/webpack-2.4.0.tgz#efc6f6cb0699e715f5f90821659b1f8cf97eae28"
+  integrity sha512-7K4wbKKpkVJ/frF+36fjYWzJGUDs2FMXJw9LA7rKEGrfDgaivS3Ie7NQdwBVUgsfxCmOkRbcNWMozzSiiLhvNw==
   dependencies:
-    "@prefresh/core" "^1.0.0"
-    "@prefresh/utils" "^1.0.0"
+    "@prefresh/core" "^1.2.0"
+    "@prefresh/utils" "^1.1.0"
 
 "@reach/router@^1.2.1":
   version "1.3.3"
