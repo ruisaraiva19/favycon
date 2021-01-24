@@ -46,6 +46,12 @@
 			"rules": {
 				"@typescript-eslint/no-var-requires": "off"
 			}
+		},
+		{
+			"files": ["components/**/*.stories.tsx", "pages/api/**/*.ts"],
+			"rules": {
+				"import/no-anonymous-default-export": "off"
+			}
 		}
 	]
 }
