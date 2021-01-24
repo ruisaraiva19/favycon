@@ -14043,10 +14043,10 @@ preact-ssr-prepass@1.1.2:
   resolved "https://registry.yarnpkg.com/preact-ssr-prepass/-/preact-ssr-prepass-1.1.2.tgz#e3b79151a623dc43bff4d91b40f61cbac06c4d89"
   integrity sha512-6wVAjWX9/r0L3PgBv37HZiibAIjLzfrUREy26xuqolCd0M66tiwbCR5GRx71QwT56Y7mcrXosCm9LxOUS0g4Ag==
 
-preact@10.5.7:
-  version "10.5.7"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-10.5.7.tgz#f1d84725539e18f7ccbea937cf3db5895661dbd3"
-  integrity sha512-4oEpz75t/0UNcwmcsjk+BIcDdk68oao+7kxcpc1hQPNs2Oo3ZL9xFz8UBf350mxk/VEdD41L5b4l2dE3Ug3RYg==
+preact@10.5.11:
+  version "10.5.11"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.5.11.tgz#2c8a431f16613e442901068175771806cf1cc0f6"
+  integrity sha512-BdtFePVilR1430kDuzh3VkkZktCmp8RTqHOjG8qesyGZXHNYJjdrjEBuc2f7O/vthhVENxJd0/aTjWtYeH46aw==
 
 prebuild-install@^5.3.3:
   version "5.3.4"
