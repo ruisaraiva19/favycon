@@ -53,7 +53,7 @@
 		"preact": "10.5.11",
 		"preact-render-to-string": "5.1.12",
 		"preact-ssr-prepass": "1.1.2",
-		"prismjs": "1.22.0",
+		"prismjs": "1.23.0",
 		"prop-types": "15.7.2",
 		"react": "16.14.0",
 		"react-clipboard.js": "2.0.16",
