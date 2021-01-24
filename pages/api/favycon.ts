@@ -58,7 +58,7 @@ export default async (req: MulterApiRequest, res: NextApiResponse) => {
 						.toBuffer()
 						.then((scaledPng) => {
 							zip.addFile(`icons/favicon-${size}.png`, scaledPng)
-							resolve()
+							resolve(true)
 						})
 				})
 			})
@@ -72,7 +72,7 @@ export default async (req: MulterApiRequest, res: NextApiResponse) => {
 					.then(async (scaledPng) => {
 						const ico = await convert(scaledPng)
 						zip.addFile('icons/favicon.ico', ico)
-						resolve()
+						resolve(true)
 					})
 			})
 
