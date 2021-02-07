@@ -4047,10 +4047,10 @@ address@1.1.2, address@^1.0.1:
   resolved "https://registry.yarnpkg.com/address/-/address-1.1.2.tgz#bf1116c9c758c51b7a933d296b72c221ed9428b6"
   integrity sha512-aT6camzM4xEA54YVJYSqxz1kv4IHnQZRtThJJHhUMRExaU5spC7jX5ugSwTaTgJliIgs4VhZOk7htClvQ/LmRA==
 
-adm-zip@0.4.16:
-  version "0.4.16"
-  resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.4.16.tgz#cf4c508fdffab02c269cbc7f471a875f05570365"
-  integrity sha512-TFi4HBKSGfIKsK5YCkKaaFG2m4PEDyViZmEwof3MTIgzimHLto6muaHVpbrljdIvIrFZzEq/p4nafOeLcYegrg==
+adm-zip@0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.5.2.tgz#8128ec30f4975d977b9285ebd764ae8db03fa6db"
+  integrity sha512-lUI3ZSNsfQXNYNzGjt68MdxzCs0eW29lgL74y/Y2h4nARgHmH3poFWuK3LonvFbNHFt4dTb2X/QQ4c1ZUWWsJw==
 
 agent-base@4, agent-base@^4.3.0:
   version "4.3.0"
