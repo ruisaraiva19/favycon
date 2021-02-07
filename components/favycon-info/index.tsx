@@ -21,18 +21,21 @@ const people = [
 		name: 'Augusto Lopes',
 		role: 'Product Designer',
 		social: 'twitter',
+		placeholderHash: 'UrLqFOIUS$-o_Nt6NGRkEkt7M{RjM{NHMxof',
 	},
 	{
 		screenName: 'ruisaraiva19',
 		name: 'Rui Saraiva',
 		role: 'Full-Stack Developer',
 		social: 'twitter',
+		placeholderHash: 'UNMQLqof_LWU?FRkkqt605fk9cjZbaWBt8of',
 	},
 	{
 		screenName: 'miguellteixeira',
 		name: 'Miguel Teixeira',
 		role: 'Full-Stack Developer',
 		social: 'github',
+		placeholderHash: 'UcI~*]o0uPXS?wWAMxog8_kCQ,e-tmbIVsjF',
 	},
 ]
 
@@ -143,6 +146,8 @@ const FavyconInfo = ({
 											srcRetina={`/images/people/${person.screenName}@2x.png`}
 											alt={person.name}
 											aspectRatio="56/56"
+											placeholderHash={person.placeholderHash}
+											rounded
 										/>
 									</div>
 									<div>
