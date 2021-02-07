@@ -25,9 +25,6 @@
 		"url": "https://github.com/ruisaraiva19/favycon/issues"
 	},
 	"homepage": "https://github.com/ruisaraiva19/favycon#readme",
-	"engines": {
-		"node": ">= 10.13"
-	},
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
