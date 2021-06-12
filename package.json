@@ -87,7 +87,7 @@
 		"@types/nprogress": "0.2.0",
 		"@types/object-fit-images": "3.2.0",
 		"@types/prismjs": "1.16.2",
-		"@types/react": "17.0.1",
+		"@types/react": "17.0.11",
 		"@types/react-modal": "3.10.6",
 		"@types/react-transition-group": "4.4.0",
 		"@types/sharp": "0.25.1",
