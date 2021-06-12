@@ -67,7 +67,7 @@
 		"use-media": "1.4.0"
 	},
 	"devDependencies": {
-		"@babel/core": "7.12.13",
+		"@babel/core": "7.14.5",
 		"@commitlint/cli": "12.0.1",
 		"@commitlint/config-conventional": "12.0.1",
 		"@storybook/addon-actions": "5.3.21",
