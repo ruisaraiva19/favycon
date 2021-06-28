@@ -51,7 +51,7 @@
 		"preact": "10.5.12",
 		"preact-render-to-string": "5.1.12",
 		"preact-ssr-prepass": "1.1.3",
-		"prismjs": "1.23.0",
+		"prismjs": "1.24.0",
 		"prop-types": "15.7.2",
 		"react": "16.14.0",
 		"react-blurhash": "0.1.3",
