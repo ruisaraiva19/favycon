@@ -7,12 +7,11 @@
 A small online tool to help you generate your favicon in all the sizes and formats you need.
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ![Release](https://github.com/ruisaraiva19/favycon/workflows/Release/badge.svg)
 ![Lint](https://github.com/ruisaraiva19/favycon/workflows/Lint/badge.svg)
 ![Commitlint](https://github.com/ruisaraiva19/favycon/workflows/Commitlint/badge.svg)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d2e6694d-1f2c-4b50-ad21-ff5c3fcbc3c4/deploy-status)](https://app.netlify.com/sites/favycon-storybook/deploys)
 
 ## Browser favicon formats supported
 
