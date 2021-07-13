@@ -7,7 +7,7 @@
 A small online tool to help you generate your favicon in all the sizes and formats you need.
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ![Release](https://github.com/ruisaraiva19/favycon/workflows/Release/badge.svg)
 ![Lint](https://github.com/ruisaraiva19/favycon/workflows/Lint/badge.svg)
