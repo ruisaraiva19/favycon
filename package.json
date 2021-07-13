@@ -58,7 +58,7 @@
 		"react-modal": "3.14.3",
 		"react-transition-group": "4.4.2",
 		"react-use-gesture": "7.0.16",
-		"sharp": "0.25.0",
+		"sharp": "0.28.3",
 		"use-dark-mode": "2.3.1",
 		"use-media": "1.4.0"
 	},
@@ -85,7 +85,7 @@
 		"@types/react": "17.0.14",
 		"@types/react-modal": "3.12.1",
 		"@types/react-transition-group": "4.4.2",
-		"@types/sharp": "0.25.1",
+		"@types/sharp": "0.28.4",
 		"@typescript-eslint/eslint-plugin": "4.28.3",
 		"@typescript-eslint/parser": "4.28.3",
 		"all-contributors-cli": "6.20.0",
