@@ -163,6 +163,7 @@
 	max-width: 572px;
 	padding: 0 16px;
 	margin: 0 auto;
+	touch-action: none;
 	background: $white;
 
 	@include breakpoint-md {

@@ -571,6 +571,7 @@
 	max-width: 730px;
 	height: 100%;
 	margin: 0 auto;
+	touch-action: none;
 
 	@include breakpoint-md {
 		padding-top: 20px;
