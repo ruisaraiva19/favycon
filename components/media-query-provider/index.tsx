@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useMemo } from 'react'
+import { useMedia } from 'react-use'
 import PropTypes from 'prop-types'
-import useMedia from 'use-media'
 
 type MediaQueryProviderProps = {
 	children: PropTypes.ReactNodeLike

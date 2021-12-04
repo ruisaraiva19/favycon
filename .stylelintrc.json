@@ -1,4 +1,5 @@
 {
+	"customSyntax": "postcss-scss",
 	"extends": [
 		"stylelint-config-recess-order",
 		"stylelint-config-standard",
@@ -13,6 +14,9 @@
 			{
 				"ignoreAtRules": ["mixin", "include"]
 			}
-		]
+		],
+		"font-family-name-quotes": null,
+		"selector-class-pattern": null,
+		"color-function-notation": "legacy"
 	}
 }

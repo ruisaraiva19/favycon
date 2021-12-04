@@ -4,17 +4,12 @@ import { SvgCheckbox } from 'components/svgs/svg-checkbox'
 
 import styles from './index.module.scss'
 
-type CheckboxProps = {
+export type CheckboxProps = {
 	name: string
 	id: string
-}
+} & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
-const Checkbox = ({
-	name,
-	id,
-	children,
-	...props
-}: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & CheckboxProps) => {
+const Checkbox = ({ name, id, children, ...props }: CheckboxProps) => {
 	const [value, setValue] = useState(false)
 	const onCheckChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(!value)

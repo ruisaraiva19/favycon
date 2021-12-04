@@ -27,6 +27,7 @@ export const getImageFileSizes = (file: File) =>
 export const downloadFile = (data: ArrayBuffer, filename: string) => {
 	if ('msSaveOrOpenBlob' in window.navigator) {
 		// Blob for IE11
+		// @ts-ignore
 		window.navigator.msSaveOrOpenBlob(new Blob([data]), filename)
 	} else {
 		// Blob navigator

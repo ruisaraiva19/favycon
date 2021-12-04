@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import dynamic from 'next/dynamic'
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import classnames from 'classnames'
@@ -33,7 +34,7 @@ import styles from './index.module.scss'
 const Modal = dynamic(() => import('react-modal'))
 const Clipboard = dynamic(() => import('react-clipboard.js'))
 
-type DragAndDropProps = {
+export type DragAndDropProps = {
 	onFile: (hasFile: boolean) => void
 	onGenerate: (image: File, pwa: boolean, darkMode: boolean) => Promise<ArrayBuffer>
 	onError: (message: string) => void
@@ -135,8 +136,8 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 			setIsLoading(true)
 			const zip = await onGenerate(file, pwa, darkMode)
 			setZipData(zip)
-		} catch (error) {
-			onError(error.message || 'Something went wrong. Please try again.')
+		} catch (error: any) {
+			onError((error.message as string) || 'Something went wrong. Please try again.')
 		} finally {
 			setIsLoading(false)
 		}

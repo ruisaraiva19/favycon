@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -7,7 +8,9 @@ class MyDocument extends Document {
 		return (
 			<Html lang="en">
 				<Head>
-					{isProd && <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171039315-1" />}
+					{isProd && (
+						<script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM_ID || ''}`} />
+					)}
 					{isProd && (
 						<script
 							dangerouslySetInnerHTML={{
@@ -15,7 +18,7 @@ class MyDocument extends Document {
 								window.dataLayer = window.dataLayer || [];
 								function gtag() { dataLayer.push(arguments); }
 								gtag('js', new Date());
-								gtag('config', 'UA-171039315-1', { 'anonymize_ip': true });
+								gtag('config', '${process.env.NEXT_PUBLIC_GTM_ID || ''}', { 'anonymize_ip': true });
 							`,
 							}}
 						/>

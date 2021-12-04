@@ -11,7 +11,7 @@ body {
 
 	/* Disables pull-to-refresh but allows overscroll glow effects. */
 	overscroll-behavior-y: contain;
-	font-family: Manrope, Arial, Helvetica Neue, Helvetica, sans-serif;
+	font-family: Manrope, Arial, 'Helvetica Neue', Helvetica, sans-serif;
 
 	/* https://gist.github.com/hsleonis/55712b0eafc9b25f1944 */
 	font-size: 100%;
@@ -22,18 +22,18 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 
-	&.light-mode {
+	&.light {
 		background: $off-white;
 	}
 
-	&.dark-mode {
+	&.dark {
 		background: $darker-black;
 	}
 }
 
 * {
 	box-sizing: border-box;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: rgba($black, 0);
 }
 
 hr {
@@ -44,23 +44,26 @@ hr {
 	transition: background 0.2s ease;
 }
 
-.dark-mode {
+.dark {
 	hr {
 		background: $darker-grey;
 	}
 }
 
+/* stylelint-disable-next-line */
 .ReactModal__Overlay {
 	opacity: 0;
 	transition: all 0.2s ease;
 	transform: translate3d(0, 24px, 0);
 }
 
+/* stylelint-disable-next-line */
 .ReactModal__Overlay--after-open {
 	opacity: 1;
 	transform: translate3d(0, 0, 0);
 }
 
+/* stylelint-disable-next-line */
 .ReactModal__Overlay--before-close {
 	opacity: 0;
 	transform: translate3d(0, 24px, 0);
@@ -68,25 +71,25 @@ hr {
 
 .preload,
 .preload * {
-	-webkit-transition: none !important;
-	-moz-transition: none !important;
-	-ms-transition: none !important;
-	-o-transition: none !important;
+	transition: none !important;
 }
 
 .collapse-enter {
 	max-width: 0;
 	opacity: 0;
 }
+
 .collapse-enter-active {
 	max-width: 50px;
 	opacity: 1;
 	transition: all 0.2s linear;
 }
+
 .collapse-exit {
 	max-width: 50px;
 	opacity: 1;
 }
+
 .collapse-exit-active {
 	max-width: 0;
 	opacity: 0;
@@ -96,13 +99,16 @@ hr {
 .fade-enter {
 	opacity: 0;
 }
+
 .fade-enter-active {
 	opacity: 1;
 	transition: opacity 0.2s linear;
 }
+
 .fade-exit {
 	opacity: 1;
 }
+
 .fade-exit-active {
 	opacity: 0;
 	transition: opacity 0.2s linear;
@@ -112,14 +118,17 @@ hr {
 	opacity: 0;
 	transform: translate3d(0, -8px, 0);
 }
+
 .error-enter-active {
 	opacity: 1;
 	transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 	transform: translate3d(0, 0, 0);
 }
+
 .error-exit {
 	opacity: 1;
 }
+
 .error-exit-active {
 	opacity: 0;
 	transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;

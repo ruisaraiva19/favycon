@@ -1,11 +1,15 @@
-import useDarkMode from 'use-dark-mode'
+import { useDarkMode } from 'hooks/use-dark-mode'
 import { SvgSun } from 'components/svgs/svg-sun'
 import { SvgMoon } from 'components/svgs/svg-moon'
 
 import styles from './index.module.scss'
 
 const DarkModeToggle = () => {
-	const darkMode = useDarkMode(false)
+	const darkMode = useDarkMode(false, {
+		classNameDark: 'dark',
+		classNameLight: 'light',
+		element: typeof document !== 'undefined' ? document.documentElement : undefined,
+	})
 
 	return (
 		<div className={styles.root}>

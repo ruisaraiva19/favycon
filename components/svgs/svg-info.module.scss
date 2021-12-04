@@ -9,7 +9,7 @@
 	}
 }
 
-:global(.dark-mode) .background {
+:global(.dark) .background {
 	fill: $dark-grey;
 
 	&.active {
@@ -26,7 +26,7 @@
 	}
 }
 
-:global(.dark-mode) .text {
+:global(.dark) .text {
 	fill: $off-white-dark;
 
 	&.active {

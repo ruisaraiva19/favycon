@@ -1,30 +1,14 @@
-import { withKnobs, text, select, boolean } from '@storybook/addon-knobs'
-import { Button } from '.'
-import useDarkMode from 'use-dark-mode'
+import { ComponentMeta, Story } from '@storybook/react'
+import { Button, ButtonProps } from '.'
 
 export default {
 	title: 'Button',
-	decorators: [withKnobs],
-}
+	component: Button,
+} as ComponentMeta<typeof Button>
 
-export const ButtonDesktop = () => {
-	const { toggle } = useDarkMode()
-	const variant = select('variant', ['primary', 'transparent'], 'primary')
-	const weight = select('weight', ['regular', 'medium', 'semiBold', 'bold'], 'bold')
-	const body = text('body', 'Mac app coming soon')
-	const disabled = boolean('disabled', false)
-	return (
-		<div style={{ padding: 20 }}>
-			<Button variant={variant} weight={weight} disabled={disabled}>
-				{body}
-			</Button>
-			<br />
-			<br />
-			<Button onClick={toggle}>Toggle Dark Mode</Button>
-		</div>
-	)
-}
+const Template: Story<ButtonProps> = (args) => <Button {...args} />
 
-ButtonDesktop.story = {
-	name: 'Desktop',
+export const Desktop = Template.bind({})
+Desktop.args = {
+	children: 'Mac app coming soon',
 }
