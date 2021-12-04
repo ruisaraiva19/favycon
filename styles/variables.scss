@@ -1,27 +1,27 @@
 @import 'breakpoints';
 
-$white: #fff;
-$white-dark: #a8b7c4;
-$off-white: #fafafa;
-$off-white-dark: #e4ebf2;
+$white: rgb(255, 255, 255);
+$white-dark: rgb(168, 183, 196);
+$off-white: rgb(250, 250, 250);
+$off-white-dark: rgb(228, 235, 242);
 
-$grey: #9698a3;
-$grey-dark: #657584;
-$light-grey: #ebebeb;
-$dark-grey: #2e3a47;
-$darker-grey: #33353d;
+$grey: rgb(150, 152, 163);
+$grey-dark: rgb(101, 117, 132);
+$light-grey: rgb(235, 235, 235);
+$dark-grey: rgb(46, 58, 71);
+$darker-grey: rgb(51, 53, 61);
 
-$black: #000;
-$dark-black: #1e262f;
-$darker-black: #0e141a;
+$black: rgb(0, 0, 0);
+$dark-black: rgb(30, 38, 47);
+$darker-black: rgb(14, 20, 26);
 
-$link: #4c5ed5;
-$link-dark: #7083ff;
-$link-hover: #7683e2;
+$link: rgb(76, 94, 213);
+$link-dark: rgb(112, 131, 255);
+$link-hover: rgb(118, 131, 226);
 
-$red: #e15151;
-$green: #3ea161;
-$green-hover: #69b985;
+$red: rgb(225, 81, 81);
+$green: rgb(62, 161, 97);
+$green-hover: rgb(105, 185, 133);
 
 $font-size-h1: 52px;
 $line-height-h1: 64px;

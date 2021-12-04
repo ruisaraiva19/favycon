@@ -1,8 +1,34 @@
 const path = require('path')
+const WebpackNotifierPlugin = require('webpack-notifier')
 
-// Export a function. Accept the base config as the only param.
+/**
+ * @type {import('@storybook/react/types').StorybookConfig}
+ */
 module.exports = {
-	webpackFinal: async (config) => {
+	core: {
+		builder: 'webpack5',
+	},
+	reactOptions: {
+		fastRefresh: true,
+	},
+	staticDirs: ['../public'],
+	stories: ['../components/**/*.stories.mdx', '../components/**/*.stories.@(js|jsx|ts|tsx)'],
+	addons: [
+		'@storybook/addon-links',
+		'@storybook/addon-essentials',
+		'storybook-addon-next-router',
+		{
+			name: '@storybook/addon-postcss',
+			options: {
+				postcssLoaderOptions: {
+					implementation: require('postcss'),
+				},
+			},
+		},
+		'@storybook/addon-a11y',
+		'storybook-dark-mode',
+	],
+	webpackFinal: async (config, { configType }) => {
 		config.module.rules.push({
 			test: /\.scss$/,
 			use: [
@@ -19,7 +45,28 @@ module.exports = {
 			include: path.resolve(__dirname, '../'),
 		})
 
-		// merge whatever from nextConfig into the webpack config storybook will use
+		config.resolve.alias['components'] = path.join(__dirname, '../components')
+		config.resolve.alias['pages'] = path.join(__dirname, '../pages')
+		config.resolve.alias['styles'] = path.join(__dirname, '../styles')
+		config.resolve.alias['utils'] = path.join(__dirname, '../utils')
+		config.resolve.alias['hooks'] = path.join(__dirname, '../hooks')
+
+		if (configType === 'DEVELOPMENT') {
+			config.plugins.push(
+				new WebpackNotifierPlugin({
+					title: 'Favycon Storybook',
+					excludeWarnings: true,
+					alwaysNotify: true,
+					contentImage: path.join(__dirname, '../public/favicon.png'),
+				})
+			)
+		}
+
+		// config.resolve.alias = {
+		// 	...config.resolve.alias,
+		// 	...alias,
+		// 	fs: path.resolve(__dirname, 'fsMock.js'),
+		// }
 		return config
 	},
 }

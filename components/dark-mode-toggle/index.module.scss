@@ -26,8 +26,8 @@
 	cursor: pointer;
 	visibility: hidden;
 	outline: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
+	appearance: none;
+	appearance: none;
 	-webkit-tap-highlight-color: transparent;
 }
 
@@ -45,14 +45,16 @@
 	}
 }
 
-:global(.light-mode) {
+:global(.light) {
 	.sun {
 		visibility: hidden;
 		transform: translateX(-1px) scale(0);
 	}
+
 	.moon {
 		transform: translate(0, 0) rotate(0) scale(1);
 	}
+
 	.sun,
 	.moon {
 		path {
@@ -61,14 +63,16 @@
 	}
 }
 
-:global(.dark-mode) {
+:global(.dark) {
 	.sun {
 		transform: translateX(0) scale(1);
 	}
+
 	.moon {
 		visibility: hidden;
 		transform: translate(0, -2px) rotate(115deg) scale(0.4);
 	}
+
 	.sun,
 	.moon {
 		path {
@@ -77,7 +81,7 @@
 	}
 }
 
-:global(.light-mode) .label {
+:global(.light) .label {
 	@media (pointer: fine) {
 		&:hover path {
 			fill: $link;
@@ -85,7 +89,7 @@
 	}
 }
 
-:global(.dark-mode) .label {
+:global(.dark) .label {
 	@media (pointer: fine) {
 		&:hover path {
 			fill: $link-dark;

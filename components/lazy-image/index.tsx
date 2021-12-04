@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useRef, useEffect } from 'react'
 import { LazyImageFull, ImageState } from 'react-lazy-images'
 import objectFitImages from 'object-fit-images'

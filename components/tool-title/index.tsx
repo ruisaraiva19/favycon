@@ -3,7 +3,7 @@ import { SvgFavycon } from 'components/svgs/svg-favycon'
 
 import styles from './index.module.scss'
 
-type ToolTitleProps = {
+export type ToolTitleProps = {
 	hideLogo?: boolean
 	small?: boolean
 }

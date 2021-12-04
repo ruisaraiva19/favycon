@@ -102,7 +102,7 @@
 	transition: all 0.2s ease;
 }
 
-:global(.light-mode) {
+:global(.light) {
 	.imageLight {
 		opacity: 1;
 	}
@@ -113,7 +113,7 @@
 	}
 }
 
-:global(.dark-mode) {
+:global(.dark) {
 	.imageLight {
 		visibility: hidden;
 		opacity: 0;

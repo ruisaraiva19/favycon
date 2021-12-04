@@ -4,10 +4,10 @@
 	transition: background 0.2s ease;
 }
 
-.sb-show-main.light-mode {
+.sb-show-main.light {
 	background: #fafafa;
 }
 
-.sb-show-main.dark-mode {
+.sb-show-main.dark {
 	background: #101114;
 }

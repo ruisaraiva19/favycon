@@ -41,7 +41,7 @@
 	border: 1px solid $light-grey !important;
 }
 
-:global(.dark-mode) .button {
+:global(.dark) .button {
 	color: $off-white-dark !important;
 	background: $dark-grey !important;
 	border: 1px solid $dark-grey !important;
@@ -62,8 +62,8 @@
 	}
 }
 
-:global(.dark-mode) .firstParagraph,
-:global(.dark-mode) .secondParagraph {
+:global(.dark) .firstParagraph,
+:global(.dark) .secondParagraph {
 	color: $white-dark !important;
 }
 
@@ -99,7 +99,7 @@
 	}
 }
 
-:global(.dark-mode) .footer {
+:global(.dark) .footer {
 	button,
 	a {
 		color: $white-dark;
@@ -120,7 +120,7 @@
 	background-color: rgba($light-grey, 0.64);
 }
 
-:global(.dark-mode) .overlay {
+:global(.dark) .overlay {
 	background-color: rgba($black, 0.8);
 }
 
@@ -151,7 +151,7 @@
 	}
 }
 
-:global(.dark-mode) .content {
+:global(.dark) .content {
 	background: $dark-black;
 
 	@include breakpoint-md {
@@ -177,7 +177,7 @@
 	}
 }
 
-:global(.dark-mode) .modalContainer {
+:global(.dark) .modalContainer {
 	background: $dark-black;
 }
 
@@ -228,7 +228,7 @@
 	margin-bottom: 24px;
 }
 
-:global(.dark-mode) .subTitle {
+:global(.dark) .subTitle {
 	@include breakpoint-md {
 		color: $white-dark !important;
 	}
@@ -261,7 +261,7 @@
 	margin-right: 16px;
 }
 
-:global(.dark-mode) .personRole {
+:global(.dark) .personRole {
 	@include breakpoint-md {
 		color: $white-dark !important;
 	}
@@ -307,7 +307,7 @@
 }
 
 /* stylelint-disable-next-line */
-:global(.dark-mode) .personTwitter p {
+:global(.dark) .personTwitter p {
 	color: #55acee;
 
 	&:hover {
@@ -315,7 +315,7 @@
 	}
 }
 
-:global(.dark-mode) .personTwitter.personGithub p {
+:global(.dark) .personTwitter.personGithub p {
 	color: $white;
 
 	&:hover {
@@ -323,7 +323,7 @@
 	}
 }
 
-:global(.dark-mode) .personTwitter.personGithub p svg path {
+:global(.dark) .personTwitter.personGithub p svg path {
 	fill: $white;
 }
 

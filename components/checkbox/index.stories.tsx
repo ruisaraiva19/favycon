@@ -1,30 +1,22 @@
-import { Checkbox } from '.'
-import useDarkMode from 'use-dark-mode'
+import { ComponentMeta, Story } from '@storybook/react'
+import { Checkbox, CheckboxProps } from '.'
 import { Typography } from 'components/typography'
-import { boolean, withKnobs } from '@storybook/addon-knobs'
 
 export default {
 	title: 'Checkbox',
-	decorators: [withKnobs],
-}
+	component: Checkbox,
+} as ComponentMeta<typeof Checkbox>
 
-export const ToggleDesktop = () => {
-	const darkMode = useDarkMode(false)
-	const disabled = boolean('disabled', false)
+const Template: Story<CheckboxProps> = (args) => (
+	<Checkbox {...args}>
+		<Typography variant="regularBody" weight="medium" muted={args.disabled}>
+			Test Checkbox
+		</Typography>
+	</Checkbox>
+)
 
-	return (
-		<div style={{ padding: 20 }}>
-			<Checkbox name="test" id="test" disabled={disabled}>
-				<Typography variant="regularBody" weight="medium" muted={disabled}>
-					Test Checkbox
-				</Typography>
-			</Checkbox>
-			<br />
-			<Typography>dark mode: {darkMode.value ? 'enabled' : 'disabled'}</Typography>
-		</div>
-	)
-}
-
-ToggleDesktop.story = {
+export const Desktop = Template.bind({})
+Desktop.args = {
 	name: 'Desktop',
+	id: 'desktop',
 }

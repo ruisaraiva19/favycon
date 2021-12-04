@@ -2,7 +2,7 @@
 
 .base {
 	padding: 5px 12px;
-	font-family: Manrope, Arial, Helvetica Neue, Helvetica, sans-serif;
+	font-family: Manrope, Arial, '"Helvetica Neue"', Helvetica, sans-serif;
 	font-size: $font-size-title;
 	line-height: $line-height-title;
 	color: $black;
@@ -43,7 +43,7 @@
 	}
 }
 
-:global(.dark-mode) .primary {
+:global(.dark) .primary {
 	color: $white;
 	background-color: $dark-black;
 	border: 1px solid $dark-black;
@@ -64,7 +64,7 @@
 	}
 }
 
-:global(.dark-mode) .transparent {
+:global(.dark) .transparent {
 	@include breakpoint-md {
 		background: $dark-grey;
 	}
@@ -113,7 +113,7 @@
 	color: $grey;
 }
 
-:global(.dark-mode) .gray {
+:global(.dark) .gray {
 	color: $grey-dark;
 
 	@include breakpoint-md {
@@ -133,7 +133,7 @@
 	}
 }
 
-:global(.dark-mode) .link {
+:global(.dark) .link {
 	color: $white;
 
 	&:hover {
@@ -151,7 +151,7 @@
 	}
 }
 
-:global(.dark-mode) .bgLink {
+:global(.dark) .bgLink {
 	background: $link-dark;
 	border-color: $link-dark;
 
@@ -171,7 +171,7 @@
 	}
 }
 
-:global(.dark-mode) .bgGreen {
+:global(.dark) .bgGreen {
 	background: $green;
 	border-color: $green;
 
