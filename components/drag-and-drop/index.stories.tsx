@@ -1,33 +1,13 @@
-import useDarkMode from 'use-dark-mode'
-import { DragAndDrop } from '.'
-import { Button } from 'components/button'
+import { ComponentMeta, Story } from '@storybook/react'
+import { DragAndDrop, DragAndDropProps } from '.'
 
 export default {
 	title: 'Drag & Drop',
-}
+	component: DragAndDrop,
+	argTypes: {},
+} as ComponentMeta<typeof DragAndDrop>
 
-export const DragAndDropDesktop = () => {
-	const { toggle } = useDarkMode(false)
-	const onGenerate = async (image: File) => {
-		console.log('onGenerate', image)
-		return Promise.resolve(new ArrayBuffer(8))
-	}
-	const onError = (message: string) => {
-		console.log(message)
-	}
-	const onFile = (hasFile: boolean) => {
-		console.log(hasFile)
-	}
+const Template: Story<DragAndDropProps> = (args) => <DragAndDrop {...args} />
 
-	return (
-		<div style={{ padding: 20 }}>
-			<DragAndDrop onGenerate={onGenerate} onError={onError} onFile={onFile} />
-			<br />
-			<Button onClick={toggle}>Toggle Dark Mode</Button>
-		</div>
-	)
-}
-
-DragAndDropDesktop.story = {
-	name: 'Desktop',
-}
+export const Desktop = Template.bind({})
+Desktop.args = {}

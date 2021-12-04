@@ -23,7 +23,7 @@
 	}
 }
 
-:global(.dark-mode) .root {
+:global(.dark) .root {
 	background: $dark-black;
 
 	&.transparent {
@@ -81,7 +81,7 @@
 	}
 }
 
-:global(.dark-mode) .dashed {
+:global(.dark) .dashed {
 	rect {
 		stroke: #495c70;
 	}
@@ -116,7 +116,7 @@
 	}
 }
 
-:global(.dark-mode) .dropZoneWrapper {
+:global(.dark) .dropZoneWrapper {
 	background: $dark-grey;
 
 	@include breakpoint-md {
@@ -134,6 +134,7 @@
 	0% {
 		stroke-dashoffset: 0;
 	}
+
 	100% {
 		stroke-dashoffset: -20;
 	}
@@ -159,7 +160,7 @@
 	}
 }
 
-:global(.dark-mode) .dropZoneFooter {
+:global(.dark) .dropZoneFooter {
 	@include breakpoint-md {
 		background: rgba($dark-black, 0.88);
 	}
@@ -221,7 +222,7 @@
 	}
 }
 
-:global(.dark-mode) .imageUploadText {
+:global(.dark) .imageUploadText {
 	color: $white-dark;
 
 	@include breakpoint-md {
@@ -249,7 +250,7 @@
 	}
 }
 
-:global(.dark-mode) .info {
+:global(.dark) .info {
 	color: $off-white-dark;
 }
 
@@ -315,7 +316,7 @@
 	transition: all 0.2s ease;
 }
 
-:global(.dark-mode) .imageInfo {
+:global(.dark) .imageInfo {
 	border-top: 1px solid $dark-grey;
 }
 
@@ -329,7 +330,7 @@
 	}
 }
 
-:global(.dark-mode) .imageOptionsWrapper {
+:global(.dark) .imageOptionsWrapper {
 	border-top: 1px solid $dark-grey;
 }
 
@@ -459,7 +460,7 @@
 	}
 }
 
-:global(.dark-mode) .preview {
+:global(.dark) .preview {
 	background: $off-white-dark;
 }
 
@@ -489,7 +490,7 @@
 	}
 }
 
-:global(.dark-mode) .showCode:hover {
+:global(.dark) .showCode:hover {
 	color: $off-white-dark;
 }
 
@@ -501,7 +502,7 @@
 	align-items: center;
 	justify-content: flex-end;
 	width: 100%;
-	padding: 23px 24px 24px 24px;
+	padding: 23px 24px 24px;
 	border-top: 1px solid $light-grey;
 	transition: all 0.2s ease;
 
@@ -511,7 +512,7 @@
 
 	@include breakpoint-md {
 		flex-direction: column-reverse;
-		padding: 11px 24px 12px 24px;
+		padding: 11px 24px 12px;
 		border-top: 1px solid transparent;
 
 		> * {
@@ -524,7 +525,7 @@
 	}
 }
 
-:global(.dark-mode) .imageFooter {
+:global(.dark) .imageFooter {
 	border-top: 1px solid $dark-grey;
 
 	@include breakpoint-md {
@@ -539,7 +540,7 @@
 	}
 }
 
-:global(.dark-mode) .makeNewOne {
+:global(.dark) .makeNewOne {
 	&:hover {
 		color: $off-white-dark;
 	}
@@ -552,7 +553,7 @@
 	}
 }
 
-:global(.dark-mode) .reUpload {
+:global(.dark) .reUpload {
 	&:hover {
 		color: $off-white-dark;
 	}
@@ -609,11 +610,11 @@
 	bottom: 0;
 	left: 0;
 	z-index: 10;
-	background-color: rgba(255, 255, 255, 0.64);
+	background-color: rgba($white, 0.64);
 }
 
-:global(.dark-mode) .overlay {
-	background-color: rgba(0, 0, 0, 0.8);
+:global(.dark) .overlay {
+	background-color: rgba($black, 0.8);
 }
 
 .content {
@@ -663,7 +664,7 @@
 	}
 }
 
-:global(.dark-mode) .copyWrapper::before {
+:global(.dark) .copyWrapper::before {
 	color: $off-white-dark;
 }
 

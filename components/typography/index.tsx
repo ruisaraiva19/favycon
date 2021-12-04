@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 import styles from './index.module.scss'
 
-type TypographyProps = {
+export type TypographyProps = {
 	children: PropTypes.ReactNodeLike
 	variant:
 		| 'h1'

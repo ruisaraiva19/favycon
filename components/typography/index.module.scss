@@ -106,7 +106,7 @@
 	transition: color 0.2s ease;
 }
 
-:global(.dark-mode) .black {
+:global(.dark) .black {
 	color: $off-white;
 }
 
@@ -114,7 +114,7 @@
 	color: $grey;
 }
 
-:global(.dark-mode) .gray {
+:global(.dark) .gray {
 	color: $grey-dark;
 }
 
@@ -123,7 +123,7 @@
 	transition: color 0.2s ease;
 }
 
-:global(.dark-mode) .white:not(.colorImmutable) {
+:global(.dark) .white:not(.colorImmutable) {
 	color: $black;
 }
 
@@ -136,6 +136,6 @@
 	transition: color 0.2s ease;
 }
 
-:global(.dark-mode) .muted {
+:global(.dark) .muted {
 	color: $grey-dark;
 }

@@ -8,6 +8,9 @@ describe('Drag & Drop', () => {
 			cy.wait(250)
 		})
 
+		/**
+		 * @param {string} fixture
+		 */
 		function dropFile(fixture) {
 			cy.get('[data-cy="drag-and-drop"]').attachFile(fixture, {
 				subjectType: 'drag-n-drop',

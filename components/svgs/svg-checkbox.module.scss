@@ -12,7 +12,7 @@
 	}
 }
 
-:global(.dark-mode) .unchecked {
+:global(.dark) .unchecked {
 	fill: $dark-grey;
 	stroke: $darker-black;
 	stroke-width: 1.5px;

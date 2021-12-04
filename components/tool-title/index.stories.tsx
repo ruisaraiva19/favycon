@@ -1,24 +1,12 @@
-import { withKnobs } from '@storybook/addon-knobs'
-import useDarkMode from 'use-dark-mode'
-import { Button } from 'components/button'
-import { ToolTitle } from '.'
+import { ComponentMeta, Story } from '@storybook/react'
+import { ToolTitle, ToolTitleProps } from '.'
 
 export default {
 	title: 'Tool Title',
-	decorators: [withKnobs],
-}
+	component: ToolTitle,
+} as ComponentMeta<typeof ToolTitle>
 
-export const ToolTitleDesktop = () => {
-	const { toggle } = useDarkMode(false)
-	return (
-		<div style={{ padding: 20 }}>
-			<ToolTitle />
-			<br />
-			<Button onClick={toggle}>Toggle Dark Mode</Button>
-		</div>
-	)
-}
+const Template: Story<ToolTitleProps> = (args) => <ToolTitle {...args} />
 
-ToolTitleDesktop.story = {
-	name: 'desktop',
-}
+export const Desktop = Template.bind({})
+Desktop.args = {}

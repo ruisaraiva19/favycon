@@ -5,7 +5,7 @@
 	transition: fill 0.2s ease;
 }
 
-:global(.dark-mode) .background {
+:global(.dark) .background {
 	fill: #495c70;
 }
 
@@ -14,7 +14,7 @@
 	transition: fill 0.2s ease;
 }
 
-:global(.dark-mode) .foreground {
+:global(.dark) .foreground {
 	fill: #1e262f;
 }
 
@@ -23,7 +23,7 @@
 	transition: fill 0.2s ease;
 }
 
-:global(.dark-mode) .top {
+:global(.dark) .top {
 	fill: #f6a044;
 }
 
@@ -32,7 +32,7 @@
 	transition: fill 0.2s ease;
 }
 
-:global(.dark-mode) .corner {
+:global(.dark) .corner {
 	fill: #f9cdff;
 }
 
@@ -41,7 +41,7 @@
 	transition: fill 0.2s ease;
 }
 
-:global(.dark-mode) .left {
+:global(.dark) .left {
 	fill: #728dff;
 }
 
@@ -50,6 +50,6 @@
 	transition: fill 0.2s ease;
 }
 
-:global(.dark-mode) .star {
+:global(.dark) .star {
 	fill: #728dff;
 }
