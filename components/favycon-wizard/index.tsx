@@ -1,9 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { LazyImage } from 'components/lazy-image'
+import Image from 'next/image'
 
 import styles from './index.module.scss'
+import unsplashImageMobile from '../../public/images/unsplash-vertical.jpg'
+import unsplashImageDesktop from '../../public/images/unsplash-horizontal.jpg'
+import dndLight from '../../public/images/dnd-light.png'
+import dndDark from '../../public/images/dnd-dark.png'
 
 type FavyconWizardProps = {
 	children: PropTypes.ReactNodeLike
@@ -11,32 +15,36 @@ type FavyconWizardProps = {
 }
 
 const unsplashImageProps = (isMobile: boolean) => ({
-	src: `/images/unsplash${isMobile ? '-vertical' : ''}@1x.jpg`,
-	srcRetina: `/images/unsplash${isMobile ? '-vertical' : ''}@2x.jpg`,
-	placeholderHash: isMobile ? 'UT0Lxlh2ghgMeSeoe@fkflf5e.e:e.e.f6fk' : 'Un0V-,h2g#gMe,f8f9fif8f6f6f8f6f7fQfQ',
-	alt: 'Unsplash',
-	aspectRatio: isMobile ? '614/768' : '540/354',
-	stretch: isMobile,
+	src: isMobile ? unsplashImageMobile : unsplashImageDesktop,
+	width: isMobile ? undefined : 540,
+	height: isMobile ? undefined : 354,
 })
 
 const dndImageProps = (isDark: boolean) => ({
-	src: `/images/dnd-${isDark ? 'dark' : 'light'}@1x.png`,
-	srcRetina: `/images/dnd-${isDark ? 'dark' : 'light'}@2x.png`,
-	alt: 'Drag and drop here!',
-	aspectRatio: '185/109',
+	src: isDark ? dndDark : dndLight,
+	width: 185,
+	height: 109,
 })
 
 const FavyconWizardComponent = ({ children, showDndImage }: FavyconWizardProps) => {
 	return (
 		<div className={styles.root}>
 			<div className={styles.background}>
-				<LazyImage className={styles.mobileBackground} {...unsplashImageProps(true)} />
-				<LazyImage className={styles.desktopBackground} {...unsplashImageProps(false)} />
+				<div className={styles.mobileBackground}>
+					<Image alt="Unsplash image" placeholder="blur" layout="fill" {...unsplashImageProps(true)} />
+				</div>
+				<div className={styles.desktopBackground}>
+					<Image alt="Unsplash image" placeholder="blur" layout="intrinsic" {...unsplashImageProps(false)} />
+				</div>
 			</div>
 			{children}
 			<div className={classnames(styles.image, { [styles.hide]: !showDndImage })}>
-				<LazyImage {...dndImageProps(false)} className={styles.imageLight} />
-				<LazyImage {...dndImageProps(true)} className={styles.imageDark} />
+				<div className={styles.imageLight}>
+					<Image alt="Drag and drop here!" {...dndImageProps(false)} layout="intrinsic" />
+				</div>
+				<div className={styles.imageDark}>
+					<Image alt="Drag and drop here!" {...dndImageProps(true)} layout="intrinsic" />
+				</div>
 			</div>
 		</div>
 	)

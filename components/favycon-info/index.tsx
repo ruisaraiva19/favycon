@@ -1,10 +1,10 @@
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import React, { useState, useRef } from 'react'
 import classnames from 'classnames'
-import { useDrag } from 'react-use-gesture'
+import { useDrag } from '@use-gesture/react'
 import { Typography } from 'components/typography'
 import { ToolTitle } from 'components/tool-title'
-import { LazyImage } from 'components/lazy-image'
 import { SvgTwitter } from 'components/svgs/svg-twitter'
 import { SvgGithub } from 'components/svgs/svg-github'
 
@@ -12,6 +12,10 @@ import styles from './index.module.scss'
 import { SvgFavycon } from 'components/svgs/svg-favycon'
 import { Button } from 'components/button'
 import { isTouchCapable } from 'utils/device'
+
+import augustoLopes from '../../public/images/people/augusto-lopes.png'
+import ruiSaraiva from '../../public/images/people/rui-saraiva.png'
+import miguelTeixeira from '../../public/images/people/miguel-teixeira.png'
 
 const Modal = dynamic(() => import('react-modal'))
 
@@ -21,21 +25,21 @@ const people = [
 		name: 'Augusto Lopes',
 		role: 'Product Designer',
 		social: 'twitter',
-		placeholderHash: 'UrLqFOIUS$-o_Nt6NGRkEkt7M{RjM{NHMxof',
+		photo: augustoLopes,
 	},
 	{
 		screenName: 'ruisaraiva19',
 		name: 'Rui Saraiva',
 		role: 'Full-Stack Developer',
 		social: 'twitter',
-		placeholderHash: 'UNMQLqof_LWU?FRkkqt605fk9cjZbaWBt8of',
+		photo: ruiSaraiva,
 	},
 	{
 		screenName: 'miguellteixeira',
 		name: 'Miguel Teixeira',
 		role: 'Full-Stack Developer',
 		social: 'github',
-		placeholderHash: 'UcI~*]o0uPXS?wWAMxog8_kCQ,e-tmbIVsjF',
+		photo: miguelTeixeira,
 	},
 ]
 
@@ -141,13 +145,13 @@ const FavyconInfo = ({
 							{people.map((person) => (
 								<div key={person.screenName} className={styles.person}>
 									<div className={styles.personAvatar}>
-										<LazyImage
-											src={`/images/people/${person.screenName}@1x.png`}
-											srcRetina={`/images/people/${person.screenName}@2x.png`}
+										<Image
+											src={person.photo}
 											alt={person.name}
-											aspectRatio="56/56"
-											placeholderHash={person.placeholderHash}
-											rounded
+											width={56}
+											height={56}
+											placeholder="blur"
+											layout="intrinsic"
 										/>
 									</div>
 									<div>

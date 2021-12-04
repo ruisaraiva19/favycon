@@ -52,12 +52,18 @@
 }
 
 .mobileBackground {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+
 	@include breakpoint-md-up {
 		display: none;
 	}
 }
 
 .desktopBackground {
+	position: relative;
+
 	@include breakpoint-md {
 		display: none;
 	}
