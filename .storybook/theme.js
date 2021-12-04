@@ -1,4 +1,4 @@
-import { create, themes } from '@storybook/theming'
+import { create } from '@storybook/theming'
 
 const baseStyles = {
 	// Typography
@@ -15,11 +15,11 @@ export const light = create({
 	...baseStyles,
 
 	// Text colors
-	// textColor: colors.coolGray[900],
-	// textInverseColor: colors.indigo[100],
+	textColor: '#0e141a',
+	textInverseColor: '#e4ebf2',
 
 	// Background colors
-	// appContentBg: '#fcfcff',
+	appContentBg: '#fafafa',
 })
 
 export const dark = create({
@@ -27,11 +27,11 @@ export const dark = create({
 	...baseStyles,
 
 	// Text colors
-	// textColor: colors.indigo[100],
-	// textInverseColor: colors.coolGray[900],
+	textColor: '#e4ebf2',
+	textInverseColor: '#0e141a',
 
 	// Background colors
-	// appBg: colors.coolGray[800],
-	// appContentBg: colors.coolGray[900],
-	// barBg: colors.coolGray[800],
+	appBg: '#1e262f',
+	appContentBg: '#0e141a',
+	barBg: '#1e262f',
 })

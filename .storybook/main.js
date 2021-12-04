@@ -1,5 +1,4 @@
 const path = require('path')
-const WebpackNotifierPlugin = require('webpack-notifier')
 
 /**
  * @type {import('@storybook/react/types').StorybookConfig}
@@ -51,22 +50,6 @@ module.exports = {
 		config.resolve.alias['utils'] = path.join(__dirname, '../utils')
 		config.resolve.alias['hooks'] = path.join(__dirname, '../hooks')
 
-		if (configType === 'DEVELOPMENT') {
-			config.plugins.push(
-				new WebpackNotifierPlugin({
-					title: 'Favycon Storybook',
-					excludeWarnings: true,
-					alwaysNotify: true,
-					contentImage: path.join(__dirname, '../public/favicon.png'),
-				})
-			)
-		}
-
-		// config.resolve.alias = {
-		// 	...config.resolve.alias,
-		// 	...alias,
-		// 	fs: path.resolve(__dirname, 'fsMock.js'),
-		// }
 		return config
 	},
 }

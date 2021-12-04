@@ -31,8 +31,9 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "npm-run-all --parallel lint:*",
-		"lint:scripts": "eslint --ext js,jsx,ts,tsx .",
-		"lint:styles": "stylelint ./**/*.{css,scss}",
+		"lint:scripts": "eslint .",
+		"lint:styles": "npx stylelint \"**/*.{css,scss}\"",
+		"lint:json": "prettier --check \"**/*.json\"",
 		"postinstall": "husky install",
 		"storybook": "start-storybook -p 6006",
 		"storybook:build": "build-storybook",
@@ -132,8 +133,7 @@
 		"stylelint-prettier": "2.0.0",
 		"stylelint-scss": "4.0.0",
 		"typescript": "4.4.4",
-		"webpack": "5.64.4",
-		"webpack-notifier": "1.14.1"
+		"webpack": "5.64.4"
 	},
 	"config": {
 		"commitizen": {

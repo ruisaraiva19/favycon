@@ -9,13 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use Node.js 14
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: yarn install --frozen-lockfile
 
       - name: Cache Next.js build cache
         uses: actions/cache@v2
