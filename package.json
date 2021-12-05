@@ -43,6 +43,7 @@
 	},
 	"dependencies": {
 		"@fiahfy/ico-convert": "0.0.12",
+		"@splitbee/web": "0.3.0",
 		"@use-gesture/react": "10.2.0",
 		"adm-zip": "0.5.9",
 		"blurhash": "1.1.4",

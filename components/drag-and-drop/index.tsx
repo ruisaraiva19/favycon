@@ -5,6 +5,7 @@ import classnames from 'classnames'
 import { useDropzone, FileRejection } from 'react-dropzone'
 import { CSSTransition } from 'react-transition-group'
 import { useDrag } from '@use-gesture/react'
+import splitbee from '@splitbee/web'
 import { headTemplate } from 'utils/favicon'
 import { isTouchCapable } from 'utils/device'
 import { Typography } from 'components/typography'
@@ -136,8 +137,22 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 			setIsLoading(true)
 			const zip = await onGenerate(file, pwa, darkMode)
 			setZipData(zip)
+			splitbee.track('Favicon generated', {
+				type: file.type,
+				size: file.size,
+				pwa,
+				darkMode,
+			})
 		} catch (error: any) {
-			onError((error.message as string) || 'Something went wrong. Please try again.')
+			const message = (error.message as string) || 'Something went wrong. Please try again.'
+			onError(message)
+			splitbee.track('Favicon error', {
+				type: file.type,
+				size: file.size,
+				pwa,
+				darkMode,
+				message,
+			})
 		} finally {
 			setIsLoading(false)
 		}
@@ -145,6 +160,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 
 	const onDownload = (zipData: ArrayBuffer) => {
 		downloadFile(zipData, 'favicons.zip')
+		splitbee.track('Download Favicon')
 	}
 
 	const resetImage = () => {
@@ -166,16 +182,28 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 			onError('')
 			onFile(true)
 			setImage(file)
+			splitbee.track('Drop Accepted', {
+				...sizes,
+				type: file.type,
+				size: file.size,
+			})
 		} else if (fileRejections.length) {
 			const file = fileRejections[0].file
+			let message = ''
 			if (!Object.keys(ACCEPT_MIME_TYPES).includes(file.type)) {
-				onError(`The image file should be a ${Object.values(ACCEPT_MIME_TYPES).join(' or ')}`)
+				message = `The image file should be a ${Object.values(ACCEPT_MIME_TYPES).join(' or ')}`
 			} else if (file.size > ONE_MB) {
-				onError(`The ${ACCEPT_MIME_TYPES[file.type]} file needs to be lower than 1 MB`)
+				message = `The ${ACCEPT_MIME_TYPES[file.type]} file needs to be lower than 1 MB`
 			} else {
-				onError('idk')
+				message = 'idk'
 			}
+			onError(message)
 			onFile(false)
+			splitbee.track('Drop Rejected', {
+				type: file.type,
+				size: file.size,
+				message,
+			})
 		}
 	}
 
@@ -191,6 +219,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 		setTimeout(() => {
 			setCopied(false)
 		}, 3000)
+		splitbee.track('Code copied')
 	}
 
 	const [isHover, setIsHover] = useState(false)
@@ -356,7 +385,14 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							</div>
 						</div>
 						<div className={styles.imageFooter}>
-							<Button variant="transparent" color="gray" className={styles.reUpload} onClick={resetImage}>
+							<Button
+								variant="transparent"
+								color="gray"
+								className={styles.reUpload}
+								onClick={() => {
+									splitbee.track('Re-upload')
+									resetImage()
+								}}>
 								Re-upload
 							</Button>
 							<Button
@@ -412,7 +448,14 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 							</div>
 						</div>
 						<div className={classnames(styles.imageFooter, styles.spaceBetween)}>
-							<Button variant="transparent" color="gray" className={styles.makeNewOne} onClick={resetImage}>
+							<Button
+								variant="transparent"
+								color="gray"
+								className={styles.makeNewOne}
+								onClick={() => {
+									splitbee.track('Make a new one')
+									resetImage()
+								}}>
 								Make a new one
 							</Button>
 							<Button
