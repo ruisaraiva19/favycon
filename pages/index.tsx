@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { NextPage } from 'next'
 import NProgress from 'nprogress'
+import splitbee from '@splitbee/web'
 import { BaseLayout } from 'components/base-layout'
 import { FavyconWizard } from 'components/favycon-wizard'
 import { FavyconInfo } from 'components/favycon-info'
@@ -17,6 +18,10 @@ const Home: NextPage = () => {
 	const [file, setFile] = useState(false)
 	const [fileCounter, setFileCounter] = useState(0)
 	const [errorCounter, setErrorCounter] = useState(0)
+
+	useEffect(() => {
+		splitbee.init()
+	}, [])
 
 	useEffect(() => {
 		if (!file) {
