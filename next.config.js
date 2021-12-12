@@ -23,7 +23,7 @@ module.exports = {
 					},
 					{
 						key: 'Content-Security-Policy',
-						value: `default-src 'self' 'unsafe-inline'; connect-src 'self' https://hive.splitbee.io https://vitals.vercel-insights.com; script-src 'self' https://cdn.splitbee.io; font-src 'self' https://fonts.gstatic.com; frame-ancestors 'self'`,
+						value: `default-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://hive.splitbee.io https://vitals.vercel-insights.com; script-src 'self' https://cdn.splitbee.io; font-src 'self' https://fonts.gstatic.com; frame-ancestors 'self'`,
 					},
 				],
 			},
