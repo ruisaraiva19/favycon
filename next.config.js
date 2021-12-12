@@ -23,7 +23,7 @@ module.exports = {
 					},
 					{
 						key: 'Content-Security-Policy',
-						value: `default-src 'self'; frame-ancestors 'self'`,
+						value: `default-src 'self' https://cdn.splitbee.io; font-src https://fonts.gstatic.com; frame-ancestors 'self'`,
 					},
 				],
 			},
