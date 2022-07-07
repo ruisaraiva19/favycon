@@ -208,6 +208,7 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 	}
 
 	const { getRootProps, getInputProps, isDragActive } = useDropzone({
+		// eslint-disable-next-line @typescript-eslint/no-misused-promises
 		onDrop,
 		accept: Object.keys(ACCEPT_MIME_TYPES),
 		maxSize: ONE_MB,
@@ -230,13 +231,15 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 				className={classnames(styles.container, {
 					[styles.loading]: isLoading,
 					[styles.transparent]: !image,
-				})}>
+				})}
+			>
 				{!image && !zipData && (
 					<>
 						<div
 							className={styles.dropZoneWrapper}
 							onMouseEnter={() => setIsHover(true)}
-							onMouseLeave={() => setIsHover(false)}>
+							onMouseLeave={() => setIsHover(false)}
+						>
 							<SvgDropZone className={classnames(styles.dashed, { [styles.dragActive]: isDragActive })} />
 							<div {...getRootProps()} className={styles.dropZone} data-cy="drag-and-drop">
 								<input {...getInputProps()} />
@@ -249,7 +252,8 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 									className={classnames(styles.imageUploadText, styles.mobileUploadText, {
 										[styles.dragActive]: isDragActive,
 									})}
-									data-cy="drag-and-drop-text">
+									data-cy="drag-and-drop-text"
+								>
 									<span>
 										Generate all the sizes for your
 										<br />
@@ -262,7 +266,8 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 									className={classnames(styles.imageUploadText, styles.desktopUploadText, {
 										[styles.dragActive]: isDragActive,
 									})}
-									data-cy="drag-and-drop-text">
+									data-cy="drag-and-drop-text"
+								>
 									<CSSTransition in={!isDragActive} timeout={200} classNames="collapse" unmountOnExit>
 										<span>Drag &amp;&nbsp;</span>
 									</CSSTransition>
@@ -313,7 +318,8 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 									weight="semiBold"
 									color="gray"
 									tag="div"
-									className={styles.filenameWrapper}>
+									className={styles.filenameWrapper}
+								>
 									<span className={styles.filename} data-cy="preview-filename">
 										{imageData.name}
 										{imageData.extension}
@@ -357,7 +363,8 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 										id="pwa"
 										disabled={PWADisabled}
 										onChange={togglePwa}
-										data-cy="preview-pwa-compatible">
+										data-cy="preview-pwa-compatible"
+									>
 										<Typography variant="regularBody" weight="semiBold" muted={PWADisabled}>
 											PWA compatible
 										</Typography>
@@ -373,7 +380,8 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 										id="dark"
 										disabled
 										onChange={toggleDarkMode}
-										data-cy="preview-dark-mode-version">
+										data-cy="preview-dark-mode-version"
+									>
 										<Typography variant="regularBody" weight="semiBold" muted>
 											Dark Mode version
 										</Typography>
@@ -392,14 +400,18 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								onClick={() => {
 									splitbee.track('Re-upload')
 									resetImage()
-								}}>
+								}}
+							>
 								Re-upload
 							</Button>
 							<Button
 								color="white"
 								background="bgLink"
 								className={styles.imageGenerate}
-								onClick={() => generateFavicon(image)}>
+								onClick={() => {
+									generateFavicon(image)
+								}}
+							>
 								Generate Favicon
 							</Button>
 						</div>
@@ -442,7 +454,8 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 									className={styles.showCode}
 									variant="regularTransparent"
 									color="gray"
-									onClick={() => setIsModalOpen(true)}>
+									onClick={() => setIsModalOpen(true)}
+								>
 									Show
 								</Button>
 							</div>
@@ -455,14 +468,16 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 								onClick={() => {
 									splitbee.track('Make a new one')
 									resetImage()
-								}}>
+								}}
+							>
 								Make a new one
 							</Button>
 							<Button
 								color="white"
 								background="bgGreen"
 								className={styles.imageGenerate}
-								onClick={() => onDownload(zipData)}>
+								onClick={() => onDownload(zipData)}
+							>
 								Download Favicon
 							</Button>
 						</div>
@@ -475,7 +490,8 @@ const DragAndDrop = ({ onFile, onGenerate, onError }: DragAndDropProps) => {
 					className={styles.content}
 					overlayClassName={styles.overlay}
 					closeTimeoutMS={200}
-					contentLabel="Code generated">
+					contentLabel="Code generated"
+				>
 					<div className={styles.modalContainer} {...bind()}>
 						<div className={classnames(styles.modalHeader, styles.modalHeaderMobile)}>
 							<Typography variant="extraLargeTitle" weight="extraBold" color="white" colorImmutable>
