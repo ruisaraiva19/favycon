@@ -4,13 +4,13 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 class MyDocument extends Document {
 	render() {
 		return (
-			<Html lang="en">
+			<Html lang="en" className="preload">
 				<Head />
-				<body className="preload">
-					<script src="/js/noflash.js" />
+				<body>
+					<script src="/js/noflash.js?v1" />
 					<Main />
 					<NextScript />
-					<script src="/js/onload.js" />
+					<script src="/js/onload.js?v1" />
 				</body>
 			</Html>
 		)
