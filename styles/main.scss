@@ -11,14 +11,14 @@ body {
 
 	/* Disables pull-to-refresh but allows overscroll glow effects. */
 	overscroll-behavior-y: contain;
-	font-family: Manrope, Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	font-family: 'Manrope', Arial, 'Helvetica Neue', Helvetica, sans-serif;
 
 	/* https://gist.github.com/hsleonis/55712b0eafc9b25f1944 */
 	font-size: 100%;
 	font-variant-ligatures: none;
 	text-shadow: rgba($black, 0.01) 0 0 1px;
 	transition: background 0.2s ease;
-	text-rendering: optimizeLegibility;
+	text-rendering: optimizelegibility;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 

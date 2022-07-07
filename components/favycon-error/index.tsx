@@ -38,7 +38,8 @@ const FavyconError = ({ error, clearError }: FavyconErrorProps) => {
 					variant="regularBody"
 					color="white"
 					colorImmutable={true}
-					weight="semiBold">
+					weight="semiBold"
+				>
 					{error}
 				</Typography>
 				<svg height={20} width={20}>

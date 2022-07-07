@@ -9,5 +9,5 @@
 	"css.validate": false,
 	"less.validate": false,
 	"scss.validate": false,
-	"cssModules.camelCase": true
+	"typescript.tsdk": "node_modules/typescript/lib"
 }

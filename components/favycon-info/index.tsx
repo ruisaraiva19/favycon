@@ -102,7 +102,8 @@ const FavyconInfo = ({
 				className={styles.content}
 				overlayClassName={styles.overlay}
 				closeTimeoutMS={200}
-				contentLabel="About Us">
+				contentLabel="About Us"
+			>
 				<div className={styles.modalContainer} {...bind()}>
 					<div className={styles.modalHeaderMobile}>
 						<div className={styles.modalHeaderTop}>
@@ -166,7 +167,8 @@ const FavyconInfo = ({
 												href={`https://twitter.com/${person.screenName}`}
 												className={styles.personTwitter}
 												target="_blank"
-												rel="noopener noreferrer">
+												rel="noopener noreferrer"
+											>
 												<Typography variant="footer" weight="semiBold">
 													<SvgTwitter /> {person.screenName}
 												</Typography>
@@ -176,7 +178,8 @@ const FavyconInfo = ({
 												href={`https://github.com/${person.screenName}`}
 												className={classnames(styles.personTwitter, styles.personGithub)}
 												target="_blank"
-												rel="noopener noreferrer">
+												rel="noopener noreferrer"
+											>
 												<Typography variant="footer" weight="semiBold">
 													<SvgGithub /> {person.screenName}
 												</Typography>
@@ -194,7 +197,8 @@ const FavyconInfo = ({
 									className={styles.repo}
 									href="https://github.com/ruisaraiva19/favycon"
 									target="_blank"
-									rel="noopener noreferrer">
+									rel="noopener noreferrer"
+								>
 									GitHub
 								</a>
 								. Have feedback? Send it to{' '}

@@ -5,10 +5,7 @@ class MyDocument extends Document {
 	render() {
 		return (
 			<Html lang="en">
-				<Head>
-					<link rel="preconnect" href="https://fonts.googleapis.com" />
-					<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-				</Head>
+				<Head />
 				<body className="preload">
 					<script src="/js/noflash.js" />
 					<Main />
