@@ -137,5 +137,8 @@
 		"commitizen": {
 			"path": "cz-conventional-changelog"
 		}
+	},
+	"resolutions": {
+		"sharp": "^0.28.0"
 	}
 }
