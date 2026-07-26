@@ -1,0 +1,48 @@
+# Favycon
+
+> A free online tool that turns one image into a complete set of favicons, in
+> every size and format a site needs, as a downloadable zip.
+
+Drag and drop an image and Favycon returns `favicons.zip` plus the markup to
+paste into your `<head>`. Nothing is stored: the image is converted in the
+request and the zip is streamed straight back.
+
+Site: https://favycon.vercel.app
+
+## Input
+
+- Accepted formats: JPEG, PNG, SVG.
+- Minimum dimensions: 310x310. SVG input is exempt, since it is rescaled from
+  vector.
+- With the PWA option enabled the minimum is 512x512, again except for SVG.
+
+## What the zip contains
+
+- `icons/favicon-<size>.png` at 16x16, 32x32, 57x57, 60x60, 70x70, 72x72,
+  76x76, 96x96, 114x114, 120x120, 144x144, 150x150, 152x152, 180x180, 192x192
+  and 310x310.
+- `icons/favicon.ico`, rendered from a 256x256 master.
+- `icons/favicon.svg`, only when the uploaded image was itself an SVG.
+- `icons/browserconfig.xml` for IE10+ tiles.
+- `icons/manifest.json`, only when the PWA option is on. That option also adds
+  128x128, 384x384 and 512x512 PNGs.
+- `readme.txt` with the HTML to add, written to match the options chosen.
+
+## Facts
+
+- Author: Rui Saraiva (https://ruisaraiva.dev)
+- Contributors: Augusto Lopes (product design), Miguel Teixeira
+- Built in 2020
+- Licence: MIT
+- Source: https://github.com/ruisaraiva19/favycon
+- Price: free, no account, no upload limit published
+- Contact: hello@ruisaraiva.dev
+
+## Notes
+
+- This is a single-page tool. There is no blog, docs site or API documentation
+  to crawl beyond this file and the repository.
+- There is a public HTTP endpoint at `POST /api/favycon`. It takes a multipart
+  body with an `icon` file field and an optional `pwa` field set to `1`, and
+  responds with `application/zip`. It is what the page itself calls; it is not
+  a documented or versioned public API.

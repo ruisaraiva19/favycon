@@ -1,2 +1,8 @@
 User-Agent: *
 Allow: /
+
+# Nothing is disallowed. /api/favycon is POST-only and answers a GET with 405,
+# which is a clearer signal to a crawler than a rule it has to fetch robots.txt
+# to learn. A plain-text description of the tool lives at /llms.txt
+
+Sitemap: https://favycon.vercel.app/sitemap.xml

@@ -290,7 +290,11 @@
 		margin-right: 2px;
 	}
 
-	&.personGithub {
+	// Both modifiers do the same job: drop the base class's Twitter blue for the
+	// neutral ink. Kept as two names rather than one shared class so the markup
+	// still says which kind of link it is.
+	&.personGithub,
+	&.personWebsite {
 		color: $black;
 
 		p {
@@ -316,7 +320,8 @@
 	}
 }
 
-:global(.dark) .personTwitter.personGithub p {
+:global(.dark) .personTwitter.personGithub p,
+:global(.dark) .personTwitter.personWebsite p {
 	color: $white;
 
 	&:hover {
@@ -326,6 +331,13 @@
 
 :global(.dark) .personTwitter.personGithub p svg path {
 	fill: $white;
+}
+
+// The GitHub mark is a filled path; the globe is stroked, so it needs the other
+// property. Both are set explicitly rather than relying on currentColor, to
+// match how the rule above already works.
+:global(.dark) .personTwitter.personWebsite p svg {
+	stroke: $white;
 }
 
 .modalFooter {

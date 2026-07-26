@@ -7,6 +7,7 @@ import { Typography } from 'components/typography'
 import { ToolTitle } from 'components/tool-title'
 import { SvgTwitter } from 'components/svgs/svg-twitter'
 import { SvgGithub } from 'components/svgs/svg-github'
+import { SvgWebsite } from 'components/svgs/svg-website'
 
 import styles from './index.module.scss'
 import { SvgFavycon } from 'components/svgs/svg-favycon'
@@ -19,26 +20,47 @@ import miguelTeixeira from '../../public/images/people/miguel-teixeira.png'
 
 const Modal = dynamic(() => import('react-modal'))
 
+// A lookup rather than a chain of ternaries in the JSX, because there are three
+// kinds of link now. `personTwitter` is the shared base class — it predates the
+// other two and carries the layout, so the modifiers only restate the colour.
+const socials = {
+	twitter: {
+		Icon: SvgTwitter,
+		url: (handle: string) => `https://twitter.com/${handle}`,
+		modifier: undefined,
+	},
+	github: {
+		Icon: SvgGithub,
+		url: (handle: string) => `https://github.com/${handle}`,
+		modifier: styles.personGithub,
+	},
+	website: {
+		Icon: SvgWebsite,
+		url: (handle: string) => `https://${handle}`,
+		modifier: styles.personWebsite,
+	},
+}
+
 const people = [
 	{
-		screenName: 'aboutaugusto',
+		handle: 'aboutaugusto',
 		name: 'Augusto Lopes',
 		role: 'Product Designer',
-		social: 'twitter',
+		social: 'twitter' as const,
 		photo: augustoLopes,
 	},
 	{
-		screenName: 'ruisaraiva19',
+		handle: 'ruisaraiva.dev',
 		name: 'Rui Saraiva',
-		role: 'Full-Stack Developer',
-		social: 'twitter',
+		role: 'Principal Engineer',
+		social: 'website' as const,
 		photo: ruiSaraiva,
 	},
 	{
-		screenName: 'miguellteixeira',
+		handle: 'miguellteixeira',
 		name: 'Miguel Teixeira',
 		role: 'Full-Stack Developer',
-		social: 'github',
+		social: 'github' as const,
 		photo: miguelTeixeira,
 	},
 ]
@@ -138,56 +160,47 @@ const FavyconInfo = ({
 								Behind the curtains
 							</Typography>
 							<Typography variant="largeBody" weight="medium" className={styles.subTitle}>
-								For new updates be sure to follow these guys on Twitter.
+								For new updates be sure to follow these guys.
 							</Typography>
 						</div>
 						<hr className={styles.hr} />
 						<div className={styles.people}>
-							{people.map((person) => (
-								<div key={person.screenName} className={styles.person}>
-									<div className={styles.personAvatar}>
-										<Image
-											src={person.photo}
-											alt={person.name}
-											width={56}
-											height={56}
-											placeholder="blur"
-											layout="intrinsic"
-										/>
-									</div>
-									<div>
-										<Typography variant="largeBody" weight="semiBold">
-											{person.name}
-										</Typography>
-										<Typography variant="regularBody" weight="medium" className={styles.personRole}>
-											{person.role}
-										</Typography>
-										{person.social === 'twitter' ? (
+							{people.map((person) => {
+								const { Icon, url, modifier } = socials[person.social]
+
+								return (
+									<div key={person.handle} className={styles.person}>
+										<div className={styles.personAvatar}>
+											<Image
+												src={person.photo}
+												alt={person.name}
+												width={56}
+												height={56}
+												placeholder="blur"
+												layout="intrinsic"
+											/>
+										</div>
+										<div>
+											<Typography variant="largeBody" weight="semiBold">
+												{person.name}
+											</Typography>
+											<Typography variant="regularBody" weight="medium" className={styles.personRole}>
+												{person.role}
+											</Typography>
 											<a
-												href={`https://twitter.com/${person.screenName}`}
-												className={styles.personTwitter}
+												href={url(person.handle)}
+												className={classnames(styles.personTwitter, modifier)}
 												target="_blank"
 												rel="noopener noreferrer"
 											>
 												<Typography variant="footer" weight="semiBold">
-													<SvgTwitter /> {person.screenName}
+													<Icon /> {person.handle}
 												</Typography>
 											</a>
-										) : (
-											<a
-												href={`https://github.com/${person.screenName}`}
-												className={classnames(styles.personTwitter, styles.personGithub)}
-												target="_blank"
-												rel="noopener noreferrer"
-											>
-												<Typography variant="footer" weight="semiBold">
-													<SvgGithub /> {person.screenName}
-												</Typography>
-											</a>
-										)}
+										</div>
 									</div>
-								</div>
-							))}
+								)
+							})}
 						</div>
 						<hr className={styles.hr} />
 						<div className={classnames(styles.footer, styles.modalFooter)}>
@@ -202,8 +215,8 @@ const FavyconInfo = ({
 									GitHub
 								</a>
 								. Have feedback? Send it to{' '}
-								<a className={styles.contact} href="mailto:hello@favycon.app">
-									hello@favycon.app
+								<a className={styles.contact} href="mailto:hello@ruisaraiva.dev">
+									hello@ruisaraiva.dev
 								</a>
 							</Typography>
 						</div>
