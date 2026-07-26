@@ -42,6 +42,8 @@ const SEO = ({ title, description }: SEOProps) => {
 			<meta name="description" content={description} />
 			<meta name="author" content={AUTHOR.name} />
 			<link rel="author" href={AUTHOR.url} />
+			{/* favycon.app has no DNS, so vercel.app is the only hostname this answers on. */}
+			<link rel="canonical" href={SITE_URL} />
 			<link rel="apple-touch-icon" sizes="57x57" href="/favicon-57x57.png" />
 			<link rel="apple-touch-icon" sizes="60x60" href="/favicon-60x60.png" />
 			<link rel="apple-touch-icon" sizes="72x72" href="/favicon-72x72.png" />
