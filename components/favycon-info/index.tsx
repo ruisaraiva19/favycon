@@ -52,7 +52,7 @@ const people = [
 	{
 		handle: 'ruisaraiva.dev',
 		name: 'Rui Saraiva',
-		role: 'Full-Stack Developer',
+		role: 'Principal Engineer',
 		social: 'website' as const,
 		photo: ruiSaraiva,
 	},
